@@ -695,6 +695,23 @@ export default function Home() {
       position: relative; z-index: 2;
       text-shadow: 0 2px 12px rgba(0,0,0,0.3);
     }
+    .location-photo-wrap {
+      width: 100%;
+      max-width: 340px;
+      margin: 0 auto 20px;
+      position: relative;
+      z-index: 2;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+    }
+    .location-photo {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      object-position: center 40%;
+      display: block;
+    }
     .location-address {
       font-family: 'Cormorant Garamond', serif;
       font-size: 15px;
@@ -1539,6 +1556,9 @@ export default function Home() {
         <img class="location-flowers-bl" src="/manus-storage/flowers_top_left_f226d5fb.png" alt="" />
         <h2 class="section-title reveal">Local</h2>
         <p class="section-subtitle reveal">Onde nos encontraremos</p>
+        <div class="location-photo-wrap reveal">
+          <img class="location-photo" src="/manus-storage/pasted_file_ApTHKY_image_436eddfb.png" alt="Restaurante O Mirante" />
+        </div>
         <p class="location-name-big reveal">Restaurante O Mirante</p>
         <p class="location-address reveal">
           Aguardamos você no endereço:<br/>
