@@ -308,7 +308,7 @@ export default function Home() {
       position: absolute;
       top: 50%;
       right: -20px;
-      transform: translateY(-50%) scaleY(-1);
+      transform: translateY(-50%);
       width: 28vw;
       max-width: 130px;
       pointer-events: none;
@@ -1265,7 +1265,7 @@ export default function Home() {
       <!-- ── HERO ── -->
       <div class="hero-section reveal">
         <img class="hero-flowers-tl" src="/manus-storage/flowers_hero_top_left_510999d2.png" alt="" />
-        <img class="hero-flowers-mr" src="/manus-storage/pasted_file_i6b27Y_image_1f3e52e3.png" alt="" />
+        <img class="hero-flowers-mr" src="/manus-storage/rosa_branca_d51cb0aa.png" alt="" />
 
         <div class="hero-date-tag">
           <span class="hero-date-label">Dia do Casamento</span>
