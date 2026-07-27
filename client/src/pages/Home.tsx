@@ -343,8 +343,8 @@ export default function Home() {
    }
    .hero-date-label {
      font-family: 'Cinzel', serif;
-      font-size: 8px;
-      letter-spacing: 8px;
+     font-size: 8px;
+      letter-spacing: 3px;
      color: rgba(245,240,232,0.55);
      text-transform: uppercase;
    }
