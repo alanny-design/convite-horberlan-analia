@@ -276,7 +276,6 @@ export default function Home() {
       text-align: center;
       overflow: visible;
       padding: 60px 28px 80px;
-      overflow: hidden;
     }
     .hero-flowers-tl {
       position: absolute;
