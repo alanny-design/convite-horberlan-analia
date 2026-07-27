@@ -967,7 +967,7 @@ export default function Home() {
 
     <!-- ABA: triângulo superior com o selo (dobra para cima ao clicar) -->
     <div class="env-flap-wrap" id="env-flap">
-      <img class="env-flap-img" src="/manus-storage/envelope_flap_web_7b1ba885.png" alt="Aba do envelope" draggable="false" />
+      <img class="env-flap-img" src="/manus-storage/aba_2fedcf86.png" alt="Aba do envelope" draggable="false" />
     </div>
 
     <!-- Vignette -->
