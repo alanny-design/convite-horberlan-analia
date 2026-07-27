@@ -147,7 +147,9 @@ export default function Home() {
       z-index: 4;
       width: 130px;
       height: 130px;
+    /* ─── Posicionar hint sobre o selo ─── */
     }
+    /* ─── Posicionar hint sobre o selo ─── */
     @keyframes pulse-hint {
       0%, 100% { opacity: 0.55; scale: 1; }
       50%       { opacity: 1;   scale: 1.04; }
@@ -966,8 +968,10 @@ export default function Home() {
       var envRect = document.getElementById('envelope-screen').getBoundingClientRect();
       var sealX = rect.left - envRect.left + rect.width * 0.497;
       var sealY = rect.top  - envRect.top  + rect.height * 0.836;
-      hint.style.left = (sealX - 65) + 'px';
-      hint.style.top  = (sealY - 65) + 'px';
+      hint.style.left = (sealX - 90) + 'px';
+      hint.style.top  = (sealY - 90) + 'px';
+      hint.style.width = '180px';
+      hint.style.height = '180px';
     }
     // Posicionar imediatamente e ao redimensionar
     if (document.readyState === 'loading') {
@@ -1170,12 +1174,12 @@ export default function Home() {
     <div class="env-overlay"></div>
 
     <!-- Tap hint -->
-    <svg class="tap-hint-svg" viewBox="0 0 130 130" xmlns="http://www.w3.org/2000/svg">
+    <svg class="tap-hint-svg" viewBox="0 0 180 180" width="180" height="180" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <path id="circle-path" d="M 65,65 m -46,0 a 46,46 0 1,1 92,0 a 46,46 0 1,1 -92,0" />
+        <path id="circle-path" d="M 90,90 m -68,0 a 68,68 0 1,1 136,0 a 68,68 0 1,1 -136,0" />
       </defs>
       <!-- Texto circular -->
-      <text font-family="Cinzel, serif" font-size="9.5" letter-spacing="4.2" fill="rgba(245,240,232,0.85)" text-anchor="middle">
+      <text font-family="Cinzel, serif" font-size="9" letter-spacing="3.8" fill="rgba(245,240,232,0.85)" text-anchor="middle">
         <textPath href="#circle-path" startOffset="50%">TOQUE NO SELO · TOQUE NO SELO ·</textPath>
       </text>
       <!-- Ícone de toque centralizado -->
