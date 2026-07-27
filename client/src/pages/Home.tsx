@@ -935,8 +935,11 @@ export default function Home() {
               + (phone ? '📱 WhatsApp: ' + encodeURIComponent(phone) + '%0A' : '')
               + '%0A📅 28 de Janeiro de 2027 · Restaurante O Mirante, São Gonçalo — PB';
 
-      // Abre WhatsApp (número dos noivos — substituir pelo número real)
-      window.open('https://wa.me/5583999999999?text=' + msg, '_blank');
+      // Envia para os dois números dos noivos
+      window.open('https://wa.me/5583881556540?text=' + msg, '_blank');
+      setTimeout(function() {
+        window.open('https://wa.me/5583881856267?text=' + msg, '_blank');
+      }, 800);
 
       // Mostra mensagem de sucesso
       document.getElementById('confirm-form').style.display = 'none';
@@ -1033,7 +1036,7 @@ export default function Home() {
           <strong>Restaurante O Mirante</strong><br/>
           São Gonçalo — PB
         </p>
-        <a href="#" class="map-btn reveal" onclick="return false;">
+        <a href="https://maps.google.com/?q=Restaurante+O+Mirante,+R.+Alto+Gruta,+S%C3%A3o+Gon%C3%A7alo,+PB,+58814-000,+Brazil" target="_blank" class="map-btn reveal">
           📍 Ver no Mapa
         </a>
       </div>
