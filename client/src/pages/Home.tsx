@@ -1515,7 +1515,12 @@ export default function Home() {
           </div>
           <p class="cal-sub">Quinta-feira · 16 horas</p>
         </div>
-        <button class="cal-save-btn reveal" onclick="openCalModal()">📅 Salvar no Calendário</button>
+        <button class="cal-save-btn reveal" onclick="openCalModal()"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" style="display:inline-block;vertical-align:middle;margin-right:7px;flex-shrink:0">
+  <path d="M15.5 2V6M7.5 2V6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+  <path d="M2.5 10H20.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+  <path d="M20.5 12C20.5 8.22876 20.5 6.34315 19.3284 5.17157C18.1569 4 16.2712 4 12.5 4H10.5C6.72876 4 4.84315 4 3.67157 5.17157C2.5 6.34315 2.5 8.22876 2.5 12V14C2.5 17.7712 2.5 19.6569 3.67157 20.8284C4.84315 22 6.72876 22 10.5 22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+  <path d="M14.515 15.3866C15.5876 14.7469 16.5238 15.0047 17.0863 15.4153C17.3169 15.5837 17.4322 15.6679 17.5 15.6679C17.5678 15.6679 17.6831 15.5837 17.9137 15.4153C18.4762 15.0047 19.4124 14.7469 20.485 15.3866C21.8928 16.2261 22.2113 18.9958 18.9642 21.3324C18.3457 21.7775 18.0365 22 17.5 22C16.9635 22 16.6543 21.7775 16.0358 21.3324C12.7887 18.9958 13.1072 16.2261 14.515 15.3866Z" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"/>
+</svg> Salvar no Calendário</button>
         <p class="dear-text reveal" style="margin-bottom:0">Convidamos você a compartilhar conosco a alegria deste dia.</p>
       </div>
 
@@ -1637,7 +1642,12 @@ export default function Home() {
           <p class="form-success-text">Ficamos muito felizes! Te esperamos no dia 28 de janeiro de 2027 no Restaurante O Mirante, São Gonçalo — PB.</p>
         </div>
 
-        <button type="button" class="action-btn outline reveal" style="margin-top:16px" onclick="openCalModal()">📅 Salvar no Calendário</button>
+        <button type="button" class="action-btn outline reveal" style="margin-top:16px" onclick="openCalModal()"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" style="display:inline-block;vertical-align:middle;margin-right:7px;flex-shrink:0">
+  <path d="M15.5 2V6M7.5 2V6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+  <path d="M2.5 10H20.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+  <path d="M20.5 12C20.5 8.22876 20.5 6.34315 19.3284 5.17157C18.1569 4 16.2712 4 12.5 4H10.5C6.72876 4 4.84315 4 3.67157 5.17157C2.5 6.34315 2.5 8.22876 2.5 12V14C2.5 17.7712 2.5 19.6569 3.67157 20.8284C4.84315 22 6.72876 22 10.5 22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+  <path d="M14.515 15.3866C15.5876 14.7469 16.5238 15.0047 17.0863 15.4153C17.3169 15.5837 17.4322 15.6679 17.5 15.6679C17.5678 15.6679 17.6831 15.5837 17.9137 15.4153C18.4762 15.0047 19.4124 14.7469 20.485 15.3866C21.8928 16.2261 22.2113 18.9958 18.9642 21.3324C18.3457 21.7775 18.0365 22 17.5 22C16.9635 22 16.6543 21.7775 16.0358 21.3324C12.7887 18.9958 13.1072 16.2261 14.515 15.3866Z" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"/>
+</svg> Salvar no Calendário</button>
         <a href="#" class="action-btn outline reveal" onclick="return false;">💍 Site do Casal</a>
         <a href="#" class="action-btn outline reveal" onclick="return false;">🎁 Lista de Presentes</a>
       </div>
@@ -1656,7 +1666,7 @@ export default function Home() {
   <!-- ── MODAL CALENDÁRIO ── -->
   <div class="cal-modal-overlay" id="cal-modal-overlay" onclick="closeCalModal(event)">
     <div class="cal-modal">
-      <div class="cal-modal-title">📅 Salvar no Calendário</div>
+      <div class="cal-modal-title"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" style="display:inline-block;vertical-align:middle;margin-right:7px;flex-shrink:0"><path d="M15.5 2V6M7.5 2V6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M2.5 10H20.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M20.5 12C20.5 8.22876 20.5 6.34315 19.3284 5.17157C18.1569 4 16.2712 4 12.5 4H10.5C6.72876 4 4.84315 4 3.67157 5.17157C2.5 6.34315 2.5 8.22876 2.5 12V14C2.5 17.7712 2.5 19.6569 3.67157 20.8284C4.84315 22 6.72876 22 10.5 22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M14.515 15.3866C15.5876 14.7469 16.5238 15.0047 17.0863 15.4153C17.3169 15.5837 17.4322 15.6679 17.5 15.6679C17.5678 15.6679 17.6831 15.5837 17.9137 15.4153C18.4762 15.0047 19.4124 14.7469 20.485 15.3866C21.8928 16.2261 22.2113 18.9958 18.9642 21.3324C18.3457 21.7775 18.0365 22 17.5 22C16.9635 22 16.6543 21.7775 16.0358 21.3324C12.7887 18.9958 13.1072 16.2261 14.515 15.3866Z" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"/></svg> Salvar no Calendário</div>
       <p class="cal-modal-sub">Escolha sua agenda preferida</p>
       <a class="cal-option" id="cal-google" href="#" target="_blank">
         <span class="cal-option-icon">📆</span>
