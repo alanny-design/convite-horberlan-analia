@@ -830,11 +830,11 @@ export default function Home() {
     })();
 
     /* ─── Open envelope ─── */
-    let opened = false;
+    if (typeof window.__envelopeOpened === 'undefined') window.__envelopeOpened = false;
 
     function openEnvelope() {
-      if (opened) return;
-      opened = true;
+      if (window.__envelopeOpened) return;
+      window.__envelopeOpened = true;
 
       const envScreen = document.getElementById('envelope-screen');
       const wrapper   = document.getElementById('invite-wrapper');
