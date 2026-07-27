@@ -20,6 +20,10 @@ export default function Home() {
     html, body { width: 100%; height: 100%; overflow: hidden; }
 
     body {
+    /* Ocultar scrollbar globalmente */
+    * { scrollbar-width: none; -ms-overflow-style: none; }
+    *::-webkit-scrollbar { display: none; }
+
       font-family: 'Lato', sans-serif;
       background: var(--cream);
     }
@@ -161,6 +165,8 @@ export default function Home() {
       overflow-y: auto;
       overflow-x: hidden;
       -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
       z-index: 50;
       display: flex;
       flex-direction: column;
