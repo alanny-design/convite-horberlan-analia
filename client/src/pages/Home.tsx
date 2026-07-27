@@ -323,6 +323,9 @@ export default function Home() {
       width: 90px; height: 90px;
       filter: drop-shadow(0 4px 16px rgba(0,0,0,0.4));
     }
+    .hero-monogram svg, .footer-monogram svg {
+      filter: drop-shadow(0 4px 16px rgba(0,0,0,0.35));
+    }
     /* Torn paper edge at bottom of hero */
     .hero-torn {
       position: absolute;
@@ -1125,7 +1128,17 @@ export default function Home() {
         <img class="hero-flowers-br" src="/manus-storage/flowers_top_left_f226d5fb.png" alt="" />
 
         <div class="hero-monogram">
-          <img src="/manus-storage/seal_monogram_04b56b7f.png" alt="Monograma HA" />
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 236 304" width="90" height="116" fill="none">
+            <!-- Arco: semicírculo no topo + lados retos + base reta -->
+            <path d="M22 200 L22 118 Q22 22 118 22 Q214 22 214 118 L214 200" stroke="white" stroke-width="7" fill="none" stroke-linejoin="round"/>
+            <line x1="22" y1="200" x2="214" y2="200" stroke="white" stroke-width="7"/>
+            <!-- H: duas hastes verticais + travessa horizontal -->
+            <line x1="70" y1="72" x2="70" y2="218" stroke="white" stroke-width="13" stroke-linecap="square"/>
+            <line x1="166" y1="72" x2="166" y2="218" stroke="white" stroke-width="13" stroke-linecap="square"/>
+            <line x1="70" y1="148" x2="166" y2="148" stroke="white" stroke-width="9" stroke-linecap="square"/>
+            <!-- A: arco/curva que sobe do canto inferior esquerdo ao canto inferior direito, passando pelo topo -->
+            <path d="M70 218 Q118 88 166 218" stroke="white" stroke-width="9" fill="none" stroke-linecap="round"/>
+          </svg>
         </div>
         <div class="hero-date-tag">DIA DO CASAMENTO · 28.01.2027</div>
         <div class="hero-names">
@@ -1284,7 +1297,14 @@ export default function Home() {
       <div class="footer-section">
         <img class="footer-flowers-bottom" src="/manus-storage/flowers_bottom_a04c744e.png" alt="" />
         <div class="footer-monogram reveal">
-          <img src="/manus-storage/seal_monogram_04b56b7f.png" alt="Monograma HA" />
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 236 304" width="80" height="103" fill="none">
+            <path d="M22 200 L22 118 Q22 22 118 22 Q214 22 214 118 L214 200" stroke="white" stroke-width="7" fill="none" stroke-linejoin="round"/>
+            <line x1="22" y1="200" x2="214" y2="200" stroke="white" stroke-width="7"/>
+            <line x1="70" y1="72" x2="70" y2="218" stroke="white" stroke-width="13" stroke-linecap="square"/>
+            <line x1="166" y1="72" x2="166" y2="218" stroke="white" stroke-width="13" stroke-linecap="square"/>
+            <line x1="70" y1="148" x2="166" y2="148" stroke="white" stroke-width="9" stroke-linecap="square"/>
+            <path d="M70 218 Q118 88 166 218" stroke="white" stroke-width="9" fill="none" stroke-linecap="round"/>
+          </svg>
         </div>
         <div class="footer-sig reveal">Horberlan &amp; Analia</div>
         <div class="footer-date-small reveal">28 · JANEIRO · 2027</div>
