@@ -605,6 +605,13 @@ export default function Home() {
       border: none;
       border-radius: 8px;
       padding: 12px 28px;
+      width: 100%;
+      max-width: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: auto;
+      margin-right: auto;
       font-family: 'Cinzel', serif;
       font-size: 11px;
       letter-spacing: 2px;
