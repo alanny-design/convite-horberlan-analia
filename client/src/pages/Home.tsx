@@ -314,6 +314,8 @@ export default function Home() {
       pointer-events: none;
       z-index: 2;
       opacity: 0.85;
+      filter: blur(3px);
+      mix-blend-mode: screen;
     }
     .hero-date-tag {
       font-family: 'Cinzel', serif;
