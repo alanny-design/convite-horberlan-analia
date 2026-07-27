@@ -1168,19 +1168,7 @@ export default function Home() {
         <img class="hero-flowers-tr" src="/manus-storage/flowers_top_left_f226d5fb.png" alt="" />
         <img class="hero-flowers-br" src="/manus-storage/flowers_top_left_f226d5fb.png" alt="" />
 
-        <div class="hero-monogram">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 236 304" width="90" height="116" fill="none">
-            <!-- Arco: semicírculo no topo + lados retos + base reta -->
-            <path d="M22 200 L22 118 Q22 22 118 22 Q214 22 214 118 L214 200" stroke="white" stroke-width="7" fill="none" stroke-linejoin="round"/>
-            <line x1="22" y1="200" x2="214" y2="200" stroke="white" stroke-width="7"/>
-            <!-- H: duas hastes verticais + travessa horizontal -->
-            <line x1="70" y1="72" x2="70" y2="218" stroke="white" stroke-width="13" stroke-linecap="square"/>
-            <line x1="166" y1="72" x2="166" y2="218" stroke="white" stroke-width="13" stroke-linecap="square"/>
-            <line x1="70" y1="148" x2="166" y2="148" stroke="white" stroke-width="9" stroke-linecap="square"/>
-            <!-- A: arco/curva que sobe do canto inferior esquerdo ao canto inferior direito, passando pelo topo -->
-            <path d="M70 218 Q118 88 166 218" stroke="white" stroke-width="9" fill="none" stroke-linecap="round"/>
-          </svg>
-        </div>
+        <div class="hero-monogram"><img src="/manus-storage/monograma_adaa041c.png" alt="Monograma HA" /></div>
         <div class="hero-date-tag">DIA DO CASAMENTO · 28.01.2027</div>
         <div class="hero-names">
           <span class="hero-name-1">Horberlan</span>
@@ -1333,16 +1321,7 @@ export default function Home() {
       <!-- ── FOOTER ── -->
       <div class="footer-section">
         <img class="footer-flowers-bottom" src="/manus-storage/flowers_bottom_a04c744e.png" alt="" />
-        <div class="footer-monogram reveal">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 236 304" width="80" height="103" fill="none">
-            <path d="M22 200 L22 118 Q22 22 118 22 Q214 22 214 118 L214 200" stroke="white" stroke-width="7" fill="none" stroke-linejoin="round"/>
-            <line x1="22" y1="200" x2="214" y2="200" stroke="white" stroke-width="7"/>
-            <line x1="70" y1="72" x2="70" y2="218" stroke="white" stroke-width="13" stroke-linecap="square"/>
-            <line x1="166" y1="72" x2="166" y2="218" stroke="white" stroke-width="13" stroke-linecap="square"/>
-            <line x1="70" y1="148" x2="166" y2="148" stroke="white" stroke-width="9" stroke-linecap="square"/>
-            <path d="M70 218 Q118 88 166 218" stroke="white" stroke-width="9" fill="none" stroke-linecap="round"/>
-          </svg>
-        </div>
+        <div class="footer-monogram reveal"><img src="/manus-storage/monograma_adaa041c.png" alt="Monograma HA" /></div>
         <div class="footer-sig reveal">Horberlan &amp; Analia</div>
         <div class="footer-date-small reveal">28 · JANEIRO · 2027</div>
         <p class="footer-verse reveal">"Grandes coisas fez o Senhor por nós, e por isso estamos alegres." — Salmos 126:3</p>
