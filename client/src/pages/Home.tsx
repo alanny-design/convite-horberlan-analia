@@ -603,7 +603,7 @@ export default function Home() {
       background: var(--olive);
       color: #fff;
       border: none;
-      border-radius: 50px;
+      border-radius: 8px;
       padding: 12px 28px;
       font-family: 'Cinzel', serif;
       font-size: 11px;
@@ -706,7 +706,7 @@ export default function Home() {
       margin-top: 22px;
       padding: 13px 28px;
       border: 1.5px solid rgba(255,255,255,0.45);
-      border-radius: 50px;
+      border-radius: 8px;
       background: transparent;
       color: #fff;
       font-family: 'Cinzel', serif;
@@ -855,7 +855,7 @@ export default function Home() {
       gap: 10px;
       width: 100%;
       padding: 16px 24px;
-      border-radius: 50px;
+      border-radius: 8px;
       font-family: 'Cinzel', serif;
       font-size: 10px;
       letter-spacing: 2.5px;
@@ -1108,7 +1108,7 @@ export default function Home() {
       gap: 10px;
       width: 100%;
       padding: 16px 24px;
-      border-radius: 50px;
+      border-radius: 8px;
       background: var(--olive);
       color: var(--cream);
       border: none;
