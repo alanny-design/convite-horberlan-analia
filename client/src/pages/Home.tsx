@@ -1265,7 +1265,7 @@ export default function Home() {
       <!-- ── HERO ── -->
       <div class="hero-section reveal">
         <img class="hero-flowers-tl" src="/manus-storage/flowers_hero_top_left_510999d2.png" alt="" />
-        <img class="hero-flowers-mr" src="/manus-storage/rosa_branca_d51cb0aa.png" alt="" />
+        <img class="hero-flowers-mr" src="/manus-storage/rosa_hero_direita_c9de105b.png" alt="" />
 
         <div class="hero-date-tag">
           <span class="hero-date-label">Dia do Casamento</span>
