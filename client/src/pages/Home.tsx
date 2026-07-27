@@ -407,7 +407,7 @@ export default function Home() {
       position: absolute;
       bottom: 0;
       left: 50%;
-      transform: translate(-50%, -50%);
+      transform: translate(-50%, -60%);
       width: 100%;
       max-width: 480px;
       pointer-events: none;
@@ -1224,7 +1224,6 @@ export default function Home() {
       <div class="hero-section reveal">
         <img class="hero-flowers-tl" src="/manus-storage/flowers_top_left_f226d5fb.png" alt="" />
         <img class="hero-flowers-tr" src="/manus-storage/flowers_top_left_f226d5fb.png" alt="" />
-        <img class="hero-flowers-br" src="/manus-storage/flowers_top_left_f226d5fb.png" alt="" />
 
         <div class="hero-monogram"><img src="/manus-storage/monograma_adaa041c.png" alt="Monograma HA" /></div>
         <div class="hero-date-tag">
