@@ -147,16 +147,16 @@ export default function Home() {
       height: 210px;
       display: block;
     }
-    /* Wrapper do hint — posicionado sobre o centro do selo na aba */
+    /* Wrapper do hint — posicionado sobre o centro do selo, acima de tudo */
     .tap-hint-wrap {
-      position: absolute;
-      left: 49.7%;
-      top: 83.6%;
+      position: fixed;
+      left: 50%;
+      top: 82vh;
       transform: translate(-50%, -50%);
       width: 210px;
       height: 210px;
       pointer-events: none;
-      z-index: 5;
+      z-index: 9999;
     }
     /* ─── Posicionar hint sobre o selo ─── */
     @keyframes pulse-hint {
@@ -176,6 +176,11 @@ export default function Home() {
     }
     #envelope-screen.opening .tap-hint {
       opacity: 0;
+    }
+    #envelope-screen.opening .tap-hint-wrap,
+    #envelope-screen.slide-up .tap-hint-wrap {
+      opacity: 0;
+      pointer-events: none;
     }
     /* Fase 2: envelope inteiro sai da tela */
     #envelope-screen.slide-up {
@@ -1240,17 +1245,18 @@ export default function Home() {
     <!-- ABA: triângulo superior com o selo (dobra para cima ao clicar) -->
     <div class="env-flap-wrap" id="env-flap">
       <img class="env-flap-img" src="/manus-storage/aba_7dcc1dac.png" alt="Aba do envelope" draggable="false" />
-      <!-- Tap hint — dentro da aba, posicionado sobre o centro do selo -->
-      <div class="tap-hint-wrap">
-        <svg class="tap-hint-svg" viewBox="0 0 210 210" width="210" height="210" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <path id="circle-path" d="M 105,105 m -82,0 a 82,82 0 1,1 164,0 a 82,82 0 1,1 -164,0" />
-          </defs>
-          <text font-family="Cinzel, serif" font-size="9.5" letter-spacing="5" fill="rgba(245,240,232,0.9)" text-anchor="middle">
-            <textPath href="#circle-path" startOffset="0%">TOQUE NO SELO · TOQUE NO SELO · TOQUE NO SELO · </textPath>
-          </text>
-        </svg>
-      </div>
+    </div>
+
+    <!-- Tap hint — fora da aba, diretamente no envelope-screen com z-index máximo -->
+    <div class="tap-hint-wrap">
+      <svg class="tap-hint-svg" viewBox="0 0 210 210" width="210" height="210" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <path id="circle-path" d="M 105,105 m -82,0 a 82,82 0 1,1 164,0 a 82,82 0 1,1 -164,0" />
+        </defs>
+        <text font-family="Cinzel, serif" font-size="9.5" letter-spacing="5" fill="rgba(245,240,232,0.9)" text-anchor="middle">
+          <textPath href="#circle-path" startOffset="0%">TOQUE NO SELO · TOQUE NO SELO · TOQUE NO SELO · </textPath>
+        </text>
+      </svg>
     </div>
 
     <!-- Vignette -->
