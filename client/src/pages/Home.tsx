@@ -143,8 +143,8 @@ export default function Home() {
       animation: pulse-hint 2.2s ease-in-out infinite;
       transition: opacity 0.4s ease;
       z-index: 4;
-      width: 180px;
-      height: 180px;
+      width: 210px;
+      height: 210px;
       display: block;
     }
     /* Wrapper do hint — posicionado sobre o centro do selo na aba */
@@ -153,8 +153,8 @@ export default function Home() {
       left: 49.7%;
       top: 83.6%;
       transform: translate(-50%, -50%);
-      width: 180px;
-      height: 180px;
+      width: 210px;
+      height: 210px;
       pointer-events: none;
       z-index: 5;
     }
@@ -1151,12 +1151,12 @@ export default function Home() {
       <img class="env-flap-img" src="/manus-storage/aba_7dcc1dac.png" alt="Aba do envelope" draggable="false" />
       <!-- Tap hint — dentro da aba, posicionado sobre o centro do selo -->
       <div class="tap-hint-wrap">
-        <svg class="tap-hint-svg" viewBox="0 0 180 180" width="180" height="180" xmlns="http://www.w3.org/2000/svg">
+        <svg class="tap-hint-svg" viewBox="0 0 210 210" width="210" height="210" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <path id="circle-path" d="M 90,90 m -68,0 a 68,68 0 1,1 136,0 a 68,68 0 1,1 -136,0" />
+            <path id="circle-path" d="M 105,105 m -82,0 a 82,82 0 1,1 164,0 a 82,82 0 1,1 -164,0" />
           </defs>
-          <text font-family="Cinzel, serif" font-size="9.5" letter-spacing="1" fill="rgba(245,240,232,0.9)" text-anchor="middle">
-            <textPath href="#circle-path" startOffset="0%">TOQUE NO SELO · TOQUE NO SELO · TOQUE NO SELO · TOQUE NO SELO ·</textPath>
+          <text font-family="Cinzel, serif" font-size="9.5" letter-spacing="5" fill="rgba(245,240,232,0.9)" text-anchor="middle">
+            <textPath href="#circle-path" startOffset="0%">TOQUE NO SELO · TOQUE NO SELO · TOQUE NO SELO · </textPath>
           </text>
         </svg>
       </div>
