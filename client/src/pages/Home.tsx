@@ -1070,7 +1070,7 @@ export default function Home() {
       var hint = document.querySelector('.tap-hint-wrap');
       if (!flap || !hint) return;
       var r = flap.getBoundingClientRect();
-      var sealY = r.top + r.height * 0.836 - 50;
+      var sealY = r.top + r.height * 0.836 + 105;
       var sealX = r.left + r.width * 0.5;
       hint.style.position = 'fixed';
       hint.style.left = sealX + 'px';
