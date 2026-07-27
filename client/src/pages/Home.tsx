@@ -400,7 +400,7 @@ export default function Home() {
       position: relative;
       width: 100%;
       z-index: 10;
-      margin-top: -80px;
+      margin-top: -20px;
       pointer-events: none;
       text-align: center;
       overflow: visible;
