@@ -374,6 +374,23 @@ export default function Home() {
       z-index: 10;
       pointer-events: none;
       filter: drop-shadow(0 4px 12px rgba(0,0,0,0.15));
+    }
+    .hero-flowers-base-wrap {
+      position: relative;
+      width: 100%;
+      height: 0;
+      overflow: visible;
+      z-index: 10;
+    }
+    .hero-flowers-base-wrap .hero-flowers-base {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      max-width: 480px;
+      pointer-events: none;
+      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.15));
       z-index: 4;
     }
 
@@ -1199,10 +1216,14 @@ export default function Home() {
         <p class="hero-verse">"Grandes coisas fez o Senhor por nós, e por isso estamos alegres." — Salmos 126:3</p>
 
         <!-- Torn paper SVG -->
-        <img class="hero-flowers-base" src="/manus-storage/flowers_hero_base_2051eb57.png" alt="" />
         <svg class="hero-torn" viewBox="0 0 375 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M0,60 L0,28 C20,22 35,38 55,30 C75,22 90,10 115,18 C140,26 155,40 180,32 C205,24 220,8 245,16 C270,24 285,38 310,28 C335,18 355,30 375,22 L375,60 Z" fill="#fdfcf9"/>
         </svg>
+      </div>
+
+      <!-- Flores base hero extravasando entre seções -->
+      <div class="hero-flowers-base-wrap">
+        <img class="hero-flowers-base" src="/manus-storage/flowers_hero_base_2051eb57.png" alt="" />
       </div>
 
       <!-- ── QUERIDOS CONVIDADOS ── -->
