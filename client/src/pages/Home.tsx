@@ -151,7 +151,7 @@ export default function Home() {
     .tap-hint-wrap {
       position: fixed;
       left: 50%;
-      top: 82vh;
+      top: 86vh;
       transform: translate(-50%, -50%);
       width: 210px;
       height: 210px;
