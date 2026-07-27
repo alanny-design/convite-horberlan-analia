@@ -308,6 +308,27 @@ export default function Home() {
       text-transform: uppercase;
       margin-bottom: 18px;
       position: relative; z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+    .hero-date-label {
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      letter-spacing: 5px;
+      color: rgba(245,240,232,0.55);
+      text-transform: uppercase;
+    }
+    .hero-date-value {
+      font-family: 'Cinzel', serif;
+      font-size: 22px;
+      letter-spacing: 3px;
+      color: rgba(245,240,232,0.95);
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+      position: relative; z-index: 3;
     }
     .hero-names {
       position: relative; z-index: 3;
@@ -1206,7 +1227,10 @@ export default function Home() {
         <img class="hero-flowers-br" src="/manus-storage/flowers_top_left_f226d5fb.png" alt="" />
 
         <div class="hero-monogram"><img src="/manus-storage/monograma_adaa041c.png" alt="Monograma HA" /></div>
-        <div class="hero-date-tag">DIA DO CASAMENTO · 28.01.2027</div>
+        <div class="hero-date-tag">
+          <span class="hero-date-label">Dia do Casamento</span>
+          <span class="hero-date-value">28.01.2027</span>
+        </div>
         <div class="hero-names">
           <span class="hero-name-1">Horberlan</span>
           <span class="hero-ampersand">&amp;</span>
