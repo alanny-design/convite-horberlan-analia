@@ -138,9 +138,10 @@ export default function Home() {
     }
     .tap-hint-svg {
       position: absolute;
-      bottom: 5%;
+      /* Selo visível na parte inferior da viewport — ajuste dinâmico via JS */
+      top: 89%;
       left: 50%;
-      transform: translateX(-50%);
+      transform: translate(-50%, -50%);
       pointer-events: none;
       animation: pulse-hint 2.2s ease-in-out infinite;
       transition: opacity 0.4s ease;
@@ -149,8 +150,8 @@ export default function Home() {
       height: 130px;
     }
     @keyframes pulse-hint {
-      0%, 100% { opacity: 0.55; transform: translateX(-50%) scale(1); }
-      50%       { opacity: 1;   transform: translateX(-50%) scale(1.04); }
+      0%, 100% { opacity: 0.55; transform: translate(-50%, -50%) scale(1); }
+      50%       { opacity: 1;   transform: translate(-50%, -50%) scale(1.04); }
     }
 
     /* ─── OPEN ANIMATION ─── */
