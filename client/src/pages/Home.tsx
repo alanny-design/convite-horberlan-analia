@@ -271,25 +271,26 @@ export default function Home() {
       min-height: 520px;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
+      align-items: flex-start;
+      justify-content: flex-end;
+      text-align: left;
       overflow: visible;
-      padding: 60px 28px 80px;
+      padding: 80px 28px 90px 28px;
+      min-height: 580px;
     }
     .hero-flowers-tl {
       position: absolute;
       top: -30px; left: -30px;
-      width: 55vw;
-      max-width: 280px;
+      width: 65vw;
+      max-width: 320px;
       pointer-events: none;
       z-index: 2;
     }
     .hero-flowers-br {
       position: absolute;
       bottom: -20px; right: -20px;
-      width: 55vw;
-      max-width: 280px;
+      width: 65vw;
+      max-width: 320px;
       pointer-events: none;
       z-index: 2;
       transform: rotate(180deg);
@@ -297,8 +298,8 @@ export default function Home() {
     .hero-flowers-tr {
       position: absolute;
       top: -30px; right: -30px;
-      width: 55vw;
-      max-width: 280px;
+      width: 65vw;
+      max-width: 320px;
       pointer-events: none;
       z-index: 2;
       transform: scaleX(-1);
@@ -313,8 +314,11 @@ export default function Home() {
       position: relative; z-index: 3;
       display: flex;
       flex-direction: column;
-      align-items: center;
+      align-items: flex-start;
       gap: 4px;
+      width: 100%;
+      text-align: center;
+      align-items: center;
     }
     .hero-date-label {
       font-family: 'Cinzel', serif;
@@ -335,19 +339,22 @@ export default function Home() {
     }
     .hero-names {
       position: relative; z-index: 3;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
+      width: 100%;
+      text-align: left;
     }
     .hero-name-1, .hero-name-2 {
       font-family: 'Imperial Script', cursive;
       color: #fff;
       line-height: 1.05;
       text-shadow: 0 2px 20px rgba(0,0,0,0.35);
+      display: block;
     }
-    .hero-name-1 { font-size: 62px; }
-    .hero-name-2 { font-size: 62px; }
+    .hero-name-1 { font-size: 72px; }
+    .hero-name-2 { font-size: 72px; }
     .hero-ampersand {
       font-family: 'Imperial Script', cursive;
-      font-size: 38px;
+      font-size: 44px;
       color: var(--gold-light);
       display: block;
       line-height: 1;
@@ -359,8 +366,9 @@ export default function Home() {
       color: rgba(245,240,232,0.82);
       line-height: 1.6;
       max-width: 280px;
-      margin: 16px auto 0;
+      margin: 16px 0 0;
       position: relative; z-index: 3;
+      text-align: left;
     }
     .hero-verse {
       font-family: 'Cormorant Garamond', serif;
@@ -374,7 +382,10 @@ export default function Home() {
     }
     .hero-monogram {
       position: relative; z-index: 3;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
     }
     .hero-monogram img {
       width: 62px; height: auto;
@@ -1245,7 +1256,6 @@ export default function Home() {
         <img class="hero-flowers-tl" src="/manus-storage/flowers_hero_top_left_510999d2.png" alt="" />
         <img class="hero-flowers-tr" src="/manus-storage/flowers_hero_top_right_c98de0ee.png" alt="" />
 
-        <div class="hero-monogram"><img src="/manus-storage/monograma_adaa041c.png" alt="Monograma HA" /></div>
         <div class="hero-date-tag">
           <span class="hero-date-label">Dia do Casamento</span>
           <span class="hero-date-value">28.01.2027</span>
