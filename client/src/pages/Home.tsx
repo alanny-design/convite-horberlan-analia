@@ -334,30 +334,30 @@ export default function Home() {
       text-transform: uppercase;
       margin-bottom: 18px;
       position: relative; z-index: 3;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 4px;
-      width: 100%;
-      text-align: center;
-    }
-    .hero-date-label {
-      font-family: 'Cinzel', serif;
-      font-size: 10px;
-      letter-spacing: 5px;
-      color: rgba(245,240,232,0.55);
-      text-transform: uppercase;
-    }
- .hero-date-value {
-      font-family: 'MonteCarlo', cursive;
-      font-size: 34px;
-      letter-spacing: 2px;
-      color: rgba(245,240,232,0.95);
-      font-weight: 400;
-      text-transform: none;
-      margin-bottom: 18px;
-      position: relative; z-index: 3;
-    }
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+      gap: 1px;
+     width: 100%;
+     text-align: center;
+   }
+   .hero-date-label {
+     font-family: 'Cinzel', serif;
+      font-size: 8px;
+      letter-spacing: 8px;
+     color: rgba(245,240,232,0.55);
+     text-transform: uppercase;
+   }
+.hero-date-value {
+     font-family: 'MonteCarlo', cursive;
+     font-size: 34px;
+     letter-spacing: 2px;
+     color: rgba(245,240,232,0.95);
+     font-weight: 400;
+     text-transform: none;
+      margin-bottom: 12px;
+     position: relative; z-index: 3;
+   }
     .hero-names {
       position: relative; z-index: 3;
       margin-bottom: 12px;
