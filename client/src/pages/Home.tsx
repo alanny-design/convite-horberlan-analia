@@ -304,6 +304,17 @@ export default function Home() {
       z-index: 2;
       transform: scaleX(-1);
     }
+    .hero-flowers-mr {
+      position: absolute;
+      top: 50%;
+      right: -20px;
+      transform: translateY(-50%) scaleX(-1);
+      width: 28vw;
+      max-width: 130px;
+      pointer-events: none;
+      z-index: 2;
+      opacity: 0.85;
+    }
     .hero-date-tag {
       font-family: 'Cinzel', serif;
       font-size: 11px;
@@ -1254,7 +1265,7 @@ export default function Home() {
       <!-- ── HERO ── -->
       <div class="hero-section reveal">
         <img class="hero-flowers-tl" src="/manus-storage/flowers_hero_top_left_510999d2.png" alt="" />
-        <img class="hero-flowers-tr" src="/manus-storage/flowers_hero_top_right_c98de0ee.png" alt="" />
+        <img class="hero-flowers-mr" src="/manus-storage/flowers_hero_top_right_c98de0ee.png" alt="" />
 
         <div class="hero-date-tag">
           <span class="hero-date-label">Dia do Casamento</span>
