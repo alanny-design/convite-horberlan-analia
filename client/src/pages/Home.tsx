@@ -412,14 +412,23 @@ export default function Home() {
      width: 62px; height: auto;
      filter: drop-shadow(0 4px 16px rgba(0,0,0,0.4));
    }
-    .hero-monogram-tr {
-      position: absolute; top: 16px; right: 14px;
-      z-index: 5;
+   .hero-monogram-tr {
+     position: absolute; top: 16px; right: 14px;
+     z-index: 5;
+   }
+   .hero-monogram-tr img {
+     width: 44px; height: auto;
+     filter: drop-shadow(0 2px 8px rgba(0,0,0,0.35));
+     opacity: 0.92;
+   }
+    .hero-monogram-center {
+      display: flex; justify-content: center;
+      width: 100%; margin-bottom: 10px;
     }
-    .hero-monogram-tr img {
-      width: 44px; height: auto;
-      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.35));
-      opacity: 0.92;
+    .hero-monogram-center img {
+      width: 52px; height: auto;
+      filter: drop-shadow(0 2px 10px rgba(0,0,0,0.4));
+      opacity: 0.95;
     }
     .hero-monogram svg, .footer-monogram svg {
       filter: drop-shadow(0 4px 16px rgba(0,0,0,0.35));
@@ -1306,11 +1315,9 @@ export default function Home() {
        <img class="hero-flowers-tl" src="/manus-storage/flowers_hero_top_left_510999d2.png" alt="" />
        <img class="hero-flowers-mr" src="/manus-storage/flor2_57213108.png" alt="" />
 
-        <div class="hero-monogram-tr">
-          <img src="/manus-storage/monograma_adaa041c.png" alt="Monograma HA" />
-        </div>
 
         <div class="hero-date-tag">
+          <div class="hero-monogram-center"><img src="/manus-storage/monograma_adaa041c.png" alt="Monograma HA" /></div>
           <span class="hero-date-label">Dia do Casamento</span>
           <span class="hero-date-value">28.01.2027</span>
         </div>
