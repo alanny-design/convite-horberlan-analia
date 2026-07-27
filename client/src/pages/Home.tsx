@@ -1253,7 +1253,6 @@ export default function Home() {
           <span class="hero-name-2">Analia</span>
         </div>
         <p class="hero-invite-text">Convidamos você para celebrar conosco o início desta nova história</p>
-        <p class="hero-verse">"Grandes coisas fez o Senhor por nós, e por isso estamos alegres." — Salmos 126:3</p>
 
         <!-- Torn paper SVG -->
         <svg class="hero-torn" viewBox="0 0 375 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
@@ -1405,7 +1404,6 @@ export default function Home() {
         <div class="footer-monogram reveal"><img src="/manus-storage/monograma_adaa041c.png" alt="Monograma HA" /></div>
         <div class="footer-sig reveal">Horberlan &amp; Analia</div>
         <div class="footer-date-small reveal">28 · JANEIRO · 2027</div>
-        <p class="footer-verse reveal">"Grandes coisas fez o Senhor por nós, e por isso estamos alegres." — Salmos 126:3</p>
       </div>
 
     </div>
