@@ -335,7 +335,7 @@ export default function Home() {
       margin-bottom: 10px;
     }
     .hero-name-1, .hero-name-2 {
-      font-family: 'Great Vibes', cursive;
+      font-family: 'Imperial Script', cursive;
       color: #fff;
       line-height: 1.05;
       text-shadow: 0 2px 20px rgba(0,0,0,0.35);
@@ -343,7 +343,7 @@ export default function Home() {
     .hero-name-1 { font-size: 62px; }
     .hero-name-2 { font-size: 62px; }
     .hero-ampersand {
-      font-family: 'Great Vibes', cursive;
+      font-family: 'Imperial Script', cursive;
       font-size: 38px;
       color: var(--gold-light);
       display: block;
@@ -517,7 +517,7 @@ export default function Home() {
       position: relative; z-index: 2;
     }
     .location-name-big {
-      font-family: 'Great Vibes', cursive;
+      font-family: 'Imperial Script', cursive;
       font-size: 38px;
       color: #fff;
       margin-bottom: 12px;
@@ -820,7 +820,7 @@ export default function Home() {
       margin-bottom: 16px;
     }
     .footer-sig {
-      font-family: 'Great Vibes', cursive;
+      font-family: 'Imperial Script', cursive;
       font-size: 34px;
       color: #fff;
       text-shadow: 0 2px 12px rgba(0,0,0,0.3);
@@ -978,7 +978,7 @@ export default function Home() {
       color: #fff;
     }
     .form-success-title {
-      font-family: 'Great Vibes', cursive;
+      font-family: 'Imperial Script', cursive;
       font-size: 28px;
       color: var(--olive);
     }
