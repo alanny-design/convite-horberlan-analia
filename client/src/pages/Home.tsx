@@ -399,17 +399,17 @@ export default function Home() {
     .hero-flowers-base-wrap {
       position: relative;
       width: 100%;
-      height: 0;
-      overflow: visible;
       z-index: 10;
+      margin-top: -80px;
+      pointer-events: none;
+      text-align: center;
+      overflow: visible;
     }
     .hero-flowers-base-wrap .hero-flowers-base {
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translate(-50%, -60%);
+      display: block;
+      margin: 0 auto;
       width: 100%;
-      max-width: 480px;
+      max-width: 500px;
       pointer-events: none;
       filter: drop-shadow(0 4px 12px rgba(0,0,0,0.15));
       z-index: 4;
