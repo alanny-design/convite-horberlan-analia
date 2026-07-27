@@ -348,13 +348,13 @@ export default function Home() {
       color: rgba(245,240,232,0.55);
       text-transform: uppercase;
     }
-    .hero-date-value {
-      font-family: 'Cinzel', serif;
-      font-size: 22px;
-      letter-spacing: 3px;
+ .hero-date-value {
+      font-family: 'MonteCarlo', cursive;
+      font-size: 34px;
+      letter-spacing: 2px;
       color: rgba(245,240,232,0.95);
-      font-weight: 600;
-      text-transform: uppercase;
+      font-weight: 400;
+      text-transform: none;
       margin-bottom: 18px;
       position: relative; z-index: 3;
     }
