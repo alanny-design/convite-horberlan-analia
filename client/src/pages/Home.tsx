@@ -507,6 +507,117 @@ export default function Home() {
       color: #888;
       margin-bottom: 8px;
     }
+    /* ─── CALENDÁRIO ─── */
+    .dear-calendar {
+      background: #fff;
+      border: 1.5px solid rgba(90,100,70,0.15);
+      border-radius: 16px;
+      padding: 16px 18px 12px;
+      max-width: 300px;
+      margin: 0 auto 18px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+    }
+    .cal-header {
+      display: flex;
+      justify-content: center;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    .cal-month {
+      font-family: 'Cinzel', serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--olive);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .cal-year {
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      color: #aaa;
+      letter-spacing: 1px;
+    }
+    .cal-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 2px;
+    }
+    .cal-day-name {
+      font-family: 'Cinzel', serif;
+      font-size: 8px;
+      color: #aaa;
+      text-align: center;
+      padding: 2px 0 6px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    .cal-day {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 13px;
+      color: #555;
+      text-align: center;
+      padding: 4px 2px;
+      border-radius: 50%;
+      line-height: 1.4;
+      min-width: 28px;
+      min-height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .cal-day.empty { visibility: hidden; }
+    .cal-day.cal-highlight {
+      position: relative;
+      flex-direction: column;
+      gap: 0;
+    }
+    .cal-heart {
+      font-size: 28px;
+      color: var(--olive);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0.18;
+      line-height: 1;
+    }
+    .cal-num {
+      font-family: 'Cinzel', serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--olive);
+      position: relative;
+      z-index: 1;
+    }
+    .cal-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 13px;
+      color: #888;
+      text-align: center;
+      margin-top: 10px;
+      margin-bottom: 0;
+    }
+    .cal-save-btn {
+      background: var(--olive);
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      padding: 12px 28px;
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      cursor: pointer;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 16px rgba(74,82,64,0.25);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .cal-save-btn:active {
+      transform: scale(0.97);
+      box-shadow: 0 2px 8px rgba(74,82,64,0.2);
+    }
     .dear-flowers-right {
       display: none;
     }
@@ -1342,8 +1453,69 @@ export default function Home() {
         <img class="dear-flowers-right" src="/manus-storage/flowers_right_e4488cf3.png" alt="" />
         <h2 class="dear-title reveal">Queridos Convidados!</h2>
         <p class="dear-text reveal">Em breve acontecerá um momento muito especial e alegre para nós — o nosso casamento!</p>
-        <div class="dear-date-big reveal">28.01.27</div>
-        <p class="dear-date-sub reveal">Quinta-feira · 16 horas</p>
+        <!-- Calendário de Janeiro 2027 -->
+        <div class="dear-calendar reveal">
+          <div class="cal-header">
+            <span class="cal-month">Janeiro</span>
+            <span class="cal-year">2027</span>
+          </div>
+          <div class="cal-grid">
+            <div class="cal-day-name">Dom</div>
+            <div class="cal-day-name">Seg</div>
+            <div class="cal-day-name">Ter</div>
+            <div class="cal-day-name">Qua</div>
+            <div class="cal-day-name">Qui</div>
+            <div class="cal-day-name">Sex</div>
+            <div class="cal-day-name">Sáb</div>
+            <!-- Semana 1: Jan começa na Sexta (col 6) -->
+            <div class="cal-day empty"></div>
+            <div class="cal-day empty"></div>
+            <div class="cal-day empty"></div>
+            <div class="cal-day empty"></div>
+            <div class="cal-day empty"></div>
+            <div class="cal-day">1</div>
+            <div class="cal-day">2</div>
+            <!-- Semana 2 -->
+            <div class="cal-day">3</div>
+            <div class="cal-day">4</div>
+            <div class="cal-day">5</div>
+            <div class="cal-day">6</div>
+            <div class="cal-day">7</div>
+            <div class="cal-day">8</div>
+            <div class="cal-day">9</div>
+            <!-- Semana 3 -->
+            <div class="cal-day">10</div>
+            <div class="cal-day">11</div>
+            <div class="cal-day">12</div>
+            <div class="cal-day">13</div>
+            <div class="cal-day">14</div>
+            <div class="cal-day">15</div>
+            <div class="cal-day">16</div>
+            <!-- Semana 4 -->
+            <div class="cal-day">17</div>
+            <div class="cal-day">18</div>
+            <div class="cal-day">19</div>
+            <div class="cal-day">20</div>
+            <div class="cal-day">21</div>
+            <div class="cal-day">22</div>
+            <div class="cal-day">23</div>
+            <!-- Semana 5 -->
+            <div class="cal-day">24</div>
+            <div class="cal-day">25</div>
+            <div class="cal-day">26</div>
+            <div class="cal-day">27</div>
+            <div class="cal-day cal-highlight">
+              <span class="cal-heart">&#9829;</span>
+              <span class="cal-num">28</span>
+            </div>
+            <div class="cal-day">29</div>
+            <div class="cal-day">30</div>
+            <!-- Semana 6 -->
+            <div class="cal-day">31</div>
+          </div>
+          <p class="cal-sub">Quinta-feira · 16 horas</p>
+        </div>
+        <button class="cal-save-btn reveal" onclick="openCalModal()">📅 Salvar no Calendário</button>
         <p class="dear-text reveal" style="margin-bottom:0">Convidamos você a compartilhar conosco a alegria deste dia.</p>
       </div>
 
