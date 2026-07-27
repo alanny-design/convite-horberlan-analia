@@ -602,6 +602,88 @@ export default function Home() {
     .action-btn.outline:hover { border-color: var(--olive); background: rgba(74,82,64,0.05); }
 
     /* ─── FOOTER SECTION ─── */
+    /* ─── CALENDAR MODAL ─── */
+    .cal-modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.55);
+      z-index: 9999;
+      align-items: flex-end;
+      justify-content: center;
+    }
+    .cal-modal-overlay.open {
+      display: flex;
+    }
+    .cal-modal {
+      background: var(--white);
+      border-radius: 20px 20px 0 0;
+      padding: 28px 24px 36px;
+      width: 100%;
+      max-width: 480px;
+      animation: slideUp 0.35s cubic-bezier(0.22,1,0.36,1);
+    }
+    @keyframes slideUp {
+      from { transform: translateY(100%); }
+      to   { transform: translateY(0); }
+    }
+    .cal-modal-title {
+      font-family: 'Cinzel', serif;
+      font-size: 13px;
+      letter-spacing: 3px;
+      color: var(--olive);
+      text-transform: uppercase;
+      text-align: center;
+      margin-bottom: 6px;
+    }
+    .cal-modal-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 14px;
+      color: #999;
+      text-align: center;
+      margin-bottom: 22px;
+    }
+    .cal-option {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 15px 18px;
+      border-radius: 12px;
+      border: 1.5px solid rgba(74,82,64,0.18);
+      margin-bottom: 10px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      background: transparent;
+      width: 100%;
+    }
+    .cal-option:hover { background: rgba(74,82,64,0.05); border-color: var(--olive); }
+    .cal-option:active { transform: scale(0.98); }
+    .cal-option-icon { font-size: 22px; flex-shrink: 0; }
+    .cal-option-label {
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      color: var(--olive);
+      text-transform: uppercase;
+    }
+    .cal-close {
+      display: block;
+      width: 100%;
+      padding: 13px;
+      margin-top: 6px;
+      border: none;
+      background: none;
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      letter-spacing: 2px;
+      color: #aaa;
+      text-transform: uppercase;
+      cursor: pointer;
+      text-align: center;
+    }
+
     .footer-section {
       background: linear-gradient(170deg, var(--olive) 0%, #2e3628 100%);
       padding: 52px 32px 60px;
@@ -947,7 +1029,50 @@ export default function Home() {
       success.classList.add('show');
     }
     `;
-    document.body.appendChild(cdScript);
+
+    function openCalModal() {
+      var title = encodeURIComponent('Casamento de Horberlan & Analia');
+      var details = encodeURIComponent('Cerimônia e Recepção no Restaurante O Mirante, São Gonçalo — PB');
+      var location = encodeURIComponent('Restaurante O Mirante, R. Alto Gruta, São Gonçalo, PB, 58814-000');
+      var startDate = '20270128T160000';
+      var endDate   = '20270128T230000';
+      var startDateZ = '20270128T190000Z';
+      var endDateZ   = '20270128T020000Z';
+
+      // Google Calendar
+      var googleUrl = 'https://calendar.google.com/calendar/render?action=TEMPLATE'
+        + '&text=' + title
+        + '&dates=' + startDateZ + '/' + endDateZ
+        + '&details=' + details
+        + '&location=' + location;
+      document.getElementById('cal-google').href = googleUrl;
+
+      // iCal / Apple Calendar
+      var ics = 'BEGIN:VCALENDAR\r\nVERSION:2.0\r\nBEGIN:VEVENT\r\n'
+        + 'DTSTART;TZID=America/Fortaleza:' + startDate + '\r\n'
+        + 'DTEND;TZID=America/Fortaleza:' + endDate + '\r\n'
+        + 'SUMMARY:Casamento de Horberlan & Analia\r\n'
+        + 'DESCRIPTION:Cerimônia e Recepção no Restaurante O Mirante, São Gonçalo — PB\r\n'
+        + 'LOCATION:Restaurante O Mirante, R. Alto Gruta, São Gonçalo, PB\r\n'
+        + 'END:VEVENT\r\nEND:VCALENDAR';
+      var blob = new Blob([ics], {type: 'text/calendar'});
+      document.getElementById('cal-ical').href = URL.createObjectURL(blob);
+
+      // Outlook
+      var outlookUrl = 'https://outlook.live.com/calendar/0/deeplink/compose?subject=' + title
+        + '&startdt=2027-01-28T16:00:00&enddt=2027-01-28T23:00:00'
+        + '&body=' + details + '&location=' + location;
+      document.getElementById('cal-outlook').href = outlookUrl;
+
+      document.getElementById('cal-modal-overlay').classList.add('open');
+    }
+
+    function closeCalModal(e) {
+      if (!e || e.target === document.getElementById('cal-modal-overlay')) {
+        document.getElementById('cal-modal-overlay').classList.remove('open');
+      }
+    }
+        document.body.appendChild(cdScript);
 
     return () => {
       document.head.removeChild(style);
@@ -1146,7 +1271,8 @@ export default function Home() {
           <p class="form-success-text">Ficamos muito felizes! Te esperamos no dia 28 de janeiro de 2027 no Restaurante O Mirante, São Gonçalo — PB.</p>
         </div>
 
-        <a href="#" class="action-btn outline reveal" style="margin-top:16px" onclick="return false;">💍 Site do Casal</a>
+        <button type="button" class="action-btn outline reveal" style="margin-top:16px" onclick="openCalModal()">📅 Salvar no Calendário</button>
+        <a href="#" class="action-btn outline reveal" onclick="return false;">💍 Site do Casal</a>
         <a href="#" class="action-btn outline reveal" onclick="return false;">🎁 Lista de Presentes</a>
       </div>
 
@@ -1161,6 +1287,27 @@ export default function Home() {
         <p class="footer-verse reveal">"Grandes coisas fez o Senhor por nós, e por isso estamos alegres." — Salmos 126:3</p>
       </div>
 
+    </div>
+  </div>
+
+  <!-- ── MODAL CALENDÁRIO ── -->
+  <div class="cal-modal-overlay" id="cal-modal-overlay" onclick="closeCalModal(event)">
+    <div class="cal-modal">
+      <div class="cal-modal-title">📅 Salvar no Calendário</div>
+      <p class="cal-modal-sub">Escolha sua agenda preferida</p>
+      <a class="cal-option" id="cal-google" href="#" target="_blank">
+        <span class="cal-option-icon">📆</span>
+        <span class="cal-option-label">Google Calendar</span>
+      </a>
+      <a class="cal-option" id="cal-ical" href="#" download="casamento-horberlan-analia.ics">
+        <span class="cal-option-icon">🍎</span>
+        <span class="cal-option-label">Apple Calendar / iCal</span>
+      </a>
+      <a class="cal-option" id="cal-outlook" href="#" target="_blank">
+        <span class="cal-option-icon">📧</span>
+        <span class="cal-option-label">Outlook / Office 365</span>
+      </a>
+      <button class="cal-close" onclick="closeCalModal()">Fechar</button>
     </div>
   </div>`
       }}
