@@ -482,6 +482,16 @@ export default function Home() {
     }
     .dresscode-section .section-title { color: var(--olive); }
     .dresscode-section .section-subtitle { color: var(--olive-light); }
+    .dresscode-img-wrap {
+      display: flex;
+      justify-content: center;
+      margin: 20px 0 16px;
+    }
+    .dresscode-img-wrap img {
+      width: 160px;
+      height: auto;
+      opacity: 0.85;
+    }
     .dresscode-text {
       font-family: 'Cormorant Garamond', serif;
       font-size: 15px;
@@ -1060,13 +1070,14 @@ export default function Home() {
       document.getElementById('cal-google').href = googleUrl;
 
       // iCal / Apple Calendar
-      var ics = 'BEGIN:VCALENDAR\r\nVERSION:2.0\r\nBEGIN:VEVENT\r\n'
-        + 'DTSTART;TZID=America/Fortaleza:' + startDate + '\r\n'
-        + 'DTEND;TZID=America/Fortaleza:' + endDate + '\r\n'
-        + 'SUMMARY:Casamento de Horberlan & Analia\r\n'
-        + 'DESCRIPTION:Cerimônia e Recepção no Restaurante O Mirante, São Gonçalo — PB\r\n'
-        + 'LOCATION:Restaurante O Mirante, R. Alto Gruta, São Gonçalo, PB\r\n'
-        + 'END:VEVENT\r\nEND:VCALENDAR';
+      var CRLF = '\\r\\n';
+      var ics = 'BEGIN:VCALENDAR' + CRLF + 'VERSION:2.0' + CRLF + 'BEGIN:VEVENT' + CRLF
+        + 'DTSTART;TZID=America/Fortaleza:' + startDate + CRLF
+        + 'DTEND;TZID=America/Fortaleza:' + endDate + CRLF
+        + 'SUMMARY:Casamento de Horberlan e Analia' + CRLF
+        + 'DESCRIPTION:Cerimonia e Recepcao no Restaurante O Mirante, Sao Goncalo PB' + CRLF
+        + 'LOCATION:Restaurante O Mirante, R. Alto Gruta, Sao Goncalo, PB' + CRLF
+        + 'END:VEVENT' + CRLF + 'END:VCALENDAR';
       var blob = new Blob([ics], {type: 'text/calendar'});
       document.getElementById('cal-ical').href = URL.createObjectURL(blob);
 
@@ -1193,15 +1204,11 @@ export default function Home() {
       <div class="dresscode-section">
         <h2 class="section-title reveal">Dress Code</h2>
         <p class="section-subtitle reveal">Sugestão de traje</p>
-        <div class="dress-icons reveal">
-          <div class="dress-icon-item">
-            <svg viewBox="0 0 52 52"><path d="M26 8 C20 8 16 14 14 18 L8 44 L44 44 L38 18 C36 14 32 8 26 8Z M20 18 L26 22 L32 18"/><circle cx="26" cy="6" r="3"/></svg>
-            <span class="dress-icon-label">Ela</span>
-          </div>
-          <div class="dress-icon-item">
-            <svg viewBox="0 0 52 52"><rect x="16" y="12" width="20" height="28" rx="2"/><path d="M16 18 L10 44 M36 18 L42 44 M20 12 L20 8 L32 8 L32 12"/><circle cx="26" cy="6" r="3"/></svg>
-            <span class="dress-icon-label">Ele</span>
-          </div>
+        <div class="dresscode-img-wrap reveal">
+          <img src="/manus-storage/pasted_file_vy5qFx_image_7124b6af.png" alt="Dress Code" style="width:180px;height:auto;opacity:0.9;" />
+        </div>
+        <div class="dresscode-img-wrap reveal" style="margin-top:0">
+          <img src="/manus-storage/pasted_file_vy5qFx_image_7124b6af.png" alt="Dress Code" style="width:180px;height:auto;opacity:0.85;" />
         </div>
         <p class="dresscode-text reveal">Ficaremos felizes em ver você com trajes que combinem com a paleta de cores do nosso casamento.</p>
         <div class="color-palette reveal">
