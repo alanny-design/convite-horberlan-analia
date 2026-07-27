@@ -371,11 +371,15 @@ export default function Home() {
       margin-bottom: 8px;
     }
     .dear-flowers-right {
-      position: absolute;
-      right: -15px; top: 20px;
-      width: 120px;
+      display: none;
+    }
+    .dear-flowers-deco {
+      width: 100%;
+      max-height: 80px;
+      object-fit: contain;
+      opacity: 0.35;
+      margin-bottom: 16px;
       pointer-events: none;
-      opacity: 0.85;
     }
 
     /* ─── DIVIDER GOLD ─── */
