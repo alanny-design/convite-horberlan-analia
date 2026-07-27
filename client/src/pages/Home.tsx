@@ -1338,7 +1338,7 @@ export default function Home() {
               + '👤 Nome: ' + encodeURIComponent(name) + '%0A'
               + '👥 Acompanhantes: ' + encodeURIComponent(guestText) + '%0A'
               + (phone ? '📱 WhatsApp: ' + encodeURIComponent(phone) + '%0A' : '')
-              + '%0A📅 28 de Janeiro de 2027 · Restaurante O Mirante, São Gonçalo — PB';
+              + '%0A📅 28 de Janeiro de 2027 · Restaurante O Mirante, Sousa — PB';
 
       // Envia para os dois números dos noivos
       window.open('https://wa.me/5583881556540?text=' + msg, '_blank');
@@ -1354,8 +1354,8 @@ export default function Home() {
 
     function openCalModal() {
       var title = encodeURIComponent('Casamento de Horberlan & Analia');
-      var details = encodeURIComponent('Cerimônia e Recepção no Restaurante O Mirante, São Gonçalo — PB');
-      var location = encodeURIComponent('Restaurante O Mirante, R. Alto Gruta, São Gonçalo, PB, 58814-000');
+      var details = encodeURIComponent('Cerimônia e Recepção no Restaurante O Mirante, Sousa — PB');
+      var location = encodeURIComponent('Restaurante O Mirante, R. José Damião da Silva Dellamari S/N, Distrito São Gonçalo, Sousa, PB, 58814-000');
       var startDate = '20270128T160000';
       var endDate   = '20270128T230000';
       var startDateZ = '20270128T190000Z';
@@ -1375,8 +1375,8 @@ export default function Home() {
         + 'DTSTART;TZID=America/Fortaleza:' + startDate + CRLF
         + 'DTEND;TZID=America/Fortaleza:' + endDate + CRLF
         + 'SUMMARY:Casamento de Horberlan e Analia' + CRLF
-        + 'DESCRIPTION:Cerimonia e Recepcao no Restaurante O Mirante, Sao Goncalo PB' + CRLF
-        + 'LOCATION:Restaurante O Mirante, R. Alto Gruta, Sao Goncalo, PB' + CRLF
+        + 'DESCRIPTION:Cerimonia e Recepcao no Restaurante O Mirante, Sousa PB' + CRLF
+        + 'LOCATION:Restaurante O Mirante, R. Jose Damiao da Silva Dellamari S/N, Distrito Sao Goncalo, Sousa, PB, 58814-000' + CRLF
         + 'END:VEVENT' + CRLF + 'END:VCALENDAR';
       var blob = new Blob([ics], {type: 'text/calendar'});
       document.getElementById('cal-ical').href = URL.createObjectURL(blob);
@@ -1561,10 +1561,10 @@ export default function Home() {
         <p class="location-name-big reveal">Restaurante O Mirante</p>
         <p class="location-address reveal">
           Aguardamos você no endereço:<br/>
-          <strong>Restaurante O Mirante</strong><br/>
-          São Gonçalo — PB
+          <strong>R. José Damião da Silva Dellamari, S/N</strong><br/>
+          Distrito São Gonçalo, Sousa — PB, 58814-000
         </p>
-        <a href="https://maps.google.com/?q=Restaurante+O+Mirante,+R.+Alto+Gruta,+S%C3%A3o+Gon%C3%A7alo,+PB,+58814-000,+Brazil" target="_blank" class="map-btn reveal">
+        <a href="https://maps.google.com/?q=R.+Jos%C3%A9+Dami%C3%A3o+da+Silva+Dellamari,+S%2FN,+Distrito+S%C3%A3o+Gon%C3%A7alo,+Sousa,+PB,+58814-000,+Brazil" target="_blank" class="map-btn reveal">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" style="display:inline-block;vertical-align:middle;flex-shrink:0"><path d="M13.6177 21.367C13.1841 21.773 12.6044 22 12.0011 22C11.3978 22 10.8182 21.773 10.3845 21.367C6.41302 17.626 1.09076 13.4469 3.68627 7.37966C5.08963 4.09916 8.45834 2 12.0011 2C15.5439 2 18.9126 4.09916 20.316 7.37966C22.9082 13.4393 17.599 17.6389 13.6177 21.367Z" stroke="currentColor" stroke-width="1.5"/><path d="M15.5 11C15.5 12.933 13.933 14.5 12 14.5C10.067 14.5 8.5 12.933 8.5 11C8.5 9.067 10.067 7.5 12 7.5C13.933 7.5 15.5 9.067 15.5 11Z" stroke="currentColor" stroke-width="1.5"/></svg>
           Ver no Mapa
         </a>
@@ -1666,7 +1666,7 @@ export default function Home() {
         <div class="form-success" id="confirm-success">
           <div class="form-success-icon">✓</div>
           <div class="form-success-title">Presença confirmada!</div>
-          <p class="form-success-text">Ficamos muito felizes! Te esperamos no dia 28 de janeiro de 2027 no Restaurante O Mirante, São Gonçalo — PB.</p>
+          <p class="form-success-text">Ficamos muito felizes! Te esperamos no dia 28 de janeiro de 2027 no Restaurante O Mirante, Sousa — PB.</p>
         </div>
 
         <button type="button" class="action-btn outline reveal" style="margin-top:16px" onclick="openCalModal()"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" style="display:inline-block;vertical-align:middle;margin-right:7px;flex-shrink:0">
