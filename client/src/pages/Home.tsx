@@ -353,7 +353,7 @@ export default function Home() {
       margin-bottom: 20px;
     }
     .hero-monogram img {
-      width: 90px; height: 90px;
+      width: 62px; height: auto;
       filter: drop-shadow(0 4px 16px rgba(0,0,0,0.4));
     }
     .hero-monogram svg, .footer-monogram svg {
@@ -750,7 +750,7 @@ export default function Home() {
       opacity: 0.55;
     }
     .footer-monogram img {
-      width: 80px; height: 80px;
+      width: 55px; height: auto;
       filter: drop-shadow(0 4px 16px rgba(0,0,0,0.4));
       margin-bottom: 16px;
     }
