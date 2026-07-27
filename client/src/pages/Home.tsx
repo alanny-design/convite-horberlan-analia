@@ -271,11 +271,11 @@ export default function Home() {
       min-height: 520px;
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
-      justify-content: flex-end;
-      text-align: left;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
       overflow: visible;
-      padding: 80px 28px 90px 28px;
+      padding: 80px 28px 90px;
       min-height: 580px;
     }
     .hero-flowers-tl {
@@ -325,11 +325,10 @@ export default function Home() {
       position: relative; z-index: 3;
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
+      align-items: center;
       gap: 4px;
       width: 100%;
       text-align: center;
-      align-items: center;
     }
     .hero-date-label {
       font-family: 'Cinzel', serif;
@@ -352,7 +351,7 @@ export default function Home() {
       position: relative; z-index: 3;
       margin-bottom: 12px;
       width: 100%;
-      text-align: left;
+      text-align: center;
     }
     .hero-name-1, .hero-name-2 {
       font-family: 'Imperial Script', cursive;
@@ -377,9 +376,9 @@ export default function Home() {
       color: rgba(245,240,232,0.82);
       line-height: 1.6;
       max-width: 280px;
-      margin: 16px 0 0;
+      margin: 16px auto 0;
       position: relative; z-index: 3;
-      text-align: left;
+      text-align: center;
     }
     .hero-verse {
       font-family: 'Cormorant Garamond', serif;
@@ -396,7 +395,7 @@ export default function Home() {
       margin-bottom: 16px;
       width: 100%;
       display: flex;
-      justify-content: center;
+      justify-content: center; 
     }
     .hero-monogram img {
       width: 62px; height: auto;
