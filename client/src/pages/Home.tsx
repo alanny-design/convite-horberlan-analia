@@ -281,11 +281,11 @@ export default function Home() {
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      text-align: center;
-      overflow: visible;
-      padding: 80px 28px 90px;
-      min-height: 580px;
+     justify-content: center;
+     text-align: center;
+     overflow: visible;
+      padding: 40px 28px 90px;
+     min-height: 580px;
     }
     .hero-flowers-tl {
       position: absolute;
