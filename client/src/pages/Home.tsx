@@ -654,19 +654,20 @@ export default function Home() {
     }
     .location-flowers-bl {
       position: absolute;
-      bottom: -10px; left: -15px;
-      width: 150px;
+      bottom: -10px; left: -14px;
+      width: 44vw;
+      max-width: 190px;
       pointer-events: none;
-      opacity: 0.7;
-      transform: rotate(10deg);
+      transform: rotate(0deg) scaleY(-1) scaleX(-1);
+      z-index: 2;
     }
     .location-flowers-tr {
       position: absolute;
-      top: -14px; right: -10px;
-      width: 120px;
+      top: -10px; right: -14px;
+      width: 44vw;
+      max-width: 190px;
       pointer-events: none;
       z-index: 2;
-      opacity: 0.75;
       transform: scaleX(-1);
     }
     .section-title {
@@ -1551,7 +1552,7 @@ export default function Home() {
 
       <!-- ── LOCAL ── -->
       <div class="location-section">
-        <img class="location-flowers-tr" src="/manus-storage/flowers_corner_local_b218fe3a.png" alt="" />
+        <img class="location-flowers-tr" src="/manus-storage/flowers_hero_top_left_510999d2.png" alt="" />
         <img class="location-flowers-bl" src="/manus-storage/flowers_hero_top_left_510999d2.png" alt="" />
         <h2 class="section-title reveal">Local</h2>
         <p class="section-subtitle reveal">Onde nos encontraremos</p>
