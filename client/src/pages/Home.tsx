@@ -658,7 +658,7 @@ export default function Home() {
       width: 44vw;
       max-width: 190px;
       pointer-events: none;
-      transform: rotate(0deg) scaleY(-1) scaleX(-1);
+      transform: scaleY(-1);
       z-index: 2;
     }
     .location-flowers-tr {
