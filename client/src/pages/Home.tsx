@@ -284,7 +284,7 @@ export default function Home() {
      justify-content: center;
      text-align: center;
      overflow: visible;
-      padding: 40px 28px 90px;
+      padding: 5px 28px 90px;
      min-height: 580px;
     }
     .hero-flowers-tl {
