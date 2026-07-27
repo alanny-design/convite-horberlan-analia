@@ -136,6 +136,22 @@ export default function Home() {
       font-size: 22px;
       margin-bottom: 6px;
     }
+    .tap-hint-svg {
+      position: absolute;
+      bottom: 5%;
+      left: 50%;
+      transform: translateX(-50%);
+      pointer-events: none;
+      animation: pulse-hint 2.2s ease-in-out infinite;
+      transition: opacity 0.4s ease;
+      z-index: 4;
+      width: 130px;
+      height: 130px;
+    }
+    @keyframes pulse-hint {
+      0%, 100% { opacity: 0.55; transform: translateX(-50%) scale(1); }
+      50%       { opacity: 1;   transform: translateX(-50%) scale(1.04); }
+    }
 
     /* ─── OPEN ANIMATION ─── */
     /* Fase 1: aba dobra para cima */
@@ -1126,10 +1142,17 @@ export default function Home() {
     <div class="env-overlay"></div>
 
     <!-- Tap hint -->
-    <div class="tap-hint">
-      <span class="tap-icon">☞</span>
-      Toque no selo
-    </div>
+    <svg class="tap-hint-svg" viewBox="0 0 130 130" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <path id="circle-path" d="M 65,65 m -46,0 a 46,46 0 1,1 92,0 a 46,46 0 1,1 -92,0" />
+      </defs>
+      <!-- Texto circular -->
+      <text font-family="Cinzel, serif" font-size="9.5" letter-spacing="4.2" fill="rgba(245,240,232,0.85)" text-anchor="middle">
+        <textPath href="#circle-path" startOffset="50%">TOQUE NO SELO · TOQUE NO SELO ·</textPath>
+      </text>
+      <!-- Ícone de toque centralizado -->
+      <text x="65" y="72" text-anchor="middle" font-size="22" fill="rgba(245,240,232,0.85)">☞</text>
+    </svg>
   </div>
 
   <!-- ════════════════════════════════
