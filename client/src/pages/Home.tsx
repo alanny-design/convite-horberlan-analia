@@ -1028,7 +1028,6 @@ export default function Home() {
       var success = document.getElementById('confirm-success');
       success.classList.add('show');
     }
-    `;
 
     function openCalModal() {
       var title = encodeURIComponent('Casamento de Horberlan & Analia');
@@ -1072,7 +1071,8 @@ export default function Home() {
         document.getElementById('cal-modal-overlay').classList.remove('open');
       }
     }
-        document.body.appendChild(cdScript);
+    `;
+    document.body.appendChild(cdScript);
 
     return () => {
       document.head.removeChild(style);
