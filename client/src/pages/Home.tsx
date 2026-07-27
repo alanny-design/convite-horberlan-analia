@@ -137,17 +137,24 @@ export default function Home() {
       margin-bottom: 6px;
     }
     .tap-hint-svg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      transform: none;
+      position: relative;
       pointer-events: none;
       animation: pulse-hint 2.2s ease-in-out infinite;
       transition: opacity 0.4s ease;
       z-index: 4;
-      width: 130px;
-      height: 130px;
-    /* ─── Posicionar hint sobre o selo ─── */
+      width: 180px;
+      height: 180px;
+      display: block;
+    }
+    /* Wrapper do hint — posicionado sobre o centro do selo na aba */
+    .tap-hint-wrap {
+      position: absolute;
+      left: calc(49.7% - 90px);
+      top: calc(83.6% - 90px);
+      width: 180px;
+      height: 180px;
+      pointer-events: none;
+      z-index: 5;
     }
     /* ─── Posicionar hint sobre o selo ─── */
     @keyframes pulse-hint {
@@ -955,35 +962,7 @@ export default function Home() {
     /* ─── Open envelope ─── */
     if (typeof window.__envelopeOpened === 'undefined') window.__envelopeOpened = false;
 
-    /* ─── Posicionar o hint circular sobre o centro do selo ─── */
-    function positionHint() {
-      var flap = document.getElementById('env-flap');
-      var hint = document.querySelector('.tap-hint-svg');
-      if (!flap || !hint) return;
-      var flapImg = flap.querySelector('img');
-      if (!flapImg) return;
-      // A imagem da aba tem 784x842px; o centro do selo está em:
-      // cx = 49.7% da largura, cy = 83.6% da altura da imagem
-      var rect = flapImg.getBoundingClientRect();
-      var envRect = document.getElementById('envelope-screen').getBoundingClientRect();
-      var sealX = rect.left - envRect.left + rect.width * 0.497;
-      var sealY = rect.top  - envRect.top  + rect.height * 0.836;
-      hint.style.left = (sealX - 90) + 'px';
-      hint.style.top  = (sealY - 90) + 'px';
-      hint.style.width = '180px';
-      hint.style.height = '180px';
-    }
-    // Posicionar imediatamente e ao redimensionar
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', positionHint);
-    } else {
-      positionHint();
-    }
-    window.addEventListener('resize', positionHint);
-    // Aguardar a imagem carregar para reposicionar
-    var flapImgEl = document.querySelector('.env-flap-img');
-    if (flapImgEl) flapImgEl.addEventListener('load', positionHint);
-    setTimeout(positionHint, 300);
+    
 
     function openEnvelope() {
       if (window.__envelopeOpened) return;
@@ -1173,17 +1152,17 @@ export default function Home() {
     <!-- Vignette -->
     <div class="env-overlay"></div>
 
-    <!-- Tap hint -->
-    <svg class="tap-hint-svg" viewBox="0 0 180 180" width="180" height="180" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <path id="circle-path" d="M 90,90 m -68,0 a 68,68 0 1,1 136,0 a 68,68 0 1,1 -136,0" />
-      </defs>
-      <!-- Texto circular -->
-      <text font-family="Cinzel, serif" font-size="9" letter-spacing="3.8" fill="rgba(245,240,232,0.85)" text-anchor="middle">
-        <textPath href="#circle-path" startOffset="50%">TOQUE NO SELO · TOQUE NO SELO ·</textPath>
-      </text>
-      <!-- Ícone de toque centralizado -->
-    </svg>
+    <!-- Tap hint — posicionado dentro da aba, sobre o centro do selo -->
+    <div class="tap-hint-wrap">
+      <svg class="tap-hint-svg" viewBox="0 0 180 180" width="180" height="180" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <path id="circle-path" d="M 90,90 m -68,0 a 68,68 0 1,1 136,0 a 68,68 0 1,1 -136,0" />
+        </defs>
+        <text font-family="Cinzel, serif" font-size="9.5" letter-spacing="4.8" fill="rgba(245,240,232,0.9)" text-anchor="middle">
+          <textPath href="#circle-path" startOffset="0%">TOQUE NO SELO · TOQUE NO SELO · </textPath>
+        </text>
+      </svg>
+    </div>
   </div>
 
   <!-- ════════════════════════════════
