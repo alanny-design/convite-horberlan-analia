@@ -1070,12 +1070,14 @@ export default function Home() {
       var hint = document.querySelector('.tap-hint-wrap');
       if (!flap || !hint) return;
       var r = flap.getBoundingClientRect();
-      var sealY = r.top + r.height * 0.836 + 105;
+      // Centro do lacre: 83.6% da altura da aba, 50% da largura
+      var sealY = r.top + r.height * 0.836;
       var sealX = r.left + r.width * 0.5;
+      var hintSize = 210; // largura/altura do SVG em px
       hint.style.position = 'fixed';
-      hint.style.left = sealX + 'px';
-      hint.style.top = sealY + 'px';
-      hint.style.transform = 'translate(-50%, -50%)';
+      hint.style.left = (sealX - hintSize / 2) + 'px';
+      hint.style.top = (sealY - hintSize / 2) + 'px';
+      hint.style.transform = 'none';
       hint.style.zIndex = '9999';
     }
     window.addEventListener('load', positionHint);
