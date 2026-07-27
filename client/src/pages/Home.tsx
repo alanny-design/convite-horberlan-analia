@@ -172,7 +172,7 @@ export default function Home() {
     /* Corpo some DEPOIS que a aba termina de dobrar (delay de 1.0s) */
     #envelope-screen.opening .env-body-layer {
       opacity: 0;
-      transition: opacity 0.5s ease 1.0s;
+      transition: opacity 0.25s ease 0.4s;
     }
     #envelope-screen.opening .tap-hint {
       opacity: 0;
