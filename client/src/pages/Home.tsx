@@ -79,6 +79,7 @@ export default function Home() {
       /* A aba ocupa 61% da altura da imagem original (1681/2752) */
       /* Usamos height: auto via a imagem interna */
       height: auto;
+      overflow: visible;
       transform-origin: top center;
       transform-style: preserve-3d;
       transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -1147,22 +1148,21 @@ export default function Home() {
     <!-- ABA: triângulo superior com o selo (dobra para cima ao clicar) -->
     <div class="env-flap-wrap" id="env-flap">
       <img class="env-flap-img" src="/manus-storage/aba_7dcc1dac.png" alt="Aba do envelope" draggable="false" />
+      <!-- Tap hint — dentro da aba, posicionado sobre o centro do selo -->
+      <div class="tap-hint-wrap">
+        <svg class="tap-hint-svg" viewBox="0 0 180 180" width="180" height="180" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <path id="circle-path" d="M 90,90 m -68,0 a 68,68 0 1,1 136,0 a 68,68 0 1,1 -136,0" />
+          </defs>
+          <text font-family="Cinzel, serif" font-size="9.5" letter-spacing="4.8" fill="rgba(245,240,232,0.9)" text-anchor="middle">
+            <textPath href="#circle-path" startOffset="0%">TOQUE NO SELO · TOQUE NO SELO · </textPath>
+          </text>
+        </svg>
+      </div>
     </div>
 
     <!-- Vignette -->
     <div class="env-overlay"></div>
-
-    <!-- Tap hint — posicionado dentro da aba, sobre o centro do selo -->
-    <div class="tap-hint-wrap">
-      <svg class="tap-hint-svg" viewBox="0 0 180 180" width="180" height="180" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <path id="circle-path" d="M 90,90 m -68,0 a 68,68 0 1,1 136,0 a 68,68 0 1,1 -136,0" />
-        </defs>
-        <text font-family="Cinzel, serif" font-size="9.5" letter-spacing="4.8" fill="rgba(245,240,232,0.9)" text-anchor="middle">
-          <textPath href="#circle-path" startOffset="0%">TOQUE NO SELO · TOQUE NO SELO · </textPath>
-        </text>
-      </svg>
-    </div>
   </div>
 
   <!-- ════════════════════════════════
