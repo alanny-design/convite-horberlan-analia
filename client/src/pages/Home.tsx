@@ -274,6 +274,7 @@ export default function Home() {
       align-items: center;
       justify-content: center;
       text-align: center;
+      overflow: visible;
       padding: 60px 28px 80px;
       overflow: hidden;
     }
@@ -371,7 +372,7 @@ export default function Home() {
       transform: translateX(-50%);
       width: 110%;
       max-width: 500px;
-      z-index: 3;
+      z-index: 10;
       pointer-events: none;
       filter: drop-shadow(0 4px 12px rgba(0,0,0,0.15));
       z-index: 4;
