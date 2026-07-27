@@ -357,7 +357,7 @@ export default function Home() {
     .hero-name-1, .hero-name-2 {
       font-family: 'Imperial Script', cursive;
       color: #fff;
-      line-height: 1.05;
+      line-height: 0.9;
       text-shadow: 0 2px 20px rgba(0,0,0,0.35);
       display: block;
     }
@@ -1273,7 +1273,6 @@ export default function Home() {
         </div>
         <div class="hero-names">
           <span class="hero-name-1">Horberlan</span>
-          <span class="hero-ampersand">&amp;</span>
           <span class="hero-name-2">Analia</span>
         </div>
 
