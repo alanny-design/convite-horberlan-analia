@@ -1265,7 +1265,6 @@ export default function Home() {
           <span class="hero-ampersand">&amp;</span>
           <span class="hero-name-2">Analia</span>
         </div>
-        <p class="hero-invite-text">Convidamos você para celebrar conosco o início desta nova história</p>
 
         <!-- Torn paper SVG -->
         <svg class="hero-torn" viewBox="0 0 375 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
