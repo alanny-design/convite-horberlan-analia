@@ -1277,7 +1277,7 @@ export default function Home() {
           <path id="circle-path" d="M 105,105 m -82,0 a 82,82 0 1,1 164,0 a 82,82 0 1,1 -164,0" />
         </defs>
         <text font-family="Cinzel, serif" font-size="9.5" letter-spacing="18" fill="rgba(245,240,232,0.9)" text-anchor="middle">
-          <textPath href="#circle-path" startOffset="20%" text-anchor="middle">✦ TOQUE NO SELO ✦</textPath>
+          <textPath href="#circle-path" startOffset="50%" text-anchor="middle">✦ TOQUE NO SELO ✦</textPath>
         </text>
       </svg>
     </div>
