@@ -206,297 +206,444 @@ export default function Home() {
       transform: none;
     }
 
-    /* ─── CARD HEADER ─── */
-    .card-header {
-      background: linear-gradient(155deg, var(--olive-mid) 0%, var(--olive) 60%, #3d4535 100%);
-      padding: 40px 28px 32px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .card-header::before {
-      content: '';
-      position: absolute;
-      top: -60px; left: -60px;
-      width: 240px; height: 240px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.035);
-    }
-    .card-header::after {
-      content: '';
-      position: absolute;
-      bottom: -50px; right: -50px;
-      width: 200px; height: 200px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.025);
-    }
-
-    .arch-monogram {
-      display: inline-block;
-      margin-bottom: 18px;
-      position: relative;
-      z-index: 1;
-    }
-    .arch-monogram img {
-      width: 120px;
-      height: 120px;
-      display: block;
-      filter: drop-shadow(0 4px 16px rgba(0,0,0,0.4));
-    }
-
-    .estd-row {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 14px;
-      margin-bottom: 16px;
-      position: relative;
-      z-index: 1;
-    }
-    .estd-row span {
-      font-family: 'Cinzel', serif;
-      font-size: 10px;
-      letter-spacing: 4px;
-      color: rgba(245,240,232,0.55);
-      text-transform: uppercase;
-    }
-    .estd-dot {
-      width: 3px; height: 3px;
-      border-radius: 50%;
-      background: var(--gold-light);
-      opacity: 0.6;
-    }
-
-    .header-verse {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-size: 13px;
-      color: rgba(245,240,232,0.72);
-      line-height: 1.7;
-      max-width: 260px;
-      margin: 0 auto;
-      position: relative;
-      z-index: 1;
-    }
-
-    /* ─── CARD BODY ─── */
-    .card-body {
-      padding: 36px 28px 28px;
-      text-align: center;
-      background: var(--white);
-      position: relative;
-    }
-    .card-body::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 28px; right: 28px;
-      height: 1px;
-      background: linear-gradient(to right, transparent, var(--gold-pale), transparent);
-    }
+    /* ════════════════════════════════════
+       NEW INVITE PAGE — REFERENCE STYLE
+    ════════════════════════════════════ */
 
     /* Staggered reveal */
     .reveal {
       opacity: 0;
-      transform: translateY(14px);
+      transform: translateY(18px);
       transition: opacity 0.9s ease, transform 0.9s ease;
     }
     #invite-wrapper.visible .reveal { opacity: 1; transform: translateY(0); }
-    #invite-wrapper.visible .reveal:nth-child(1)  { transition-delay: 0.3s; }
-    #invite-wrapper.visible .reveal:nth-child(2)  { transition-delay: 0.45s; }
-    #invite-wrapper.visible .reveal:nth-child(3)  { transition-delay: 0.58s; }
-    #invite-wrapper.visible .reveal:nth-child(4)  { transition-delay: 0.7s; }
-    #invite-wrapper.visible .reveal:nth-child(5)  { transition-delay: 0.82s; }
-    #invite-wrapper.visible .reveal:nth-child(6)  { transition-delay: 0.94s; }
-    #invite-wrapper.visible .reveal:nth-child(7)  { transition-delay: 1.06s; }
-    #invite-wrapper.visible .reveal:nth-child(8)  { transition-delay: 1.18s; }
-    #invite-wrapper.visible .reveal:nth-child(9)  { transition-delay: 1.3s; }
-    #invite-wrapper.visible .reveal:nth-child(10) { transition-delay: 1.42s; }
-    #invite-wrapper.visible .reveal:nth-child(11) { transition-delay: 1.54s; }
-    #invite-wrapper.visible .reveal:nth-child(12) { transition-delay: 1.66s; }
+    #invite-wrapper.visible .reveal:nth-child(1)  { transition-delay: 0.2s; }
+    #invite-wrapper.visible .reveal:nth-child(2)  { transition-delay: 0.35s; }
+    #invite-wrapper.visible .reveal:nth-child(3)  { transition-delay: 0.5s; }
+    #invite-wrapper.visible .reveal:nth-child(4)  { transition-delay: 0.65s; }
+    #invite-wrapper.visible .reveal:nth-child(5)  { transition-delay: 0.8s; }
+    #invite-wrapper.visible .reveal:nth-child(6)  { transition-delay: 0.95s; }
+    #invite-wrapper.visible .reveal:nth-child(7)  { transition-delay: 1.1s; }
+    #invite-wrapper.visible .reveal:nth-child(8)  { transition-delay: 1.25s; }
+    #invite-wrapper.visible .reveal:nth-child(9)  { transition-delay: 1.4s; }
+    #invite-wrapper.visible .reveal:nth-child(10) { transition-delay: 1.55s; }
+    #invite-wrapper.visible .reveal:nth-child(11) { transition-delay: 1.7s; }
+    #invite-wrapper.visible .reveal:nth-child(12) { transition-delay: 1.85s; }
+    #invite-wrapper.visible .reveal:nth-child(n+13) { transition-delay: 2s; }
 
-    .handwritten-phrase {
-      font-family: 'Great Vibes', cursive;
-      font-size: 26px;
-      color: var(--olive-light);
-      margin-bottom: 4px;
-      line-height: 1.4;
-    }
-
-    .couple-names { margin: 8px 0 20px; }
-    .name-line {
-      font-family: 'Great Vibes', cursive;
-      color: var(--olive);
-      line-height: 1.1;
-    }
-    .name-line.name-1   { font-size: 52px; }
-    .name-line.ampersand { font-size: 34px; color: var(--gold); }
-    .name-line.name-2   { font-size: 52px; }
-
-    .invite-text {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 15px;
-      color: var(--text-mid);
-      letter-spacing: 0.3px;
-      line-height: 1.5;
-      margin-bottom: 24px;
-    }
-
-    .ornament-divider {
+    /* ─── HERO SECTION ─── */
+    .hero-section {
+      position: relative;
+      background: linear-gradient(175deg, var(--olive) 0%, #3a4232 55%, #2e3628 100%);
+      min-height: 520px;
       display: flex;
-      align-items: center;
-      gap: 12px;
-      margin: 0 auto 24px;
-      max-width: 200px;
-    }
-    .ornament-divider::before,
-    .ornament-divider::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: linear-gradient(to right, transparent, var(--gold-light), transparent);
-    }
-    .ornament-divider span { color: var(--gold); font-size: 13px; }
-
-    .date-block {
-      display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      margin-bottom: 8px;
+      text-align: center;
+      padding: 60px 28px 80px;
+      overflow: hidden;
     }
-    .date-unit { text-align: center; padding: 0 20px; }
-    .date-unit .num {
+    .hero-flowers-tl {
+      position: absolute;
+      top: -20px; left: -20px;
+      width: 200px;
+      pointer-events: none;
+      z-index: 2;
+    }
+    .hero-flowers-br {
+      position: absolute;
+      bottom: -20px; right: -20px;
+      width: 200px;
+      pointer-events: none;
+      z-index: 2;
+      transform: rotate(180deg);
+    }
+    .hero-flowers-tr {
+      position: absolute;
+      top: -10px; right: -20px;
+      width: 160px;
+      pointer-events: none;
+      z-index: 2;
+      transform: scaleX(-1);
+    }
+    .hero-date-tag {
       font-family: 'Cinzel', serif;
-      font-size: 34px;
-      font-weight: 500;
-      color: var(--olive);
-      line-height: 1;
-      letter-spacing: 1px;
-    }
-    .date-unit .label {
-      font-family: 'Cinzel', serif;
-      font-size: 9px;
-      letter-spacing: 3px;
-      color: var(--olive-light);
-      text-transform: uppercase;
-      margin-top: 4px;
-    }
-    .date-sep {
-      width: 1px; height: 42px;
-      background: linear-gradient(to bottom, transparent, var(--gold-light), transparent);
-      flex-shrink: 0;
-    }
-
-    .year-tag {
-      font-family: 'Cinzel', serif;
-      font-size: 12px;
-      letter-spacing: 5px;
-      color: var(--olive-light);
-      margin-bottom: 24px;
-    }
-
-    .location-block { margin-bottom: 30px; }
-    .location-block p {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 15px;
-      color: var(--text-mid);
-      line-height: 1.8;
-    }
-    .location-name {
-      font-family: 'Cinzel', serif !important;
-      font-size: 13px !important;
-      font-weight: 500 !important;
-      color: var(--olive) !important;
-      letter-spacing: 1px;
-      margin-bottom: 2px;
-    }
-
-    .buttons-label {
-      font-family: 'Cinzel', serif;
-      font-size: 9px;
+      font-size: 11px;
       letter-spacing: 4px;
-      color: var(--olive-light);
+      color: rgba(245,240,232,0.65);
+      text-transform: uppercase;
+      margin-bottom: 18px;
+      position: relative; z-index: 3;
+    }
+    .hero-names {
+      position: relative; z-index: 3;
+      margin-bottom: 10px;
+    }
+    .hero-name-1, .hero-name-2 {
+      font-family: 'Great Vibes', cursive;
+      color: #fff;
+      line-height: 1.05;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.35);
+    }
+    .hero-name-1 { font-size: 62px; }
+    .hero-name-2 { font-size: 62px; }
+    .hero-ampersand {
+      font-family: 'Great Vibes', cursive;
+      font-size: 38px;
+      color: var(--gold-light);
+      display: block;
+      line-height: 1;
+    }
+    .hero-invite-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 16px;
+      color: rgba(245,240,232,0.82);
+      line-height: 1.6;
+      max-width: 280px;
+      margin: 16px auto 0;
+      position: relative; z-index: 3;
+    }
+    .hero-verse {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 12px;
+      color: rgba(245,240,232,0.5);
+      line-height: 1.7;
+      max-width: 260px;
+      margin: 12px auto 0;
+      position: relative; z-index: 3;
+    }
+    .hero-monogram {
+      position: relative; z-index: 3;
+      margin-bottom: 20px;
+    }
+    .hero-monogram img {
+      width: 90px; height: 90px;
+      filter: drop-shadow(0 4px 16px rgba(0,0,0,0.4));
+    }
+    /* Torn paper edge at bottom of hero */
+    .hero-torn {
+      position: absolute;
+      bottom: -2px; left: 0; right: 0;
+      height: 60px;
+      z-index: 4;
+    }
+
+    /* ─── DEAR GUESTS SECTION ─── */
+    .dear-section {
+      background: var(--white);
+      padding: 48px 32px 40px;
+      text-align: center;
+      position: relative;
+    }
+    .dear-title {
+      font-family: 'Cinzel', serif;
+      font-size: 18px;
+      letter-spacing: 3px;
+      color: var(--olive);
       text-transform: uppercase;
       margin-bottom: 16px;
     }
-
-    .btn-group {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
+    .dear-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 16px;
+      color: #555;
+      line-height: 1.8;
+      max-width: 300px;
+      margin: 0 auto 28px;
+    }
+    .dear-date-big {
+      font-family: 'Cinzel', serif;
+      font-size: 46px;
+      font-weight: 600;
+      color: var(--olive);
+      letter-spacing: 2px;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+    .dear-date-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 15px;
+      color: #888;
+      margin-bottom: 8px;
+    }
+    .dear-flowers-right {
+      position: absolute;
+      right: -15px; top: 20px;
+      width: 120px;
+      pointer-events: none;
+      opacity: 0.85;
     }
 
-    .invite-btn {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding: 15px 24px;
-      border: 1.5px solid rgba(74,82,64,0.32);
-      border-radius: 50px;
-      background: transparent;
-      cursor: pointer;
-      text-decoration: none;
-      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    /* ─── DIVIDER GOLD ─── */
+    .gold-divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold-light), transparent);
+      margin: 0 32px;
+    }
+
+    /* ─── LOCATION SECTION ─── */
+    .location-section {
+      background: linear-gradient(170deg, var(--olive) 0%, #3a4232 100%);
+      padding: 52px 32px 52px;
+      text-align: center;
       position: relative;
       overflow: hidden;
     }
-    .invite-btn::before {
-      content: '';
+    .location-flowers-bl {
       position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, var(--olive-mid) 0%, var(--olive) 100%);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      bottom: -10px; left: -15px;
+      width: 150px;
+      pointer-events: none;
+      opacity: 0.7;
+      transform: rotate(10deg);
     }
-    .invite-btn:hover { border-color: var(--olive); box-shadow: 0 4px 18px rgba(74,82,64,0.18); }
-    .invite-btn:hover::before { transform: scaleX(1); }
-    .invite-btn:hover .btn-icon,
-    .invite-btn:hover .btn-text { color: var(--cream); }
-    .invite-btn:active { transform: scale(0.97); }
-
-    .btn-icon {
-      font-size: 16px;
-      position: relative; z-index: 1;
-      transition: color 0.35s ease;
-      flex-shrink: 0; width: 22px; text-align: center;
-      color: var(--olive-light);
+    .section-title {
+      font-family: 'Cinzel', serif;
+      font-size: 22px;
+      letter-spacing: 4px;
+      color: #fff;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+      position: relative; z-index: 2;
     }
-    .btn-text {
+    .section-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 13px;
+      color: rgba(245,240,232,0.55);
+      letter-spacing: 1px;
+      margin-bottom: 28px;
+      position: relative; z-index: 2;
+    }
+    .location-name-big {
+      font-family: 'Great Vibes', cursive;
+      font-size: 38px;
+      color: #fff;
+      margin-bottom: 12px;
+      position: relative; z-index: 2;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.3);
+    }
+    .location-address {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 15px;
+      color: rgba(245,240,232,0.78);
+      line-height: 1.8;
+      position: relative; z-index: 2;
+    }
+    .location-address strong {
+      color: #fff;
+      font-weight: 600;
+    }
+    .map-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 22px;
+      padding: 13px 28px;
+      border: 1.5px solid rgba(255,255,255,0.45);
+      border-radius: 50px;
+      background: transparent;
+      color: #fff;
       font-family: 'Cinzel', serif;
       font-size: 10px;
       letter-spacing: 2.5px;
-      color: var(--olive);
       text-transform: uppercase;
-      position: relative; z-index: 1;
-      transition: color 0.35s ease;
-      flex: 1; text-align: left;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative; z-index: 2;
     }
+    .map-btn:hover { background: rgba(255,255,255,0.12); }
+    .map-btn:active { transform: scale(0.97); }
 
-    /* ─── CARD FOOTER ─── */
-    .card-footer {
-      padding: 20px 28px 26px;
+    /* ─── DRESS CODE SECTION ─── */
+    .dresscode-section {
+      background: var(--white);
+      padding: 52px 32px 44px;
       text-align: center;
-      background: var(--cream);
       position: relative;
     }
-    .card-footer::before {
-      content: '';
+    .dresscode-section .section-title { color: var(--olive); }
+    .dresscode-section .section-subtitle { color: var(--olive-light); }
+    .dresscode-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 15px;
+      color: #666;
+      line-height: 1.8;
+      max-width: 290px;
+      margin: 0 auto 28px;
+    }
+    .color-palette {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 8px;
+    }
+    .palette-dot {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.12);
+    }
+    .dress-icons {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      margin-bottom: 24px;
+    }
+    .dress-icon-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+    .dress-icon-item svg {
+      width: 52px; height: 52px;
+      stroke: var(--olive);
+      fill: none;
+      stroke-width: 1.2;
+    }
+    .dress-icon-label {
+      font-family: 'Cinzel', serif;
+      font-size: 9px;
+      letter-spacing: 2px;
+      color: var(--olive-light);
+      text-transform: uppercase;
+    }
+
+    /* ─── DETAILS SECTION ─── */
+    .details-section {
+      background: linear-gradient(170deg, #3a4232 0%, var(--olive) 100%);
+      padding: 52px 32px 44px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .details-flowers-tr {
       position: absolute;
-      top: 0; left: 28px; right: 28px;
-      height: 1px;
-      background: linear-gradient(to right, transparent, var(--gold-pale), transparent);
+      top: -10px; right: -15px;
+      width: 140px;
+      pointer-events: none;
+      opacity: 0.65;
+      transform: scaleX(-1) rotate(-10deg);
+    }
+    .detail-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      text-align: left;
+      margin-bottom: 20px;
+      position: relative; z-index: 2;
+    }
+    .detail-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--gold-light);
+      flex-shrink: 0;
+      margin-top: 6px;
+    }
+    .detail-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 15px;
+      color: rgba(245,240,232,0.85);
+      line-height: 1.7;
+    }
+
+    /* ─── CONFIRM SECTION ─── */
+    .confirm-section {
+      background: var(--white);
+      padding: 52px 32px 44px;
+      text-align: center;
+      position: relative;
+    }
+    .confirm-section .section-title { color: var(--olive); }
+    .confirm-section .section-subtitle { color: var(--olive-light); }
+    .confirm-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 15px;
+      color: #666;
+      line-height: 1.8;
+      max-width: 290px;
+      margin: 0 auto 28px;
+    }
+    .action-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 16px 24px;
+      border-radius: 50px;
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-bottom: 12px;
+    }
+    .action-btn:active { transform: scale(0.97); }
+    .action-btn.primary {
+      background: var(--olive);
+      color: var(--cream);
+      border: none;
+      box-shadow: 0 4px 18px rgba(74,82,64,0.28);
+    }
+    .action-btn.primary:hover { background: var(--olive-mid); }
+    .action-btn.outline {
+      background: transparent;
+      color: var(--olive);
+      border: 1.5px solid rgba(74,82,64,0.35);
+    }
+    .action-btn.outline:hover { border-color: var(--olive); background: rgba(74,82,64,0.05); }
+
+    /* ─── FOOTER SECTION ─── */
+    .footer-section {
+      background: linear-gradient(170deg, var(--olive) 0%, #2e3628 100%);
+      padding: 52px 32px 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .footer-flowers-bottom {
+      position: absolute;
+      bottom: -10px; left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      pointer-events: none;
+      opacity: 0.55;
+    }
+    .footer-monogram img {
+      width: 80px; height: 80px;
+      filter: drop-shadow(0 4px 16px rgba(0,0,0,0.4));
+      margin-bottom: 16px;
     }
     .footer-sig {
       font-family: 'Great Vibes', cursive;
-      font-size: 26px;
-      color: var(--olive-light);
+      font-size: 34px;
+      color: #fff;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.3);
+      margin-bottom: 8px;
     }
     .footer-date-small {
       font-family: 'Cinzel', serif;
-      font-size: 9px;
-      letter-spacing: 3.5px;
-      color: rgba(74,82,64,0.45);
-      margin-top: 6px;
+      font-size: 10px;
+      letter-spacing: 4px;
+      color: rgba(245,240,232,0.5);
+    }
+    .footer-verse {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 12px;
+      color: rgba(245,240,232,0.5);
+      line-height: 1.7;
+      max-width: 240px;
+      margin: 16px auto 0;
+      position: relative; z-index: 2;
     }
 
     /* ─── PARTICLES ─── */
@@ -638,85 +785,120 @@ export default function Home() {
   <div id="invite-wrapper">
     <div id="invitation-card">
 
-      <!-- Header -->
-      <div class="card-header">
-        <div class="arch-monogram">
+      <!-- ── HERO ── -->
+      <div class="hero-section reveal">
+        <img class="hero-flowers-tl" src="/manus-storage/flowers_top_left_f226d5fb.png" alt="" />
+        <img class="hero-flowers-tr" src="/manus-storage/flowers_top_left_f226d5fb.png" alt="" />
+        <img class="hero-flowers-br" src="/manus-storage/flowers_top_left_f226d5fb.png" alt="" />
+
+        <div class="hero-monogram">
           <img src="/manus-storage/seal_monogram_04b56b7f.png" alt="Monograma HA" />
         </div>
-        <div class="estd-row">
-          <span>ESTD</span>
-          <div class="estd-dot"></div>
-          <span>2025</span>
+        <div class="hero-date-tag">DIA DO CASAMENTO · 20.06.2026</div>
+        <div class="hero-names">
+          <span class="hero-name-1">Horberlan</span>
+          <span class="hero-ampersand">&amp;</span>
+          <span class="hero-name-2">Analia</span>
         </div>
-        <p class="header-verse">
-          "Grandes coisas fez o Senhor por nós,<br/>
-          e por isso estamos alegres."<br/>
-          <em>— Salmos 126:3</em>
+        <p class="hero-invite-text">Convidamos você para celebrar conosco o início desta nova história</p>
+        <p class="hero-verse">"Grandes coisas fez o Senhor por nós, e por isso estamos alegres." — Salmos 126:3</p>
+
+        <!-- Torn paper SVG -->
+        <svg class="hero-torn" viewBox="0 0 375 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0,60 L0,28 C20,22 35,38 55,30 C75,22 90,10 115,18 C140,26 155,40 180,32 C205,24 220,8 245,16 C270,24 285,38 310,28 C335,18 355,30 375,22 L375,60 Z" fill="#fdfcf9"/>
+        </svg>
+      </div>
+
+      <!-- ── QUERIDOS CONVIDADOS ── -->
+      <div class="dear-section">
+        <img class="dear-flowers-right" src="/manus-storage/flowers_right_e4488cf3.png" alt="" />
+        <h2 class="dear-title reveal">Queridos Convidados!</h2>
+        <p class="dear-text reveal">Em breve acontecerá um momento muito especial e alegre para nós — o nosso casamento!</p>
+        <div class="dear-date-big reveal">20.06.26</div>
+        <p class="dear-date-sub reveal">Sábado · 16 horas</p>
+        <p class="dear-text reveal" style="margin-bottom:0">Convidamos você a compartilhar conosco a alegria deste dia.</p>
+      </div>
+
+      <div class="gold-divider"></div>
+
+      <!-- ── LOCAL ── -->
+      <div class="location-section">
+        <img class="location-flowers-bl" src="/manus-storage/flowers_top_left_f226d5fb.png" alt="" />
+        <h2 class="section-title reveal">Local</h2>
+        <p class="section-subtitle reveal">Onde nos encontraremos</p>
+        <p class="location-name-big reveal">Nome do Local</p>
+        <p class="location-address reveal">
+          Aguardamos você no endereço:<br/>
+          <strong>Nome do Local,</strong><br/>
+          Nome da rua, nº<br/>
+          Cidade — UF
         </p>
+        <a href="#" class="map-btn reveal" onclick="return false;">
+          📍 Ver no Mapa
+        </a>
       </div>
 
-      <!-- Body -->
-      <div class="card-body">
-
-        <p class="reveal handwritten-phrase">Convidamos você</p>
-
-        <div class="reveal couple-names">
-          <div class="name-line name-1">Horberlan</div>
-          <div class="name-line ampersand">&amp;</div>
-          <div class="name-line name-2">Analia</div>
-        </div>
-
-        <p class="reveal invite-text">Convidam para a celebração do seu casamento</p>
-
-        <div class="reveal ornament-divider"><span>✦</span></div>
-
-        <div class="reveal date-block">
-          <div class="date-unit">
-            <div class="num">20</div>
-            <div class="label">Dia</div>
+      <!-- ── DRESS CODE ── -->
+      <div class="dresscode-section">
+        <h2 class="section-title reveal">Dress Code</h2>
+        <p class="section-subtitle reveal">Sugestão de traje</p>
+        <div class="dress-icons reveal">
+          <div class="dress-icon-item">
+            <svg viewBox="0 0 52 52"><path d="M26 8 C20 8 16 14 14 18 L8 44 L44 44 L38 18 C36 14 32 8 26 8Z M20 18 L26 22 L32 18"/><circle cx="26" cy="6" r="3"/></svg>
+            <span class="dress-icon-label">Ela</span>
           </div>
-          <div class="date-sep"></div>
-          <div class="date-unit">
-            <div class="num">JUN</div>
-            <div class="label">Mês</div>
-          </div>
-          <div class="date-sep"></div>
-          <div class="date-unit">
-            <div class="num">16h</div>
-            <div class="label">Hora</div>
+          <div class="dress-icon-item">
+            <svg viewBox="0 0 52 52"><rect x="16" y="12" width="20" height="28" rx="2"/><path d="M16 18 L10 44 M36 18 L42 44 M20 12 L20 8 L32 8 L32 12"/><circle cx="26" cy="6" r="3"/></svg>
+            <span class="dress-icon-label">Ele</span>
           </div>
         </div>
-
-        <div class="reveal year-tag">2026</div>
-
-        <div class="reveal location-block">
-          <p class="location-name">Nome do Local</p>
-          <p>Nome da rua, nº</p>
-          <p>Cidade — UF</p>
-        </div>
-
-        <p class="reveal buttons-label">Toque nos botões</p>
-
-        <div class="reveal btn-group">
-          <a href="#" class="invite-btn" onclick="return false;">
-            <span class="btn-icon">💍</span>
-            <span class="btn-text">Site do Casal</span>
-          </a>
-          <a href="#" class="invite-btn" onclick="return false;">
-            <span class="btn-icon">✓</span>
-            <span class="btn-text">Confirmar Presença</span>
-          </a>
-          <a href="#" class="invite-btn" onclick="return false;">
-            <span class="btn-icon">🎁</span>
-            <span class="btn-text">Lista de Presentes</span>
-          </a>
+        <p class="dresscode-text reveal">Ficaremos felizes em ver você com trajes que combinem com a paleta de cores do nosso casamento.</p>
+        <div class="color-palette reveal">
+          <div class="palette-dot" style="background:#4a5240;" title="Verde Oliva"></div>
+          <div class="palette-dot" style="background:#f4efe5;" title="Creme"></div>
+          <div class="palette-dot" style="background:#b8975a;" title="Dourado"></div>
+          <div class="palette-dot" style="background:#fdfcf9;" title="Branco"></div>
         </div>
       </div>
 
-      <!-- Footer -->
-      <div class="card-footer reveal">
-        <div class="footer-sig">Horberlan &amp; Analia</div>
-        <div class="footer-date-small">20 · JUNHO · 2026</div>
+      <!-- ── DETALHES ── -->
+      <div class="details-section">
+        <img class="details-flowers-tr" src="/manus-storage/flowers_right_e4488cf3.png" alt="" />
+        <h2 class="section-title reveal">Detalhes</h2>
+        <p class="section-subtitle reveal">Informações importantes</p>
+        <div class="detail-item reveal">
+          <div class="detail-dot"></div>
+          <p class="detail-text">Se desejar nos presentear, ficaremos muito gratos por uma contribuição para o nosso novo lar e vida a dois.</p>
+        </div>
+        <div class="detail-item reveal">
+          <div class="detail-dot"></div>
+          <p class="detail-text">Se planejava trazer flores, uma garrafa de vinho com seus votos e desejos será uma lembrança muito especial para nós.</p>
+        </div>
+        <div class="detail-item reveal">
+          <div class="detail-dot"></div>
+          <p class="detail-text">Crianças são bem-vindas! Por favor, informe ao confirmar presença para que possamos preparar tudo com carinho.</p>
+        </div>
+      </div>
+
+      <!-- ── CONFIRMAR PRESENÇA ── -->
+      <div class="confirm-section">
+        <h2 class="section-title reveal">Confirmar Presença</h2>
+        <p class="section-subtitle reveal">Sua confirmação é muito importante</p>
+        <p class="confirm-text reveal">Ficamos felizes em tê-lo entre os nossos convidados! Por favor, confirme sua presença até <strong>20 de maio de 2026</strong>.</p>
+        <a href="#" class="action-btn primary reveal" onclick="return false;">✓ Confirmar Presença</a>
+        <a href="#" class="action-btn outline reveal" onclick="return false;">💍 Site do Casal</a>
+        <a href="#" class="action-btn outline reveal" onclick="return false;">🎁 Lista de Presentes</a>
+      </div>
+
+      <!-- ── FOOTER ── -->
+      <div class="footer-section">
+        <img class="footer-flowers-bottom" src="/manus-storage/flowers_bottom_a04c744e.png" alt="" />
+        <div class="footer-monogram reveal">
+          <img src="/manus-storage/seal_monogram_04b56b7f.png" alt="Monograma HA" />
+        </div>
+        <div class="footer-sig reveal">Horberlan &amp; Analia</div>
+        <div class="footer-date-small reveal">20 · JUNHO · 2026</div>
+        <p class="footer-verse reveal">"Grandes coisas fez o Senhor por nós, e por isso estamos alegres." — Salmos 126:3</p>
       </div>
 
     </div>
