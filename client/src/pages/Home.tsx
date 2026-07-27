@@ -703,7 +703,6 @@ export default function Home() {
       z-index: 2;
       border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.35);
     }
     .location-photo {
       width: 100%;
@@ -729,10 +728,10 @@ export default function Home() {
       gap: 8px;
       margin-top: 22px;
       padding: 13px 28px;
-      border: 1.5px solid rgba(255,255,255,0.45);
+      border: none;
       border-radius: 8px;
-      background: transparent;
-      color: #fff;
+      background: #fff;
+      color: var(--olive);
       font-family: 'Cinzel', serif;
       font-size: 10px;
       letter-spacing: 2.5px;
@@ -742,7 +741,7 @@ export default function Home() {
       transition: all 0.3s ease;
       position: relative; z-index: 2;
     }
-    .map-btn:hover { background: rgba(255,255,255,0.12); }
+    .map-btn:hover { background: rgba(255,255,255,0.88); }
     .map-btn:active { transform: scale(0.97); }
 
     /* ─── DRESS CODE SECTION ─── */
@@ -1553,7 +1552,7 @@ export default function Home() {
       <!-- ── LOCAL ── -->
       <div class="location-section">
         <img class="location-flowers-tr" src="/manus-storage/flowers_corner_local_b218fe3a.png" alt="" />
-        <img class="location-flowers-bl" src="/manus-storage/flowers_top_left_f226d5fb.png" alt="" />
+        <img class="location-flowers-bl" src="/manus-storage/flowers_hero_top_left_510999d2.png" alt="" />
         <h2 class="section-title reveal">Local</h2>
         <p class="section-subtitle reveal">Onde nos encontraremos</p>
         <div class="location-photo-wrap reveal">
@@ -1566,7 +1565,8 @@ export default function Home() {
           São Gonçalo — PB
         </p>
         <a href="https://maps.google.com/?q=Restaurante+O+Mirante,+R.+Alto+Gruta,+S%C3%A3o+Gon%C3%A7alo,+PB,+58814-000,+Brazil" target="_blank" class="map-btn reveal">
-          📍 Ver no Mapa
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" style="display:inline-block;vertical-align:middle;flex-shrink:0"><path d="M13.6177 21.367C13.1841 21.773 12.6044 22 12.0011 22C11.3978 22 10.8182 21.773 10.3845 21.367C6.41302 17.626 1.09076 13.4469 3.68627 7.37966C5.08963 4.09916 8.45834 2 12.0011 2C15.5439 2 18.9126 4.09916 20.316 7.37966C22.9082 13.4393 17.599 17.6389 13.6177 21.367Z" stroke="currentColor" stroke-width="1.5"/><path d="M15.5 11C15.5 12.933 13.933 14.5 12 14.5C10.067 14.5 8.5 12.933 8.5 11C8.5 9.067 10.067 7.5 12 7.5C13.933 7.5 15.5 9.067 15.5 11Z" stroke="currentColor" stroke-width="1.5"/></svg>
+          Ver no Mapa
         </a>
       </div>
 
