@@ -138,10 +138,9 @@ export default function Home() {
     }
     .tap-hint-svg {
       position: absolute;
-      /* Selo visível na parte inferior da viewport — ajuste dinâmico via JS */
-      top: 89%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      top: 0;
+      left: 0;
+      transform: none;
       pointer-events: none;
       animation: pulse-hint 2.2s ease-in-out infinite;
       transition: opacity 0.4s ease;
@@ -150,8 +149,8 @@ export default function Home() {
       height: 130px;
     }
     @keyframes pulse-hint {
-      0%, 100% { opacity: 0.55; transform: translate(-50%, -50%) scale(1); }
-      50%       { opacity: 1;   transform: translate(-50%, -50%) scale(1.04); }
+      0%, 100% { opacity: 0.55; scale: 1; }
+      50%       { opacity: 1;   scale: 1.04; }
     }
 
     /* ─── OPEN ANIMATION ─── */
@@ -954,6 +953,34 @@ export default function Home() {
     /* ─── Open envelope ─── */
     if (typeof window.__envelopeOpened === 'undefined') window.__envelopeOpened = false;
 
+    /* ─── Posicionar o hint circular sobre o centro do selo ─── */
+    function positionHint() {
+      var flap = document.getElementById('env-flap');
+      var hint = document.querySelector('.tap-hint-svg');
+      if (!flap || !hint) return;
+      var flapImg = flap.querySelector('img');
+      if (!flapImg) return;
+      // A imagem da aba tem 784x842px; o centro do selo está em:
+      // cx = 49.7% da largura, cy = 83.6% da altura da imagem
+      var rect = flapImg.getBoundingClientRect();
+      var envRect = document.getElementById('envelope-screen').getBoundingClientRect();
+      var sealX = rect.left - envRect.left + rect.width * 0.497;
+      var sealY = rect.top  - envRect.top  + rect.height * 0.836;
+      hint.style.left = (sealX - 65) + 'px';
+      hint.style.top  = (sealY - 65) + 'px';
+    }
+    // Posicionar imediatamente e ao redimensionar
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', positionHint);
+    } else {
+      positionHint();
+    }
+    window.addEventListener('resize', positionHint);
+    // Aguardar a imagem carregar para reposicionar
+    var flapImgEl = document.querySelector('.env-flap-img');
+    if (flapImgEl) flapImgEl.addEventListener('load', positionHint);
+    setTimeout(positionHint, 300);
+
     function openEnvelope() {
       if (window.__envelopeOpened) return;
       window.__envelopeOpened = true;
@@ -1152,7 +1179,6 @@ export default function Home() {
         <textPath href="#circle-path" startOffset="50%">TOQUE NO SELO · TOQUE NO SELO ·</textPath>
       </text>
       <!-- Ícone de toque centralizado -->
-      <text x="65" y="72" text-anchor="middle" font-size="22" fill="rgba(245,240,232,0.85)">☞</text>
     </svg>
   </div>
 
