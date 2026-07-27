@@ -96,6 +96,9 @@ export default function Home() {
       height: auto;
       display: block;
       /* A imagem PNG já tem a forma triangular com transparência */
+      max-height: 95vh;
+      object-fit: contain;
+      object-position: top center;
     }
 
     /* Overlay vignette */
@@ -147,7 +150,7 @@ export default function Home() {
       height: 210px;
       display: block;
     }
-    /* Wrapper do hint — posicionado sobre o centro do selo, acima de tudo */
+    /* Wrapper do hint — posicionado via JS sobre o centro do lacre */
     .tap-hint-wrap {
       position: fixed;
       left: 50%;
@@ -157,6 +160,7 @@ export default function Home() {
       height: 210px;
       pointer-events: none;
       z-index: 9999;
+      transition: opacity 0.4s ease;
     }
     /* ─── Posicionar hint sobre o selo ─── */
     @keyframes pulse-hint {
@@ -1060,7 +1064,24 @@ export default function Home() {
     /* ─── Open envelope ─── */
     if (typeof window.__envelopeOpened === 'undefined') window.__envelopeOpened = false;
 
-    
+    /* ─── Posicionar hint dinamicamente sobre o lacre ─── */
+    function positionHint() {
+      var flap = document.querySelector('.env-flap-img');
+      var hint = document.querySelector('.tap-hint-wrap');
+      if (!flap || !hint) return;
+      var r = flap.getBoundingClientRect();
+      var sealY = r.top + r.height * 0.836 - 50;
+      var sealX = r.left + r.width * 0.5;
+      hint.style.position = 'fixed';
+      hint.style.left = sealX + 'px';
+      hint.style.top = sealY + 'px';
+      hint.style.transform = 'translate(-50%, -50%)';
+      hint.style.zIndex = '9999';
+    }
+    window.addEventListener('load', positionHint);
+    window.addEventListener('resize', positionHint);
+    setTimeout(positionHint, 100);
+    setTimeout(positionHint, 600);
 
     function openEnvelope() {
       if (window.__envelopeOpened) return;
