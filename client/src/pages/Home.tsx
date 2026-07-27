@@ -279,23 +279,26 @@ export default function Home() {
     }
     .hero-flowers-tl {
       position: absolute;
-      top: -20px; left: -20px;
-      width: 200px;
+      top: -30px; left: -30px;
+      width: 55vw;
+      max-width: 280px;
       pointer-events: none;
       z-index: 2;
     }
     .hero-flowers-br {
       position: absolute;
       bottom: -20px; right: -20px;
-      width: 200px;
+      width: 55vw;
+      max-width: 280px;
       pointer-events: none;
       z-index: 2;
       transform: rotate(180deg);
     }
     .hero-flowers-tr {
       position: absolute;
-      top: -10px; right: -20px;
-      width: 160px;
+      top: -30px; right: -30px;
+      width: 55vw;
+      max-width: 280px;
       pointer-events: none;
       z-index: 2;
       transform: scaleX(-1);
@@ -1239,8 +1242,8 @@ export default function Home() {
 
       <!-- ── HERO ── -->
       <div class="hero-section reveal">
-        <img class="hero-flowers-tl" src="/manus-storage/flowers_top_left_f226d5fb.png" alt="" />
-        <img class="hero-flowers-tr" src="/manus-storage/flowers_top_left_f226d5fb.png" alt="" />
+        <img class="hero-flowers-tl" src="/manus-storage/flowers_hero_top_left_510999d2.png" alt="" />
+        <img class="hero-flowers-tr" src="/manus-storage/flowers_hero_top_right_c98de0ee.png" alt="" />
 
         <div class="hero-monogram"><img src="/manus-storage/monograma_adaa041c.png" alt="Monograma HA" /></div>
         <div class="hero-date-tag">
