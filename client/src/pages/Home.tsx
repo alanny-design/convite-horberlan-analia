@@ -615,7 +615,7 @@ export default function Home() {
   <div id="envelope-screen" onclick="openEnvelope()">
 
     <!-- CORPO: envelope sem aba, limpo para a transição -->
-    <img class="env-body-layer" src="/manus-storage/envelope_body_web_74094ee4.jpg" alt="Envelope" draggable="false" />
+    <img class="env-body-layer" src="/manus-storage/envelope_body_web_7870a1c4.jpg" alt="Envelope" draggable="false" />
 
     <!-- ABA: triângulo superior com o selo (dobra para cima ao clicar) -->
     <div class="env-flap-wrap" id="env-flap">
