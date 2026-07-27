@@ -794,7 +794,7 @@ export default function Home() {
         <div class="hero-monogram">
           <img src="/manus-storage/seal_monogram_04b56b7f.png" alt="Monograma HA" />
         </div>
-        <div class="hero-date-tag">DIA DO CASAMENTO · 20.06.2026</div>
+        <div class="hero-date-tag">DIA DO CASAMENTO · 28.01.2027</div>
         <div class="hero-names">
           <span class="hero-name-1">Horberlan</span>
           <span class="hero-ampersand">&amp;</span>
@@ -814,8 +814,8 @@ export default function Home() {
         <img class="dear-flowers-right" src="/manus-storage/flowers_right_e4488cf3.png" alt="" />
         <h2 class="dear-title reveal">Queridos Convidados!</h2>
         <p class="dear-text reveal">Em breve acontecerá um momento muito especial e alegre para nós — o nosso casamento!</p>
-        <div class="dear-date-big reveal">20.06.26</div>
-        <p class="dear-date-sub reveal">Sábado · 16 horas</p>
+        <div class="dear-date-big reveal">28.01.27</div>
+        <p class="dear-date-sub reveal">Quinta-feira · 16 horas</p>
         <p class="dear-text reveal" style="margin-bottom:0">Convidamos você a compartilhar conosco a alegria deste dia.</p>
       </div>
 
@@ -826,12 +826,11 @@ export default function Home() {
         <img class="location-flowers-bl" src="/manus-storage/flowers_top_left_f226d5fb.png" alt="" />
         <h2 class="section-title reveal">Local</h2>
         <p class="section-subtitle reveal">Onde nos encontraremos</p>
-        <p class="location-name-big reveal">Nome do Local</p>
+        <p class="location-name-big reveal">Restaurante O Mirante</p>
         <p class="location-address reveal">
           Aguardamos você no endereço:<br/>
-          <strong>Nome do Local,</strong><br/>
-          Nome da rua, nº<br/>
-          Cidade — UF
+          <strong>Restaurante O Mirante</strong><br/>
+          São Gonçalo — PB
         </p>
         <a href="#" class="map-btn reveal" onclick="return false;">
           📍 Ver no Mapa
@@ -884,7 +883,7 @@ export default function Home() {
       <div class="confirm-section">
         <h2 class="section-title reveal">Confirmar Presença</h2>
         <p class="section-subtitle reveal">Sua confirmação é muito importante</p>
-        <p class="confirm-text reveal">Ficamos felizes em tê-lo entre os nossos convidados! Por favor, confirme sua presença até <strong>20 de maio de 2026</strong>.</p>
+        <p class="confirm-text reveal">Ficamos felizes em tê-lo entre os nossos convidados! Por favor, confirme sua presença até <strong>10 de janeiro de 2027</strong>.</p>
         <a href="#" class="action-btn primary reveal" onclick="return false;">✓ Confirmar Presença</a>
         <a href="#" class="action-btn outline reveal" onclick="return false;">💍 Site do Casal</a>
         <a href="#" class="action-btn outline reveal" onclick="return false;">🎁 Lista de Presentes</a>
@@ -897,7 +896,7 @@ export default function Home() {
           <img src="/manus-storage/seal_monogram_04b56b7f.png" alt="Monograma HA" />
         </div>
         <div class="footer-sig reveal">Horberlan &amp; Analia</div>
-        <div class="footer-date-small reveal">20 · JUNHO · 2026</div>
+        <div class="footer-date-small reveal">28 · JANEIRO · 2027</div>
         <p class="footer-verse reveal">"Grandes coisas fez o Senhor por nós, e por isso estamos alegres." — Salmos 126:3</p>
       </div>
 
