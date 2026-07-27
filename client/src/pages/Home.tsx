@@ -479,7 +479,7 @@ export default function Home() {
       padding: 52px 32px 52px;
       text-align: center;
       position: relative;
-      overflow: hidden;
+      overflow: visible;
     }
     .location-flowers-bl {
       position: absolute;
@@ -488,6 +488,15 @@ export default function Home() {
       pointer-events: none;
       opacity: 0.7;
       transform: rotate(10deg);
+    }
+    .location-flowers-tr {
+      position: absolute;
+      top: -14px; right: -10px;
+      width: 120px;
+      pointer-events: none;
+      z-index: 2;
+      opacity: 0.75;
+      transform: scaleX(-1);
     }
     .section-title {
       font-family: 'Cinzel', serif;
@@ -554,6 +563,14 @@ export default function Home() {
       padding: 52px 32px 44px;
       text-align: center;
       position: relative;
+    }
+    .dresscode-flowers-sprig {
+      display: block;
+      margin: 0 auto 18px;
+      width: 65%;
+      max-width: 280px;
+      opacity: 0.6;
+      pointer-events: none;
     }
     .dresscode-section .section-title { color: var(--olive); }
     .dresscode-section .section-subtitle { color: var(--olive-light); }
@@ -1263,6 +1280,7 @@ export default function Home() {
 
       <!-- ── LOCAL ── -->
       <div class="location-section">
+        <img class="location-flowers-tr" src="/manus-storage/flowers_corner_local_b218fe3a.png" alt="" />
         <img class="location-flowers-bl" src="/manus-storage/flowers_top_left_f226d5fb.png" alt="" />
         <h2 class="section-title reveal">Local</h2>
         <p class="section-subtitle reveal">Onde nos encontraremos</p>
@@ -1279,13 +1297,11 @@ export default function Home() {
 
       <!-- ── DRESS CODE ── -->
       <div class="dresscode-section">
+        <img class="dresscode-flowers-sprig" src="/manus-storage/flowers_sprig_dresscode_ba565860.png" alt="" />
         <h2 class="section-title reveal">Dress Code</h2>
         <p class="section-subtitle reveal">Sugestão de traje</p>
         <div class="dresscode-img-wrap reveal">
           <img src="/manus-storage/pasted_file_vy5qFx_image_7124b6af.png" alt="Dress Code" style="width:180px;height:auto;opacity:0.9;" />
-        </div>
-        <div class="dresscode-img-wrap reveal" style="margin-top:0">
-          <img src="/manus-storage/pasted_file_vy5qFx_image_7124b6af.png" alt="Dress Code" style="width:180px;height:auto;opacity:0.85;" />
         </div>
         <p class="dresscode-text reveal">Ficaremos felizes em ver você com trajes que combinem com a paleta de cores do nosso casamento.</p>
         <div class="color-palette reveal">
