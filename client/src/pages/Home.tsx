@@ -648,6 +648,152 @@ export default function Home() {
 
     /* ─── PARTICLES ─── */
     .particle {
+    /* ─── COUNTDOWN ─── */
+    .countdown-section {
+      background: linear-gradient(170deg, var(--olive) 0%, #3a4232 100%);
+      padding: 48px 32px 44px;
+      text-align: center;
+    }
+    .countdown-grid {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 24px;
+    }
+    .countdown-unit {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 12px;
+      padding: 16px 14px 12px;
+      min-width: 68px;
+    }
+    .countdown-num {
+      font-family: 'Cinzel', serif;
+      font-size: 36px;
+      font-weight: 600;
+      color: #fff;
+      line-height: 1;
+      letter-spacing: 1px;
+    }
+    .countdown-label {
+      font-family: 'Cinzel', serif;
+      font-size: 8px;
+      letter-spacing: 2px;
+      color: rgba(245,240,232,0.55);
+      text-transform: uppercase;
+      margin-top: 6px;
+    }
+    .countdown-sep {
+      font-family: 'Cinzel', serif;
+      font-size: 28px;
+      color: var(--gold-light);
+      align-self: center;
+      padding-bottom: 8px;
+      opacity: 0.7;
+    }
+
+    /* ─── FORM ─── */
+    .form-section {
+      background: var(--cream);
+      padding: 52px 32px 44px;
+      text-align: center;
+    }
+    .form-section .section-title { color: var(--olive); }
+    .form-section .section-subtitle { color: var(--olive-light); }
+    .invite-form {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 24px;
+    }
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      text-align: left;
+    }
+    .form-label {
+      font-family: 'Cinzel', serif;
+      font-size: 9px;
+      letter-spacing: 2.5px;
+      color: var(--olive-light);
+      text-transform: uppercase;
+    }
+    .form-input, .form-select {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1.5px solid rgba(74,82,64,0.25);
+      border-radius: 10px;
+      background: var(--white);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 16px;
+      color: var(--olive);
+      outline: none;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      -webkit-appearance: none;
+    }
+    .form-input:focus, .form-select:focus {
+      border-color: var(--olive);
+      box-shadow: 0 0 0 3px rgba(74,82,64,0.1);
+    }
+    .form-input::placeholder { color: rgba(74,82,64,0.35); }
+    .form-submit {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 16px 24px;
+      border-radius: 50px;
+      background: var(--olive);
+      color: var(--cream);
+      border: none;
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 18px rgba(74,82,64,0.28);
+      margin-top: 6px;
+    }
+    .form-submit:hover { background: var(--olive-mid); }
+    .form-submit:active { transform: scale(0.97); }
+    .form-success {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      padding: 28px 0;
+    }
+    .form-success.show { display: flex; }
+    .form-success-icon {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: var(--olive);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      color: #fff;
+    }
+    .form-success-title {
+      font-family: 'Great Vibes', cursive;
+      font-size: 28px;
+      color: var(--olive);
+    }
+    .form-success-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 15px;
+      color: #777;
+      line-height: 1.7;
+    }
+
+    /* ─── PARTICLES ─── */
+    .particle {
       position: fixed;
       pointer-events: none;
       z-index: 200;
@@ -744,6 +890,61 @@ export default function Home() {
       }
     }`;
     document.body.appendChild(script);
+
+    // Contador regressivo
+    const cdScript = document.createElement("script");
+    cdScript.textContent = `
+    (function() {
+      var target = new Date('2027-01-28T16:00:00-03:00').getTime();
+      function pad(n) { return String(n).padStart(2,'0'); }
+      function tick() {
+        var now = Date.now();
+        var diff = target - now;
+        if (diff <= 0) {
+          document.getElementById('cd-days').textContent = '00';
+          document.getElementById('cd-hours').textContent = '00';
+          document.getElementById('cd-mins').textContent = '00';
+          document.getElementById('cd-secs').textContent = '00';
+          return;
+        }
+        var days  = Math.floor(diff / 86400000);
+        var hours = Math.floor((diff % 86400000) / 3600000);
+        var mins  = Math.floor((diff % 3600000) / 60000);
+        var secs  = Math.floor((diff % 60000) / 1000);
+        document.getElementById('cd-days').textContent  = pad(days);
+        document.getElementById('cd-hours').textContent = pad(hours);
+        document.getElementById('cd-mins').textContent  = pad(mins);
+        document.getElementById('cd-secs').textContent  = pad(secs);
+      }
+      tick();
+      setInterval(tick, 1000);
+    })();
+
+    function submitConfirm(e) {
+      e.preventDefault();
+      var name   = document.getElementById('cf-name').value.trim();
+      var guests = document.getElementById('cf-guests').value;
+      var phone  = document.getElementById('cf-phone').value.trim();
+      if (!name) return;
+
+      // Envia via WhatsApp para os noivos
+      var guestText = guests === '0' ? 'somente eu' : 'eu + ' + guests + ' acompanhante(s)';
+      var msg = 'Olá Horberlan e Analia! 💍 Confirmo minha presença no casamento de vocês!%0A%0A'
+              + '👤 Nome: ' + encodeURIComponent(name) + '%0A'
+              + '👥 Acompanhantes: ' + encodeURIComponent(guestText) + '%0A'
+              + (phone ? '📱 WhatsApp: ' + encodeURIComponent(phone) + '%0A' : '')
+              + '%0A📅 28 de Janeiro de 2027 · Restaurante O Mirante, São Gonçalo — PB';
+
+      // Abre WhatsApp (número dos noivos — substituir pelo número real)
+      window.open('https://wa.me/5583999999999?text=' + msg, '_blank');
+
+      // Mostra mensagem de sucesso
+      document.getElementById('confirm-form').style.display = 'none';
+      var success = document.getElementById('confirm-success');
+      success.classList.add('show');
+    }
+    `;
+    document.body.appendChild(cdScript);
 
     return () => {
       document.head.removeChild(style);
@@ -879,13 +1080,70 @@ export default function Home() {
         </div>
       </div>
 
-      <!-- ── CONFIRMAR PRESENÇA ── -->
-      <div class="confirm-section">
+      <!-- ── CONTADOR REGRESSIVO ── -->
+      <div class="countdown-section">
+        <h2 class="section-title reveal">Faltam...</h2>
+        <p class="section-subtitle reveal">Para o grande dia</p>
+        <div class="countdown-grid reveal" id="countdown-grid">
+          <div class="countdown-unit">
+            <span class="countdown-num" id="cd-days">--</span>
+            <span class="countdown-label">Dias</span>
+          </div>
+          <span class="countdown-sep">:</span>
+          <div class="countdown-unit">
+            <span class="countdown-num" id="cd-hours">--</span>
+            <span class="countdown-label">Horas</span>
+          </div>
+          <span class="countdown-sep">:</span>
+          <div class="countdown-unit">
+            <span class="countdown-num" id="cd-mins">--</span>
+            <span class="countdown-label">Min</span>
+          </div>
+          <span class="countdown-sep">:</span>
+          <div class="countdown-unit">
+            <span class="countdown-num" id="cd-secs">--</span>
+            <span class="countdown-label">Seg</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── CONFIRMAR PRESENÇA (FORMULÁRIO) ── -->
+      <div class="form-section">
         <h2 class="section-title reveal">Confirmar Presença</h2>
         <p class="section-subtitle reveal">Sua confirmação é muito importante</p>
         <p class="confirm-text reveal">Ficamos felizes em tê-lo entre os nossos convidados! Por favor, confirme sua presença até <strong>10 de janeiro de 2027</strong>.</p>
-        <a href="#" class="action-btn primary reveal" onclick="return false;">✓ Confirmar Presença</a>
-        <a href="#" class="action-btn outline reveal" onclick="return false;">💍 Site do Casal</a>
+
+        <!-- Formulário -->
+        <form class="invite-form reveal" id="confirm-form" onsubmit="submitConfirm(event)">
+          <div class="form-field">
+            <label class="form-label" for="cf-name">Seu nome completo</label>
+            <input class="form-input" id="cf-name" type="text" placeholder="Ex: Maria Silva" required />
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="cf-guests">Número de acompanhantes</label>
+            <select class="form-select" id="cf-guests">
+              <option value="0">Somente eu</option>
+              <option value="1">Eu + 1 acompanhante</option>
+              <option value="2">Eu + 2 acompanhantes</option>
+              <option value="3">Eu + 3 acompanhantes</option>
+              <option value="4">Eu + 4 ou mais</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="cf-phone">WhatsApp (opcional)</label>
+            <input class="form-input" id="cf-phone" type="tel" placeholder="(83) 99999-9999" />
+          </div>
+          <button type="submit" class="form-submit">✓ Confirmar Minha Presença</button>
+        </form>
+
+        <!-- Mensagem de sucesso -->
+        <div class="form-success" id="confirm-success">
+          <div class="form-success-icon">✓</div>
+          <div class="form-success-title">Presença confirmada!</div>
+          <p class="form-success-text">Ficamos muito felizes! Te esperamos no dia 28 de janeiro de 2027 no Restaurante O Mirante, São Gonçalo — PB.</p>
+        </div>
+
+        <a href="#" class="action-btn outline reveal" style="margin-top:16px" onclick="return false;">💍 Site do Casal</a>
         <a href="#" class="action-btn outline reveal" onclick="return false;">🎁 Lista de Presentes</a>
       </div>
 
