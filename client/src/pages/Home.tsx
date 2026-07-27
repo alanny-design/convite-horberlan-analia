@@ -150,8 +150,9 @@ export default function Home() {
     /* Wrapper do hint — posicionado sobre o centro do selo na aba */
     .tap-hint-wrap {
       position: absolute;
-      left: calc(49.7% - 90px);
-      top: calc(83.6% - 90px);
+      left: 49.7%;
+      top: 83.6%;
+      transform: translate(-50%, -50%);
       width: 180px;
       height: 180px;
       pointer-events: none;
