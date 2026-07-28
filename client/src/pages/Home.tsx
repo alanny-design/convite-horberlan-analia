@@ -1096,6 +1096,22 @@ export default function Home() {
       padding: 52px 32px 44px;
       text-align: center;
     }
+    .form-card {
+      background: var(--white);
+      border: 1px solid rgba(74,82,64,0.12);
+      border-radius: 16px;
+      padding: 28px 24px 24px;
+      max-width: 340px;
+      margin: 0 auto;
+      box-shadow: 0 4px 24px rgba(74,82,64,0.08);
+    }
+    .action-btns-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-width: 340px;
+      margin: 20px auto 0;
+    }
     .form-section .section-title { color: var(--olive); }
     .form-section .section-subtitle { color: var(--olive-light); }
     .invite-form {
@@ -1651,7 +1667,8 @@ export default function Home() {
         <p class="confirm-text reveal">Ficamos felizes em tê-lo entre os nossos convidados! Por favor, confirme sua presença até <strong>10 de janeiro de 2027</strong>.</p>
 
         <!-- Formulário -->
-        <form class="invite-form reveal" id="confirm-form" onsubmit="submitConfirm(event)">
+        <div class="form-card reveal">
+        <form class="invite-form" id="confirm-form" onsubmit="submitConfirm(event)">
           <div class="form-field">
             <label class="form-label" for="cf-name">Seu nome completo</label>
             <input class="form-input" id="cf-name" type="text" placeholder="Ex: Maria Silva" required />
@@ -1679,15 +1696,18 @@ export default function Home() {
           <div class="form-success-title">Presença confirmada!</div>
           <p class="form-success-text">Ficamos muito felizes! Te esperamos no dia 28 de janeiro de 2027 no Restaurante O Mirante, Sousa — PB.</p>
         </div>
+        </div>
 
-        <button type="button" class="action-btn outline reveal" style="margin-top:16px" onclick="openCalModal()"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" style="display:inline-block;vertical-align:middle;margin-right:7px;flex-shrink:0">
+        <div class="action-btns-wrap reveal">
+        <button type="button" class="action-btn outline" onclick="openCalModal()"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" style="display:inline-block;vertical-align:middle;margin-right:7px;flex-shrink:0">
   <path d="M15.5 2V6M7.5 2V6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
   <path d="M2.5 10H20.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
   <path d="M20.5 12C20.5 8.22876 20.5 6.34315 19.3284 5.17157C18.1569 4 16.2712 4 12.5 4H10.5C6.72876 4 4.84315 4 3.67157 5.17157C2.5 6.34315 2.5 8.22876 2.5 12V14C2.5 17.7712 2.5 19.6569 3.67157 20.8284C4.84315 22 6.72876 22 10.5 22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
   <path d="M14.515 15.3866C15.5876 14.7469 16.5238 15.0047 17.0863 15.4153C17.3169 15.5837 17.4322 15.6679 17.5 15.6679C17.5678 15.6679 17.6831 15.5837 17.9137 15.4153C18.4762 15.0047 19.4124 14.7469 20.485 15.3866C21.8928 16.2261 22.2113 18.9958 18.9642 21.3324C18.3457 21.7775 18.0365 22 17.5 22C16.9635 22 16.6543 21.7775 16.0358 21.3324C12.7887 18.9958 13.1072 16.2261 14.515 15.3866Z" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"/>
 </svg> Salvar no Calendário</button>
-        <a href="#" class="action-btn outline reveal" onclick="return false;">💍 Site do Casal</a>
-        <a href="#" class="action-btn outline reveal" onclick="return false;">🎁 Lista de Presentes</a>
+        <a href="#" class="action-btn outline" onclick="return false;">💍 Site do Casal</a>
+        <a href="#" class="action-btn outline" onclick="return false;">🎁 Lista de Presentes</a>
+        </div>
       </div>
 
       <!-- ── FOOTER ── -->
