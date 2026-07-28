@@ -1573,7 +1573,6 @@ export default function Home() {
 
       <!-- ── DRESS CODE ── -->
       <div class="dresscode-section">
-        <img class="dresscode-flowers-sprig" src="/manus-storage/flowers_sprig_dresscode_ba565860.png" alt="" />
         <h2 class="section-title reveal">Dress Code</h2>
         <p class="section-subtitle reveal">Sugestão de traje</p>
         <div class="dresscode-img-wrap reveal">
@@ -1584,7 +1583,7 @@ export default function Home() {
           <div class="palette-dot" style="background:#4a5240;" title="Verde Oliva"></div>
           <div class="palette-dot" style="background:#f4efe5;" title="Creme"></div>
           <div class="palette-dot" style="background:#b8975a;" title="Dourado"></div>
-          <div class="palette-dot" style="background:#fdfcf9;" title="Branco"></div>
+          <div class="palette-dot" style="background:#a8c5a0;" title="Verde Menta"></div>
         </div>
       </div>
 
