@@ -1048,46 +1048,69 @@ export default function Home() {
       background: linear-gradient(170deg, var(--olive) 0%, #3a4232 100%);
       padding: 48px 32px 44px;
       text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .countdown-flowers-tr {
+      position: absolute;
+      top: -10px; right: -14px;
+      width: 44vw;
+      max-width: 190px;
+      pointer-events: none;
+      transform: scaleX(-1);
+      z-index: 2;
+    }
+    .countdown-flowers-bl {
+      position: absolute;
+      bottom: -10px; left: -14px;
+      width: 44vw;
+      max-width: 190px;
+      pointer-events: none;
+      transform: scaleY(-1);
+      z-index: 2;
     }
     .countdown-grid {
       display: flex;
       justify-content: center;
-      gap: 12px;
+      gap: 10px;
       margin-top: 24px;
+      position: relative;
+      z-index: 3;
     }
     .countdown-unit {
       display: flex;
       flex-direction: column;
       align-items: center;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 12px;
-      padding: 16px 14px 12px;
-      min-width: 68px;
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(245,220,150,0.25);
+      border-radius: 8px;
+      padding: 18px 12px 14px;
+      min-width: 64px;
+      backdrop-filter: blur(4px);
     }
     .countdown-num {
       font-family: 'Cinzel', serif;
-      font-size: 36px;
+      font-size: 38px;
       font-weight: 600;
-      color: #fff;
+      color: var(--gold-light);
       line-height: 1;
       letter-spacing: 1px;
     }
     .countdown-label {
       font-family: 'Cinzel', serif;
-      font-size: 8px;
+      font-size: 7.5px;
       letter-spacing: 2px;
-      color: rgba(245,240,232,0.55);
+      color: rgba(245,240,232,0.65);
       text-transform: uppercase;
       margin-top: 6px;
     }
     .countdown-sep {
       font-family: 'Cinzel', serif;
-      font-size: 28px;
+      font-size: 24px;
       color: var(--gold-light);
       align-self: center;
       padding-bottom: 8px;
-      opacity: 0.7;
+      opacity: 0.85;
     }
 
     /* ─── FORM ─── */
@@ -1635,8 +1658,10 @@ export default function Home() {
 
       <!-- ── CONTADOR REGRESSIVO ── -->
       <div class="countdown-section">
-        <h2 class="section-title reveal">Faltam...</h2>
-        <p class="section-subtitle reveal">Para o grande dia</p>
+        <img class="countdown-flowers-tr" src="/manus-storage/flowers_hero_top_left_510999d2.png" alt="" />
+        <img class="countdown-flowers-bl" src="/manus-storage/flowers_hero_top_left_510999d2.png" alt="" />
+        <h2 class="section-title reveal" style="color:#fff;">Faltam...</h2>
+        <p class="section-subtitle reveal" style="color:rgba(245,220,150,0.75);">Para o grande dia</p>
         <div class="countdown-grid reveal" id="countdown-grid">
           <div class="countdown-unit">
             <span class="countdown-num" id="cd-days">--</span>
