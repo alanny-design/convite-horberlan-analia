@@ -1105,12 +1105,12 @@ export default function Home() {
     }
     .countdown-heading {
       font-family: 'Cinzel', serif;
-      font-size: 26px;
-      font-weight: 600;
-      letter-spacing: 5px;
+      font-size: 18px;
+      font-weight: 500;
+      letter-spacing: 4px;
       color: var(--olive);
       text-transform: uppercase;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
     }
     .countdown-sub {
       font-family: 'Great Vibes', cursive;
@@ -1133,11 +1133,11 @@ export default function Home() {
     }
     .countdown-num {
       font-family: 'Cinzel', serif;
-      font-size: 42px;
+      font-size: 48px;
       font-weight: 600;
       color: var(--olive);
       line-height: 1;
-      letter-spacing: 1px;
+      letter-spacing: 2px;
     }
     .countdown-label {
       font-family: 'Cinzel', serif;
@@ -1716,9 +1716,16 @@ export default function Home() {
 
       <!-- ── CONTADOR REGRESSIVO ── -->
       <div class="countdown-section">
-        <img class="countdown-sprig reveal" src="/manus-storage/flowers_sprig_dresscode_ba565860.png" alt="" />
-        <div class="countdown-heading reveal">Faltam para</div>
-        <div class="countdown-heading reveal" style="font-size:20px;letter-spacing:6px;margin-top:-4px;">o grande dia</div>
+        <svg class="countdown-sprig reveal" viewBox="0 0 120 36" fill="none" xmlns="http://www.w3.org/2000/svg" width="110" style="display:block;margin:0 auto 14px;opacity:0.55;">
+          <path d="M60 18 C50 8 35 4 20 10" stroke="#4a5240" stroke-width="1.2" stroke-linecap="round"/>
+          <path d="M60 18 C70 8 85 4 100 10" stroke="#4a5240" stroke-width="1.2" stroke-linecap="round"/>
+          <path d="M40 13 C38 8 33 7 30 10" stroke="#4a5240" stroke-width="1" stroke-linecap="round"/>
+          <path d="M30 10 C28 6 25 6 23 9" stroke="#4a5240" stroke-width="0.9" stroke-linecap="round"/>
+          <path d="M80 13 C82 8 87 7 90 10" stroke="#4a5240" stroke-width="1" stroke-linecap="round"/>
+          <path d="M90 10 C92 6 95 6 97 9" stroke="#4a5240" stroke-width="0.9" stroke-linecap="round"/>
+          <circle cx="60" cy="18" r="2" fill="#4a5240" opacity="0.5"/>
+        </svg>
+        <div class="countdown-heading reveal">Faltam para o grande dia</div>
         <div class="countdown-sub reveal">tempo...</div>
         <div class="countdown-grid reveal" id="countdown-grid">
           <div class="countdown-unit">
