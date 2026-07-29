@@ -1092,7 +1092,7 @@ export default function Home() {
     .particle {
     /* ─── COUNTDOWN ─── */
     .countdown-section {
-      background: var(--cream);
+      background: #ffffff;
       padding: 44px 24px 48px;
       text-align: center;
       position: relative;
@@ -1787,15 +1787,7 @@ export default function Home() {
 
       <!-- ── CONTADOR REGRESSIVO ── -->
       <div class="countdown-section">
-        <svg class="countdown-sprig reveal" viewBox="0 0 120 36" fill="none" xmlns="http://www.w3.org/2000/svg" width="110" style="display:block;margin:0 auto 14px;opacity:0.55;">
-          <path d="M60 18 C50 8 35 4 20 10" stroke="#4a5240" stroke-width="1.2" stroke-linecap="round"/>
-          <path d="M60 18 C70 8 85 4 100 10" stroke="#4a5240" stroke-width="1.2" stroke-linecap="round"/>
-          <path d="M40 13 C38 8 33 7 30 10" stroke="#4a5240" stroke-width="1" stroke-linecap="round"/>
-          <path d="M30 10 C28 6 25 6 23 9" stroke="#4a5240" stroke-width="0.9" stroke-linecap="round"/>
-          <path d="M80 13 C82 8 87 7 90 10" stroke="#4a5240" stroke-width="1" stroke-linecap="round"/>
-          <path d="M90 10 C92 6 95 6 97 9" stroke="#4a5240" stroke-width="0.9" stroke-linecap="round"/>
-          <circle cx="60" cy="18" r="2" fill="#4a5240" opacity="0.5"/>
-        </svg>
+
         <div class="reveal" style="text-align:center;margin-bottom:12px;position:relative;z-index:2;">
           <img src="/manus-storage/monograma_ha_arco2_168a90a4.jpg" alt="Monograma HA" style="width:80px;height:auto;object-fit:contain;display:inline-block;" />
         </div>
