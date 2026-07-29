@@ -1093,19 +1093,18 @@ export default function Home() {
     /* ─── COUNTDOWN ─── */
     .countdown-section {
       background: var(--cream);
-      padding: 44px 32px 48px;
+      padding: 44px 24px 48px;
       text-align: center;
       position: relative;
     }
     .countdown-sprig {
       display: block;
-      margin: 0 auto 16px;
-      width: 80px;
-      opacity: 0.7;
+      margin: 0 auto 14px;
+      opacity: 0.55;
     }
     .countdown-heading {
       font-family: 'Cinzel', serif;
-      font-size: 22px;
+      font-size: 20px;
       font-weight: 600;
       letter-spacing: 4px;
       color: var(--olive);
@@ -1116,15 +1115,15 @@ export default function Home() {
     .countdown-sub {
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
-      font-size: 16px;
+      font-size: 15px;
       color: var(--olive-light);
-      margin-bottom: 20px;
+      margin-bottom: 22px;
       letter-spacing: 1px;
     }
     .countdown-grid {
       display: flex;
       justify-content: center;
-      align-items: flex-start;
+      align-items: center;
       gap: 0;
       margin-top: 0;
     }
@@ -1132,34 +1131,36 @@ export default function Home() {
       display: flex;
       flex-direction: column;
       align-items: center;
-      min-width: 64px;
+      width: 68px;
     }
     .countdown-num {
       font-family: 'Cinzel', serif;
-      font-size: 44px;
-      font-weight: 600;
+      font-size: 40px;
+      font-weight: 700;
       color: var(--olive);
       line-height: 1;
-      letter-spacing: 2px;
+      letter-spacing: 1px;
+      font-variant-numeric: tabular-nums;
     }
     .countdown-label {
       font-family: 'Cinzel', serif;
-      font-size: 6.5px;
-      letter-spacing: 2px;
+      font-size: 6px;
+      letter-spacing: 1.5px;
       color: var(--olive-light);
       text-transform: uppercase;
-      margin-top: 5px;
+      margin-top: 6px;
+      white-space: nowrap;
     }
     .countdown-sep {
       font-family: 'Cinzel', serif;
-      font-size: 36px;
-      font-weight: 600;
+      font-size: 32px;
+      font-weight: 700;
       color: var(--olive);
-      align-self: flex-start;
-      padding-top: 4px;
-      opacity: 0.5;
+      opacity: 0.35;
       line-height: 1;
       margin: 0 2px;
+      padding-bottom: 14px;
+      align-self: flex-end;
     }
 
     /* ─── FORM ─── */
