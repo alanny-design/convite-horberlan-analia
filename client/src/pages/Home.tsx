@@ -1820,24 +1820,6 @@ export default function Home() {
         </div>
       </div>
 
-      <!-- ── ENVELOPE COM ASSINATURA ── -->
-      <div class="envelope-sig-section reveal" style="background:#4a5240;padding:52px 28px 52px;text-align:center;position:relative;overflow:hidden;">
-        <!-- Flores nos cantos -->
-        <img src="/manus-storage/flowers_hero_top_left_510999d2.png" alt="" style="position:absolute;top:-10px;right:-14px;width:44vw;max-width:190px;pointer-events:none;transform:scaleX(-1);z-index:2;opacity:0.7;" />
-        <img src="/manus-storage/flowers_hero_top_left_510999d2.png" alt="" style="position:absolute;bottom:-10px;left:-14px;width:44vw;max-width:190px;pointer-events:none;transform:scaleY(-1);z-index:2;opacity:0.7;" />
-        <!-- Título -->
-        <h2 style="font-family:'Cinzel',serif;font-size:18px;letter-spacing:4px;color:#f5f0e8;text-transform:uppercase;margin-bottom:6px;position:relative;z-index:3;text-align:center;">Com amor</h2>
-        <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;color:rgba(245,240,232,0.6);letter-spacing:1px;margin-bottom:32px;position:relative;z-index:3;text-align:center;">feito com carinho para você</p>
-        <!-- Envelope com assinatura -->
-        <div style="position:relative;z-index:3;max-width:320px;margin:0 auto;">
-          <!-- Página branca saindo do envelope -->
-          <div style="background:#fff;border-radius:4px 4px 0 0;padding:28px 24px 20px;margin-bottom:-8px;position:relative;z-index:2;box-shadow:0 -4px 20px rgba(0,0,0,0.15);">
-            <img src="/manus-storage/assinatura_casal_721e4380.jpg" alt="Assinatura Horberlan e Analia" style="width:100%;max-width:260px;height:auto;display:block;margin:0 auto;" />
-          </div>
-          <!-- Envelope gerado com nano-banana -->
-          <img src="/manus-storage/envelope_olive_3ccb82d8.png" alt="Envelope" style="width:100%;display:block;position:relative;z-index:1;border-radius:0 0 8px 8px;" />
-        </div>
-      </div>
       <!-- ── CONFIRMAR PRESENÇA (FORMULÁRIO) ── -->
       <div class="form-section" style="background:#f5f0e8;padding:52px 28px 52px;text-align:center;position:relative;overflow:hidden;">
         <img class="form-flowers-tr" src="/manus-storage/flowers_hero_top_left_510999d2.png" alt="" style="position:absolute;top:-10px;right:-14px;width:44vw;max-width:190px;pointer-events:none;transform:scaleX(-1);z-index:2;" />
