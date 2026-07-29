@@ -767,6 +767,14 @@ export default function Home() {
     }
     .dresscode-section .section-title { color: var(--olive); }
     .dresscode-section .section-subtitle { color: var(--olive-light); }
+    .dresscode-outfits-img {
+      display: block;
+      width: 100%;
+      max-width: 340px;
+      height: auto;
+      margin: 20px auto 0;
+      border-radius: 12px;
+    }
     .dresscode-img-wrap {
       display: flex;
       justify-content: center;
@@ -1667,6 +1675,7 @@ export default function Home() {
             <span class="palette-name">Creme</span>
           </div>
         </div>
+        <img class="dresscode-outfits-img reveal" src="/manus-storage/pasted_file_SJVWHE_image_6b12ba90.png" alt="Sugestao de trajes" />
       </div>
 
       <!-- ── DETALHES ── -->
