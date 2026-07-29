@@ -784,7 +784,7 @@ export default function Home() {
     .dresscode-img-wrap {
       display: flex;
       justify-content: center;
-      margin: 20px 0 16px;
+      margin: 20px 0 4px;
     }
     .dresscode-img-wrap img {
       width: 160px;
