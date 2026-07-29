@@ -1124,7 +1124,7 @@ export default function Home() {
     .countdown-grid {
       display: flex;
       justify-content: center;
-      align-items: flex-end;
+      align-items: flex-start;
       gap: 0;
       margin-top: 0;
     }
@@ -1132,33 +1132,34 @@ export default function Home() {
       display: flex;
       flex-direction: column;
       align-items: center;
-      min-width: 56px;
+      min-width: 64px;
     }
     .countdown-num {
-      font-family: 'MonteCarlo', cursive;
-      font-size: 60px;
-      font-weight: 400;
+      font-family: 'Cinzel', serif;
+      font-size: 44px;
+      font-weight: 600;
       color: var(--olive);
       line-height: 1;
-      letter-spacing: 1px;
+      letter-spacing: 2px;
     }
     .countdown-label {
       font-family: 'Cinzel', serif;
-      font-size: 7px;
-      letter-spacing: 2.5px;
+      font-size: 6.5px;
+      letter-spacing: 2px;
       color: var(--olive-light);
       text-transform: uppercase;
-      margin-top: 2px;
+      margin-top: 5px;
     }
     .countdown-sep {
       font-family: 'Cinzel', serif;
-      font-size: 28px;
+      font-size: 36px;
+      font-weight: 600;
       color: var(--olive);
-      align-self: center;
-      opacity: 0.4;
+      align-self: flex-start;
+      padding-top: 4px;
+      opacity: 0.5;
       line-height: 1;
-      margin: 0 4px;
-      padding-bottom: 8px;
+      margin: 0 2px;
     }
 
     /* ─── FORM ─── */
@@ -1743,12 +1744,12 @@ export default function Home() {
           <span class="countdown-sep">:</span>
           <div class="countdown-unit">
             <span class="countdown-num" id="cd-mins">--</span>
-            <span class="countdown-label">Min</span>
+            <span class="countdown-label">Minutos</span>
           </div>
           <span class="countdown-sep">:</span>
           <div class="countdown-unit">
             <span class="countdown-num" id="cd-secs">--</span>
-            <span class="countdown-label">Seg</span>
+            <span class="countdown-label">Segundos</span>
           </div>
         </div>
       </div>
