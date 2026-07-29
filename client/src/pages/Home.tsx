@@ -753,9 +753,13 @@ export default function Home() {
     /* ─── DRESS CODE SECTION ─── */
     .dresscode-section {
       background: var(--white);
-      padding: 52px 32px 44px;
+      padding: 52px 0 0;
       text-align: center;
       position: relative;
+    }
+    .dresscode-section > *:not(.dresscode-outfits-img) {
+      padding-left: 32px;
+      padding-right: 32px;
     }
     .dresscode-flowers-sprig {
       display: block;
@@ -776,10 +780,9 @@ export default function Home() {
     .dresscode-outfits-img {
       display: block;
       width: 100%;
-      max-width: 340px;
       height: auto;
-      margin: 20px auto 0;
-      border-radius: 12px;
+      margin: 20px 0 0;
+      border-radius: 0;
     }
     .dresscode-img-wrap {
       display: flex;
@@ -1681,7 +1684,7 @@ export default function Home() {
             <span class="palette-name">Creme</span>
           </div>
         </div>
-        <img class="dresscode-outfits-img reveal" src="/manus-storage/pasted_file_SJVWHE_image_6b12ba90.png" alt="Sugestao de trajes" />
+        <img class="dresscode-outfits-img reveal" src="/manus-storage/pasted_file_vUHaJW_image_bed50782.png" alt="Sugestao de trajes" />
       </div>
 
       <!-- ── DETALHES ── -->
