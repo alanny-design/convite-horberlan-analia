@@ -765,7 +765,13 @@ export default function Home() {
       opacity: 0.6;
       pointer-events: none;
     }
-    .dresscode-section .section-title { color: var(--olive); }
+    .dresscode-section .section-title {
+      color: var(--olive);
+      font-size: 30px;
+      letter-spacing: 5px;
+      line-height: 1.25;
+      margin-bottom: 8px;
+    }
     .dresscode-section .section-subtitle { color: var(--olive-light); }
     .dresscode-outfits-img {
       display: block;
@@ -1651,11 +1657,11 @@ export default function Home() {
 
       <!-- ── DRESS CODE ── -->
       <div class="dresscode-section">
-        <h2 class="section-title reveal">Dress Code</h2>
-        <p class="section-subtitle reveal">Sugestão de traje</p>
         <div class="dresscode-img-wrap reveal">
-          <img src="/manus-storage/bowtie_dresscode_8f0dbf55.png" alt="Dress Code" style="width:140px;height:auto;" />
+          <img src="/manus-storage/bowtie_dresscode_8f0dbf55.png" alt="Dress Code" style="width:120px;height:auto;" />
         </div>
+        <h2 class="section-title reveal">Dress<br/>Code</h2>
+        <p class="section-subtitle reveal">Sugestão de traje</p>
         <p class="dresscode-text reveal">Ficaremos felizes em ver você com trajes que combinem com a paleta de cores do nosso casamento.</p>
         <div class="color-palette reveal">
           <div class="palette-item">
