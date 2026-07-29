@@ -858,7 +858,7 @@ export default function Home() {
     /* ─── DETAILS SECTION ─── */
     .details-section {
       background: linear-gradient(170deg, #3a4232 0%, var(--olive) 100%);
-      padding: 52px 32px 44px;
+      padding: 80px 48px 80px;
       text-align: center;
       position: relative;
       overflow: hidden;
