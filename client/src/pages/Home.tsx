@@ -207,7 +207,7 @@ export default function Home() {
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 0 0 48px;
+      padding: 0;
       background: var(--cream);
       /* Inicia completamente abaixo da tela e invisível */
       opacity: 0;
