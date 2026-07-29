@@ -1083,72 +1083,70 @@ export default function Home() {
     .particle {
     /* ─── COUNTDOWN ─── */
     .countdown-section {
-      background: linear-gradient(170deg, var(--olive) 0%, #3a4232 100%);
-      padding: 48px 32px 44px;
+      background: var(--cream);
+      padding: 44px 32px 48px;
       text-align: center;
       position: relative;
-      overflow: hidden;
     }
-    .countdown-flowers-tr {
-      position: absolute;
-      top: -10px; right: -14px;
-      width: 44vw;
-      max-width: 190px;
-      pointer-events: none;
-      transform: scaleX(-1);
-      z-index: 2;
+    .countdown-sprig {
+      display: block;
+      margin: 0 auto 16px;
+      width: 80px;
+      opacity: 0.7;
     }
-    .countdown-flowers-bl {
-      position: absolute;
-      bottom: -10px; left: -14px;
-      width: 44vw;
-      max-width: 190px;
-      pointer-events: none;
-      transform: scaleY(-1);
-      z-index: 2;
+    .countdown-heading {
+      font-family: 'Cinzel', serif;
+      font-size: 26px;
+      font-weight: 600;
+      letter-spacing: 5px;
+      color: var(--olive);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .countdown-sub {
+      font-family: 'Great Vibes', cursive;
+      font-size: 22px;
+      color: var(--olive-light);
+      margin-bottom: 20px;
     }
     .countdown-grid {
       display: flex;
       justify-content: center;
-      gap: 10px;
-      margin-top: 24px;
-      position: relative;
-      z-index: 3;
+      align-items: flex-end;
+      gap: 0;
+      margin-top: 0;
     }
     .countdown-unit {
       display: flex;
       flex-direction: column;
       align-items: center;
-      background: rgba(255,255,255,0.10);
-      border: 1px solid rgba(245,220,150,0.25);
-      border-radius: 8px;
-      padding: 18px 12px 14px;
-      min-width: 64px;
-      backdrop-filter: blur(4px);
+      min-width: 56px;
     }
     .countdown-num {
       font-family: 'Cinzel', serif;
-      font-size: 38px;
+      font-size: 42px;
       font-weight: 600;
-      color: var(--gold-light);
+      color: var(--olive);
       line-height: 1;
       letter-spacing: 1px;
     }
     .countdown-label {
       font-family: 'Cinzel', serif;
-      font-size: 7.5px;
+      font-size: 7px;
       letter-spacing: 2px;
-      color: rgba(245,240,232,0.65);
+      color: var(--olive-light);
       text-transform: uppercase;
-      margin-top: 6px;
+      margin-top: 5px;
     }
     .countdown-sep {
       font-family: 'Cinzel', serif;
-      font-size: 24px;
-      color: var(--gold-light);
-      align-self: center;
-      padding-bottom: 8px;
-      opacity: 0.85;
+      font-size: 36px;
+      color: var(--olive);
+      align-self: flex-start;
+      padding-top: 2px;
+      opacity: 0.5;
+      line-height: 1;
+      margin: 0 2px;
     }
 
     /* ─── FORM ─── */
@@ -1709,10 +1707,10 @@ export default function Home() {
 
       <!-- ── CONTADOR REGRESSIVO ── -->
       <div class="countdown-section">
-        <img class="countdown-flowers-tr" src="/manus-storage/flowers_hero_top_left_510999d2.png" alt="" />
-        <img class="countdown-flowers-bl" src="/manus-storage/flowers_hero_top_left_510999d2.png" alt="" />
-        <h2 class="section-title reveal" style="color:#fff;">Faltam...</h2>
-        <p class="section-subtitle reveal" style="color:rgba(245,220,150,0.75);">Para o grande dia</p>
+        <img class="countdown-sprig reveal" src="/manus-storage/flowers_sprig_dresscode_ba565860.png" alt="" />
+        <div class="countdown-heading reveal">Faltam para</div>
+        <div class="countdown-heading reveal" style="font-size:20px;letter-spacing:6px;margin-top:-4px;">o grande dia</div>
+        <div class="countdown-sub reveal">tempo...</div>
         <div class="countdown-grid reveal" id="countdown-grid">
           <div class="countdown-unit">
             <span class="countdown-num" id="cd-days">--</span>
