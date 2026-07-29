@@ -1121,7 +1121,9 @@ export default function Home() {
       letter-spacing: 1px;
     }
     .countdown-grid {
-      display: flex;
+      display: flex !important;
+      flex-direction: row !important;
+      flex-wrap: nowrap !important;
       justify-content: center;
       align-items: center;
       gap: 0;
@@ -1732,25 +1734,25 @@ export default function Home() {
         </svg>
         <div class="countdown-heading reveal">Faltam para o grande dia</div>
         <div class="countdown-sub reveal">tempo...</div>
-        <div class="countdown-grid reveal" id="countdown-grid">
-          <div class="countdown-unit">
-            <span class="countdown-num" id="cd-days">--</span>
-            <span class="countdown-label">Dias</span>
+        <div class="countdown-grid reveal" id="countdown-grid" style="display:flex;flex-direction:row;justify-content:center;align-items:center;flex-wrap:nowrap;">
+          <div class="countdown-unit" style="display:flex;flex-direction:column;align-items:center;width:68px;">
+            <span class="countdown-num" id="cd-days" style="font-family:'Cinzel',serif;font-size:40px;font-weight:700;color:#4a5240;line-height:1;">--</span>
+            <span class="countdown-label" style="font-family:'Cinzel',serif;font-size:6px;letter-spacing:1.5px;color:#7a8a6a;text-transform:uppercase;margin-top:6px;white-space:nowrap;">Dias</span>
           </div>
-          <span class="countdown-sep">:</span>
-          <div class="countdown-unit">
-            <span class="countdown-num" id="cd-hours">--</span>
-            <span class="countdown-label">Horas</span>
+          <span class="countdown-sep" style="font-family:'Cinzel',serif;font-size:32px;font-weight:700;color:#4a5240;opacity:0.35;line-height:1;margin:0 2px;padding-bottom:14px;align-self:flex-end;">:</span>
+          <div class="countdown-unit" style="display:flex;flex-direction:column;align-items:center;width:68px;">
+            <span class="countdown-num" id="cd-hours" style="font-family:'Cinzel',serif;font-size:40px;font-weight:700;color:#4a5240;line-height:1;">--</span>
+            <span class="countdown-label" style="font-family:'Cinzel',serif;font-size:6px;letter-spacing:1.5px;color:#7a8a6a;text-transform:uppercase;margin-top:6px;white-space:nowrap;">Horas</span>
           </div>
-          <span class="countdown-sep">:</span>
-          <div class="countdown-unit">
-            <span class="countdown-num" id="cd-mins">--</span>
-            <span class="countdown-label">Minutos</span>
+          <span class="countdown-sep" style="font-family:'Cinzel',serif;font-size:32px;font-weight:700;color:#4a5240;opacity:0.35;line-height:1;margin:0 2px;padding-bottom:14px;align-self:flex-end;">:</span>
+          <div class="countdown-unit" style="display:flex;flex-direction:column;align-items:center;width:68px;">
+            <span class="countdown-num" id="cd-mins" style="font-family:'Cinzel',serif;font-size:40px;font-weight:700;color:#4a5240;line-height:1;">--</span>
+            <span class="countdown-label" style="font-family:'Cinzel',serif;font-size:6px;letter-spacing:1.5px;color:#7a8a6a;text-transform:uppercase;margin-top:6px;white-space:nowrap;">Minutos</span>
           </div>
-          <span class="countdown-sep">:</span>
-          <div class="countdown-unit">
-            <span class="countdown-num" id="cd-secs">--</span>
-            <span class="countdown-label">Segundos</span>
+          <span class="countdown-sep" style="font-family:'Cinzel',serif;font-size:32px;font-weight:700;color:#4a5240;opacity:0.35;line-height:1;margin:0 2px;padding-bottom:14px;align-self:flex-end;">:</span>
+          <div class="countdown-unit" style="display:flex;flex-direction:column;align-items:center;width:68px;">
+            <span class="countdown-num" id="cd-secs" style="font-family:'Cinzel',serif;font-size:40px;font-weight:700;color:#4a5240;line-height:1;">--</span>
+            <span class="countdown-label" style="font-family:'Cinzel',serif;font-size:6px;letter-spacing:1.5px;color:#7a8a6a;text-transform:uppercase;margin-top:6px;white-space:nowrap;">Segundos</span>
           </div>
         </div>
       </div>
