@@ -1646,7 +1646,7 @@ export default function Home() {
         <h2 class="section-title reveal">Dress Code</h2>
         <p class="section-subtitle reveal">Sugestão de traje</p>
         <div class="dresscode-img-wrap reveal">
-          <img src="/manus-storage/pasted_file_vy5qFx_image_7124b6af.png" alt="Dress Code" style="width:180px;height:auto;opacity:0.9;" />
+          <img src="/manus-storage/dresscode_nobg_cbac7489.png" alt="Dress Code" style="width:180px;height:auto;" />
         </div>
         <p class="dresscode-text reveal">Ficaremos felizes em ver você com trajes que combinem com a paleta de cores do nosso casamento.</p>
         <div class="color-palette reveal">
