@@ -1797,7 +1797,7 @@ export default function Home() {
           <circle cx="60" cy="18" r="2" fill="#4a5240" opacity="0.5"/>
         </svg>
         <div class="reveal" style="text-align:center;margin-bottom:12px;position:relative;z-index:2;">
-          <img src="/manus-storage/monograma_ha_novo_e220cd3c.jpg" alt="Monograma HA" style="width:80px;height:auto;object-fit:contain;display:inline-block;" />
+          <img src="/manus-storage/monograma_ha_arco2_168a90a4.jpg" alt="Monograma HA" style="width:80px;height:auto;object-fit:contain;display:inline-block;" />
         </div>
         <h2 class="section-title reveal" style="color:var(--olive);text-align:center;width:100%;">Faltam:</h2>
         <div class="countdown-grid reveal" id="countdown-grid" style="display:flex;flex-direction:row;justify-content:center;align-items:center;flex-wrap:nowrap;">
