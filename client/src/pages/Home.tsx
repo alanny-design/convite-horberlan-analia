@@ -1168,17 +1168,44 @@ export default function Home() {
     /* ─── FORM ─── */
     .form-section {
       background: var(--cream);
-      padding: 52px 32px 44px;
+      padding: 52px 28px 52px;
       text-align: center;
+      position: relative;
+    }
+    .form-flowers-tr {
+      position: absolute;
+      top: -10px; right: -14px;
+      width: 44vw;
+      max-width: 190px;
+      pointer-events: none;
+      transform: scaleX(-1);
+      z-index: 2;
+    }
+    .form-flowers-bl {
+      position: absolute;
+      bottom: -10px; left: -14px;
+      width: 44vw;
+      max-width: 190px;
+      pointer-events: none;
+      transform: scaleY(-1);
+      z-index: 2;
     }
     .form-card {
       background: var(--white);
       border: 1px solid rgba(74,82,64,0.12);
       border-radius: 16px;
-      padding: 28px 24px 24px;
+      padding: 32px 24px 28px;
       max-width: 340px;
       margin: 0 auto;
-      box-shadow: 0 4px 24px rgba(74,82,64,0.08);
+      box-shadow: 0 6px 32px rgba(74,82,64,0.10);
+      position: relative;
+      z-index: 3;
+    }
+    .form-divider {
+      width: 40px;
+      height: 1px;
+      background: rgba(74,82,64,0.2);
+      margin: 0 auto 20px;
     }
     .action-btns-wrap {
       display: flex;
@@ -1186,6 +1213,16 @@ export default function Home() {
       gap: 10px;
       max-width: 340px;
       margin: 20px auto 0;
+      position: relative;
+      z-index: 3;
+    }
+    .action-btns-label {
+      font-family: 'Cinzel', serif;
+      font-size: 8px;
+      letter-spacing: 3px;
+      color: var(--olive-light);
+      text-transform: uppercase;
+      margin-bottom: 4px;
     }
     .form-section .section-title { color: var(--olive); }
     .form-section .section-subtitle { color: var(--olive-light); }
@@ -1758,54 +1795,50 @@ export default function Home() {
 
       <!-- ── CONFIRMAR PRESENÇA (FORMULÁRIO) ── -->
       <div class="form-section">
-        <h2 class="section-title reveal">Confirmar Presença</h2>
-        <p class="section-subtitle reveal">Sua confirmação é muito importante</p>
-        <p class="confirm-text reveal">Ficamos felizes em tê-lo entre os nossos convidados! Por favor, confirme sua presença até <strong>10 de janeiro de 2027</strong>.</p>
-
+        <img class="form-flowers-tr" src="/manus-storage/flowers_hero_top_left_510999d2.png" alt="" />
+        <img class="form-flowers-bl" src="/manus-storage/flowers_hero_top_left_510999d2.png" alt="" />
+        <h2 class="section-title reveal" style="color:var(--olive);">Confirmar Presença</h2>
+        <p class="section-subtitle reveal" style="color:var(--olive-light);">Sua presença é a nossa maior alegria</p>
         <!-- Formulário -->
         <div class="form-card reveal">
-        <form class="invite-form" id="confirm-form" onsubmit="submitConfirm(event)">
-          <div class="form-field">
-            <label class="form-label" for="cf-name">Seu nome completo</label>
-            <input class="form-input" id="cf-name" type="text" placeholder="Ex: Maria Silva" required />
+          <p style="margin:0 0 18px;font-family:'Cormorant Garamond',serif;font-size:14px;color:#888;line-height:1.8;text-align:center;">Ficamos felizes em tê-lo entre os nossos convidados!<br/>Confirme sua presença até <strong style="color:var(--olive);">10 de janeiro de 2027</strong>.</p>
+          <div class="form-divider"></div>
+          <form class="invite-form" id="confirm-form" onsubmit="submitConfirm(event)">
+            <div class="form-field">
+              <label class="form-label" for="cf-name">Seu nome completo</label>
+              <input class="form-input" id="cf-name" type="text" placeholder="Ex: Maria Silva" required />
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="cf-guests">Número de acompanhantes</label>
+              <select class="form-select" id="cf-guests">
+                <option value="0">Somente eu</option>
+                <option value="1">Eu + 1 acompanhante</option>
+                <option value="2">Eu + 2 acompanhantes</option>
+                <option value="3">Eu + 3 acompanhantes</option>
+                <option value="4">Eu + 4 ou mais</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="cf-phone">WhatsApp (opcional)</label>
+              <input class="form-input" id="cf-phone" type="tel" placeholder="(83) 99999-9999" />
+            </div>
+            <button type="submit" class="form-submit">Confirmar Minha Presença</button>
+          </form>
+          <!-- Mensagem de sucesso -->
+          <div class="form-success" id="confirm-success">
+            <div class="form-success-icon">✓</div>
+            <div class="form-success-title">Presença confirmada!</div>
+            <p class="form-success-text">Ficamos muito felizes! Te esperamos no dia 28 de janeiro de 2027 no Restaurante O Mirante, Sousa — PB.</p>
           </div>
-          <div class="form-field">
-            <label class="form-label" for="cf-guests">Número de acompanhantes</label>
-            <select class="form-select" id="cf-guests">
-              <option value="0">Somente eu</option>
-              <option value="1">Eu + 1 acompanhante</option>
-              <option value="2">Eu + 2 acompanhantes</option>
-              <option value="3">Eu + 3 acompanhantes</option>
-              <option value="4">Eu + 4 ou mais</option>
-            </select>
-          </div>
-          <div class="form-field">
-            <label class="form-label" for="cf-phone">WhatsApp (opcional)</label>
-            <input class="form-input" id="cf-phone" type="tel" placeholder="(83) 99999-9999" />
-          </div>
-          <button type="submit" class="form-submit">✓ Confirmar Minha Presença</button>
-        </form>
-
-        <!-- Mensagem de sucesso -->
-        <div class="form-success" id="confirm-success">
-          <div class="form-success-icon">✓</div>
-          <div class="form-success-title">Presença confirmada!</div>
-          <p class="form-success-text">Ficamos muito felizes! Te esperamos no dia 28 de janeiro de 2027 no Restaurante O Mirante, Sousa — PB.</p>
         </div>
-        </div>
-
+        <!-- Ações pós-confirmação -->
         <div class="action-btns-wrap reveal">
-        <button type="button" class="action-btn outline" onclick="openCalModal()"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" style="display:inline-block;vertical-align:middle;margin-right:7px;flex-shrink:0">
-  <path d="M15.5 2V6M7.5 2V6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
-  <path d="M2.5 10H20.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
-  <path d="M20.5 12C20.5 8.22876 20.5 6.34315 19.3284 5.17157C18.1569 4 16.2712 4 12.5 4H10.5C6.72876 4 4.84315 4 3.67157 5.17157C2.5 6.34315 2.5 8.22876 2.5 12V14C2.5 17.7712 2.5 19.6569 3.67157 20.8284C4.84315 22 6.72876 22 10.5 22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
-  <path d="M14.515 15.3866C15.5876 14.7469 16.5238 15.0047 17.0863 15.4153C17.3169 15.5837 17.4322 15.6679 17.5 15.6679C17.5678 15.6679 17.6831 15.5837 17.9137 15.4153C18.4762 15.0047 19.4124 14.7469 20.485 15.3866C21.8928 16.2261 22.2113 18.9958 18.9642 21.3324C18.3457 21.7775 18.0365 22 17.5 22C16.9635 22 16.6543 21.7775 16.0358 21.3324C12.7887 18.9958 13.1072 16.2261 14.515 15.3866Z" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"/>
-</svg> Salvar no Calendário</button>
-        <a href="#" class="action-btn outline" onclick="return false;">💍 Site do Casal</a>
-        <a href="#" class="action-btn outline" onclick="return false;">🎁 Lista de Presentes</a>
+          <p class="action-btns-label">Mais opções</p>
+          <button type="button" class="action-btn primary" onclick="openCalModal()"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" style="display:inline-block;vertical-align:middle;margin-right:7px;flex-shrink:0"><path d="M15.5 2V6M7.5 2V6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M2.5 10H20.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M20.5 12C20.5 8.22876 20.5 6.34315 19.3284 5.17157C18.1569 4 16.2712 4 12.5 4H10.5C6.72876 4 4.84315 4 3.67157 5.17157C2.5 6.34315 2.5 8.22876 2.5 12V14C2.5 17.7712 2.5 19.6569 3.67157 20.8284C4.84315 22 6.72876 22 10.5 22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M14.515 15.3866C15.5876 14.7469 16.5238 15.0047 17.0863 15.4153C17.3169 15.5837 17.4322 15.6679 17.5 15.6679C17.5678 15.6679 17.6831 15.5837 17.9137 15.4153C18.4762 15.0047 19.4124 14.7469 20.485 15.3866C21.8928 16.2261 22.2113 18.9958 18.9642 21.3324C18.3457 21.7775 18.0365 22 17.5 22C16.9635 22 16.6543 21.7775 16.0358 21.3324C12.7887 18.9958 13.1072 16.2261 14.515 15.3866Z" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"/></svg> Salvar no Calendário</button>
+          <a href="#" class="action-btn outline" onclick="return false;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" style="display:inline-block;vertical-align:middle;margin-right:7px;flex-shrink:0"><path d="M5.92089 5.92089C8.15836 3.68342 9.2771 2.56468 10.5857 2.19562C11.5105 1.93479 12.4895 1.93479 13.4143 2.19562C14.7229 2.56468 15.8416 3.68342 18.0791 5.92089C20.3166 8.15836 21.4353 9.2771 21.8044 10.5857C22.0652 11.5105 22.0652 12.4895 21.8044 13.4143C21.4353 14.7229 20.3166 15.8416 18.0791 18.0791C15.8416 20.3166 14.7229 21.4353 13.4143 21.8044C12.4895 22.0652 11.5105 22.0652 10.5857 21.8044C9.2771 21.4353 8.15836 20.3166 5.92089 18.0791C3.68342 15.8416 2.56468 14.7229 2.19562 13.4143C1.93479 12.4895 1.93479 11.5105 2.19562 10.5857C2.56468 9.2771 3.68342 8.15836 5.92089 5.92089Z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.5"/></svg> Site do Casal</a>
+          <a href="#" class="action-btn outline" onclick="return false;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" style="display:inline-block;vertical-align:middle;margin-right:7px;flex-shrink:0"><path d="M4 11V15C4 18.2998 4 19.9497 5.02513 20.9749C6.05025 22 7.70017 22 11 22H13C16.2998 22 17.9497 22 18.9749 20.9749C20 19.9497 20 18.2998 20 15V11" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M3 9C3 8.25231 3 7.87846 3.20096 7.6C3.33261 7.41758 3.52197 7.26609 3.75 7.16077C4.09808 7 4.56538 7 5.5 7H18.5C19.4346 7 19.9019 7 20.25 7.16077C20.478 7.26609 20.6674 7.41758 20.799 7.6C21 7.87846 21 8.25231 21 9C21 9.74769 21 10.1215 20.799 10.4C20.6674 10.5824 20.478 10.7339 20.25 10.8392C19.9019 11 19.4346 11 18.5 11H5.5C4.56538 11 4.09808 11 3.75 10.8392C3.52197 10.7339 3.33261 10.5824 3.20096 10.4C3 10.1215 3 9.74769 3 9Z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.5"/><path d="M6 3.78571C6 2.79949 6.79949 2 7.78571 2H8.14286C10.2731 2 12 3.7269 12 5.85714V7H9.21429C7.43908 7 6 5.56091 6 3.78571Z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.5"/><path d="M18 3.78571C18 2.79949 17.2005 2 16.2143 2H15.8571C13.7269 2 12 3.7269 12 5.85714V7H14.7857C16.5609 7 18 5.56091 18 3.78571Z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.5"/><path d="M12 11L12 22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></svg> Lista de Presentes</a>
         </div>
       </div>
-
       <!-- ── FOOTER ── -->
       <div class="footer-section">
         <div class="footer-monogram reveal"><img src="/manus-storage/monograma_adaa041c.png" alt="Monograma HA" /></div>
