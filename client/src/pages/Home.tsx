@@ -1105,18 +1105,21 @@ export default function Home() {
     }
     .countdown-heading {
       font-family: 'Cinzel', serif;
-      font-size: 18px;
-      font-weight: 500;
+      font-size: 22px;
+      font-weight: 600;
       letter-spacing: 4px;
       color: var(--olive);
       text-transform: uppercase;
       margin-bottom: 4px;
+      text-align: center;
     }
     .countdown-sub {
-      font-family: 'Great Vibes', cursive;
-      font-size: 22px;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 16px;
       color: var(--olive-light);
       margin-bottom: 20px;
+      letter-spacing: 1px;
     }
     .countdown-grid {
       display: flex;
@@ -1132,30 +1135,30 @@ export default function Home() {
       min-width: 56px;
     }
     .countdown-num {
-      font-family: 'Cinzel', serif;
-      font-size: 48px;
-      font-weight: 600;
+      font-family: 'MonteCarlo', cursive;
+      font-size: 60px;
+      font-weight: 400;
       color: var(--olive);
       line-height: 1;
-      letter-spacing: 2px;
+      letter-spacing: 1px;
     }
     .countdown-label {
       font-family: 'Cinzel', serif;
       font-size: 7px;
-      letter-spacing: 2px;
+      letter-spacing: 2.5px;
       color: var(--olive-light);
       text-transform: uppercase;
-      margin-top: 5px;
+      margin-top: 2px;
     }
     .countdown-sep {
       font-family: 'Cinzel', serif;
-      font-size: 36px;
+      font-size: 28px;
       color: var(--olive);
-      align-self: flex-start;
-      padding-top: 2px;
-      opacity: 0.5;
+      align-self: center;
+      opacity: 0.4;
       line-height: 1;
-      margin: 0 2px;
+      margin: 0 4px;
+      padding-bottom: 8px;
     }
 
     /* ─── FORM ─── */
