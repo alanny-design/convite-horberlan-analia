@@ -1796,6 +1796,9 @@ export default function Home() {
           <path d="M90 10 C92 6 95 6 97 9" stroke="#4a5240" stroke-width="0.9" stroke-linecap="round"/>
           <circle cx="60" cy="18" r="2" fill="#4a5240" opacity="0.5"/>
         </svg>
+        <div class="reveal" style="text-align:center;margin-bottom:12px;position:relative;z-index:2;">
+          <img src="/manus-storage/monograma_adaa041c.png" alt="Monograma HA" style="width:64px;height:64px;object-fit:contain;display:inline-block;" />
+        </div>
         <h2 class="section-title reveal" style="color:var(--olive);text-align:center;width:100%;">Faltam:</h2>
         <div class="countdown-grid reveal" id="countdown-grid" style="display:flex;flex-direction:row;justify-content:center;align-items:center;flex-wrap:nowrap;">
           <div class="countdown-unit" style="display:flex;flex-direction:column;align-items:center;width:68px;">
