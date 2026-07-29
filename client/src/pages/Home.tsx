@@ -1821,7 +1821,7 @@ export default function Home() {
       </div>
 
       <!-- ── SEPARADOR FLORAL ── -->
-      <div style="background:#f5f0e8;padding:20px 0 0;text-align:center;overflow:hidden;line-height:0;">
+      <div style="background:#ffffff;padding:20px 0 0;text-align:center;overflow:hidden;line-height:0;">
         <img src="/manus-storage/flor2_57213108.png" alt="" style="width:80vw;max-width:380px;height:auto;display:block;margin:0 auto;opacity:1;" />
       </div>
       <!-- ── CONFIRMAR PRESENÇA (FORMULÁRIO) ── -->
