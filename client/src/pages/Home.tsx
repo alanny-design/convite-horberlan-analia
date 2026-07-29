@@ -1732,8 +1732,7 @@ export default function Home() {
           <path d="M90 10 C92 6 95 6 97 9" stroke="#4a5240" stroke-width="0.9" stroke-linecap="round"/>
           <circle cx="60" cy="18" r="2" fill="#4a5240" opacity="0.5"/>
         </svg>
-        <h2 class="section-title reveal" style="color:var(--olive);">Faltam para o grande dia</h2>
-        <p class="section-subtitle reveal" style="color:var(--olive-light);">tempo...</p>
+        <h2 class="section-title reveal" style="color:var(--olive);text-align:center;width:100%;">Faltam para o grande dia</h2>
         <div class="countdown-grid reveal" id="countdown-grid" style="display:flex;flex-direction:row;justify-content:center;align-items:center;flex-wrap:nowrap;">
           <div class="countdown-unit" style="display:flex;flex-direction:column;align-items:center;width:68px;">
             <span class="countdown-num" id="cd-days" style="font-family:'Cinzel',serif;font-size:40px;font-weight:700;color:#4a5240;line-height:1;">--</span>
