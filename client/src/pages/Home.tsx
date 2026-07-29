@@ -724,23 +724,28 @@ export default function Home() {
       font-weight: 600;
     }
     .map-btn {
-      display: inline-flex;
+      display: flex;
       align-items: center;
+      justify-content: center;
       gap: 8px;
       margin-top: 22px;
-      padding: 13px 28px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 12px 28px;
       border: none;
       border-radius: 8px;
       background: #fff;
       color: var(--olive);
       font-family: 'Cinzel', serif;
-      font-size: 10px;
-      letter-spacing: 2.5px;
+      font-size: 11px;
+      letter-spacing: 2px;
       text-transform: uppercase;
       text-decoration: none;
       cursor: pointer;
       transition: all 0.3s ease;
       position: relative; z-index: 2;
+      width: 100%;
+      max-width: 300px;
     }
     .map-btn:hover { background: rgba(255,255,255,0.88); }
     .map-btn:active { transform: scale(0.97); }
