@@ -1036,19 +1036,28 @@ export default function Home() {
     }
 
     .footer-section {
-      background: linear-gradient(170deg, var(--olive) 0%, #2e3628 100%);
-      padding: 52px 32px 60px;
+      background-image: url('/manus-storage/pasted_file_aKM7ts_image_d6f6323f.png');
+      background-size: cover;
+      background-position: center top;
+      padding: 72px 32px 72px;
       text-align: center;
       position: relative;
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
-    .footer-flowers-bottom {
+    .footer-section::before {
+      content: '';
       position: absolute;
-      bottom: -10px; left: 50%;
-      transform: translateX(-50%);
-      width: 100%;
-      pointer-events: none;
-      opacity: 0.55;
+      inset: 0;
+      background: rgba(30, 36, 24, 0.55);
+      z-index: 1;
+    }
+    .footer-section > * {
+      position: relative;
+      z-index: 2;
     }
     .footer-monogram img {
       width: 55px; height: auto;
@@ -1066,7 +1075,7 @@ export default function Home() {
       font-family: 'Cinzel', serif;
       font-size: 10px;
       letter-spacing: 4px;
-      color: rgba(245,240,232,0.5);
+      color: rgba(245,240,232,0.7);
     }
     .footer-verse {
       font-family: 'Cormorant Garamond', serif;
@@ -1786,7 +1795,6 @@ export default function Home() {
 
       <!-- ── FOOTER ── -->
       <div class="footer-section">
-        <img class="footer-flowers-bottom" src="/manus-storage/flowers_bottom_a04c744e.png" alt="" />
         <div class="footer-monogram reveal"><img src="/manus-storage/monograma_adaa041c.png" alt="Monograma HA" /></div>
         <div class="footer-sig reveal">Horberlan &amp; Analia</div>
         <div class="footer-date-small reveal">28 · JANEIRO · 2027</div>
