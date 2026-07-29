@@ -1820,6 +1820,10 @@ export default function Home() {
         </div>
       </div>
 
+      <!-- ── SEPARADOR FLORAL ── -->
+      <div style="background:#f5f0e8;padding:20px 0 0;text-align:center;overflow:hidden;line-height:0;">
+        <img src="/manus-storage/flor2_57213108.png" alt="" style="width:80vw;max-width:380px;height:auto;display:block;margin:0 auto;opacity:1;" />
+      </div>
       <!-- ── CONFIRMAR PRESENÇA (FORMULÁRIO) ── -->
       <div class="form-section" style="background:#f5f0e8;padding:52px 28px 52px;text-align:center;position:relative;overflow:hidden;">
         <img class="form-flowers-tr" src="/manus-storage/flowers_hero_top_left_510999d2.png" alt="" style="position:absolute;top:-10px;right:-14px;width:44vw;max-width:190px;pointer-events:none;transform:scaleX(-1);z-index:2;" />
