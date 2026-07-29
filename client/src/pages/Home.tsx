@@ -796,6 +796,22 @@ export default function Home() {
       border-radius: 50%;
       box-shadow: 0 3px 12px rgba(0,0,0,0.12);
     }
+    .palette-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 7px;
+    }
+    .palette-name {
+      font-family: 'Cinzel', serif;
+      font-size: 7px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--olive-light);
+      text-align: center;
+      max-width: 52px;
+      line-height: 1.4;
+    }
     .dress-icons {
       display: flex;
       justify-content: center;
@@ -1634,10 +1650,22 @@ export default function Home() {
         </div>
         <p class="dresscode-text reveal">Ficaremos felizes em ver você com trajes que combinem com a paleta de cores do nosso casamento.</p>
         <div class="color-palette reveal">
-          <div class="palette-dot" style="background:#4a5240;" title="Verde Oliva"></div>
-          <div class="palette-dot" style="background:#f4efe5;" title="Creme"></div>
-          <div class="palette-dot" style="background:#b8975a;" title="Dourado"></div>
-          <div class="palette-dot" style="background:#a8c5a0;" title="Verde Menta"></div>
+          <div class="palette-item">
+            <div class="palette-dot" style="background:#4a5240;"></div>
+            <span class="palette-name">Verde Oliva</span>
+          </div>
+          <div class="palette-item">
+            <div class="palette-dot" style="background:#a8c5a0;"></div>
+            <span class="palette-name">Verde Menta</span>
+          </div>
+          <div class="palette-item">
+            <div class="palette-dot" style="background:#b8975a;"></div>
+            <span class="palette-name">Dourado</span>
+          </div>
+          <div class="palette-item">
+            <div class="palette-dot" style="background:#f4efe5; border: 1px solid rgba(74,82,64,0.15);"></div>
+            <span class="palette-name">Creme</span>
+          </div>
         </div>
       </div>
 
