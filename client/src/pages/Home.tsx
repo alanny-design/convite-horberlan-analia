@@ -1786,7 +1786,7 @@ export default function Home() {
       </div>
 
       <!-- ── CONTADOR REGRESSIVO ── -->
-      <div class="countdown-section">
+      <div class="countdown-section" style="background:#ffffff;padding-top:72px;">
 
         <div class="reveal" style="text-align:center;margin-bottom:12px;position:relative;z-index:2;">
           <img src="/manus-storage/monograma_ha_arco2_168a90a4.jpg" alt="Monograma HA" style="width:80px;height:auto;object-fit:contain;display:inline-block;" />
