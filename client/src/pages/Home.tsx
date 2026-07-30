@@ -1733,7 +1733,7 @@ export default function Home() {
         </a>
         <!-- Foto do restaurante sem background, largura total, no final -->
         <div class="reveal" style="width:100%;margin-top:32px;line-height:0;">
-          <img src="/manus-storage/restaurante_nobg_7872cae0.png" alt="Restaurante O Mirante" style="width:100%;height:auto;display:block;object-fit:contain;" />
+          <img src="/manus-storage/restaurante_mirante_c19d6c25.png" alt="Restaurante O Mirante" style="width:100%;height:auto;display:block;object-fit:contain;" />
         </div>
 
       </div>
