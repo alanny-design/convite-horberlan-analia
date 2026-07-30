@@ -1716,14 +1716,11 @@ export default function Home() {
       <div class="gold-divider"></div>
 
       <!-- ── LOCAL ── -->
-      <div class="location-section">
+      <div class="location-section" style="padding-bottom:0;">
         <img class="location-flowers-tr" src="/manus-storage/flowers_hero_top_left_510999d2.png" alt="" />
         <img class="location-flowers-bl" src="/manus-storage/flowers_hero_top_left_510999d2.png" alt="" />
         <h2 class="section-title reveal">Local</h2>
         <p class="section-subtitle reveal">Onde nos encontraremos</p>
-        <div class="location-photo-wrap reveal">
-          <img class="location-photo" src="/manus-storage/pasted_file_ApTHKY_image_436eddfb.png" alt="Restaurante O Mirante" />
-        </div>
         <p class="location-name-big reveal">Restaurante O Mirante</p>
         <p class="location-address reveal">
           Aguardamos você no endereço:<br/>
@@ -1734,8 +1731,12 @@ export default function Home() {
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" style="display:inline-block;vertical-align:middle;flex-shrink:0"><path d="M13.6177 21.367C13.1841 21.773 12.6044 22 12.0011 22C11.3978 22 10.8182 21.773 10.3845 21.367C6.41302 17.626 1.09076 13.4469 3.68627 7.37966C5.08963 4.09916 8.45834 2 12.0011 2C15.5439 2 18.9126 4.09916 20.316 7.37966C22.9082 13.4393 17.599 17.6389 13.6177 21.367Z" stroke="currentColor" stroke-width="1.5"/><path d="M15.5 11C15.5 12.933 13.933 14.5 12 14.5C10.067 14.5 8.5 12.933 8.5 11C8.5 9.067 10.067 7.5 12 7.5C13.933 7.5 15.5 9.067 15.5 11Z" stroke="currentColor" stroke-width="1.5"/></svg>
           Ver no Mapa
         </a>
-      </div>
+        <!-- Foto do restaurante sem background, largura total, no final -->
+        <div class="reveal" style="width:100%;margin-top:32px;line-height:0;">
+          <img src="/manus-storage/restaurante_nobg_7872cae0.png" alt="Restaurante O Mirante" style="width:100%;height:auto;display:block;object-fit:contain;" />
+        </div>
 
+      </div>
       <!-- ── DRESS CODE ── -->
       <div class="dresscode-section">
         <div class="dresscode-img-wrap reveal">
