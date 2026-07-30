@@ -1769,27 +1769,31 @@ export default function Home() {
       </div>
 
       <!-- ── DETALHES ── -->
-      <div class="details-section" style="padding-bottom:0;padding-top:0;">
-        <!-- Flores no topo full-width -->
-        <div style="width:calc(100% + 96px);margin-left:-48px;margin-right:-48px;margin-top:-60px;line-height:0;margin-bottom:32px;position:relative;z-index:3;">
+      <!-- ── DETALHES: wrapper sem background, flores ultrapassam ── -->
+      <div style="position:relative;overflow:visible;">
+        <!-- Flores no topo full-width (fora do background) -->
+        <div style="width:100%;line-height:0;position:relative;z-index:3;margin-bottom:-40px;">
           <img src="/manus-storage/flowers_hero_base_2051eb57.png" alt="" style="width:100%;height:auto;display:block;transform:scaleY(-1);" />
         </div>
-        <h2 class="section-title reveal">Detalhes</h2>
-        <p class="section-subtitle reveal">Informações importantes</p>
-        <div class="detail-item reveal">
-          <div class="detail-dot"></div>
-          <p class="detail-text">Se desejar nos presentear, ficaremos muito gratos por uma contribuição para o nosso novo lar e vida a dois.</p>
+        <!-- Background verde oliva apenas no conteúdo -->
+        <div class="details-section" style="padding-top:60px;padding-bottom:60px;">
+          <h2 class="section-title reveal">Detalhes</h2>
+          <p class="section-subtitle reveal">Informações importantes</p>
+          <div class="detail-item reveal">
+            <div class="detail-dot"></div>
+            <p class="detail-text">Se desejar nos presentear, ficaremos muito gratos por uma contribuição para o nosso novo lar e vida a dois.</p>
+          </div>
+          <div class="detail-item reveal">
+            <div class="detail-dot"></div>
+            <p class="detail-text">Se planejava trazer flores, uma garrafa de vinho com seus votos e desejos será uma lembrança muito especial para nós.</p>
+          </div>
+          <div class="detail-item reveal">
+            <div class="detail-dot"></div>
+            <p class="detail-text">Crianças são bem-vindas! Por favor, informe ao confirmar presença para que possamos preparar tudo com carinho.</p>
+          </div>
         </div>
-        <div class="detail-item reveal">
-          <div class="detail-dot"></div>
-          <p class="detail-text">Se planejava trazer flores, uma garrafa de vinho com seus votos e desejos será uma lembrança muito especial para nós.</p>
-        </div>
-        <div class="detail-item reveal">
-          <div class="detail-dot"></div>
-          <p class="detail-text">Crianças são bem-vindas! Por favor, informe ao confirmar presença para que possamos preparar tudo com carinho.</p>
-        </div>
-        <!-- Flores centralizadas full-width no final da seção -->
-        <div class="reveal" style="width:calc(100% + 96px);margin-left:-48px;margin-right:-48px;margin-top:32px;margin-bottom:-60px;line-height:0;position:relative;z-index:3;">
+        <!-- Flores no final full-width (fora do background) -->
+        <div class="reveal" style="width:100%;line-height:0;position:relative;z-index:3;margin-top:-40px;">
           <img src="/manus-storage/flowers_hero_base_2051eb57.png" alt="" style="width:100%;height:auto;display:block;" />
         </div>
       </div>
