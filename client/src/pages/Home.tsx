@@ -1816,11 +1816,11 @@ export default function Home() {
       </div>
 
       <!-- ── SEPARADOR FLORAL ── -->
-      <div style="background:#ffffff;padding:0;margin:0;overflow:hidden;line-height:0;position:relative;height:160px;z-index:1;">
-        <img src="/manus-storage/flor2_57213108.png" alt="" style="width:200px;height:auto;display:block;position:absolute;right:-20px;top:0;opacity:1;z-index:1;" />
+      <div style="position:relative;height:0;overflow:visible;z-index:10;pointer-events:none;">
+        <img src="/manus-storage/flor2_57213108.png" alt="" style="width:220px;height:auto;display:block;position:absolute;right:-10px;top:-110px;opacity:1;z-index:10;pointer-events:none;" />
       </div>
       <!-- ── CONFIRMAR PRESENÇA (FORMULÁRIO) ── -->
-      <div class="form-section" style="background:#f5f0e8;padding:52px 28px 52px;text-align:center;position:relative;overflow:hidden;">
+      <div class="form-section" style="background:#f5f0e8;padding:52px 28px 52px;text-align:center;position:relative;overflow:visible;">
         <h2 class="section-title reveal" style="font-family:'Cinzel',serif;font-size:22px;letter-spacing:4px;color:#4a5240;text-transform:uppercase;margin-bottom:6px;position:relative;z-index:3;text-align:center;">Confirmar Presença</h2>
         <p class="section-subtitle reveal" style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;color:#7a8a6a;letter-spacing:1px;margin-bottom:28px;position:relative;z-index:3;text-align:center;">Sua presença é a nossa maior alegria</p>
         <div class="form-card reveal" style="background:#fff;border:1px solid rgba(74,82,64,0.12);border-radius:16px;padding:32px 24px 28px;max-width:340px;margin:0 auto;box-shadow:0 6px 32px rgba(74,82,64,0.10);position:relative;z-index:3;">
