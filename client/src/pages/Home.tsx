@@ -1769,9 +1769,7 @@ export default function Home() {
       </div>
 
       <!-- ── DETALHES ── -->
-      <div class="details-section">
-        <img class="details-flowers-tr" src="/manus-storage/flowers_hero_base_2051eb57.png" alt="" />
-        <img class="details-flowers-bl" src="/manus-storage/flowers_hero_base_2051eb57.png" alt="" />
+      <div class="details-section" style="padding-bottom:0;">
         <h2 class="section-title reveal">Detalhes</h2>
         <p class="section-subtitle reveal">Informações importantes</p>
         <div class="detail-item reveal">
@@ -1785,6 +1783,10 @@ export default function Home() {
         <div class="detail-item reveal">
           <div class="detail-dot"></div>
           <p class="detail-text">Crianças são bem-vindas! Por favor, informe ao confirmar presença para que possamos preparar tudo com carinho.</p>
+        </div>
+        <!-- Flores centralizadas full-width no final da seção -->
+        <div class="reveal" style="width:100%;margin-top:32px;line-height:0;text-align:center;overflow:hidden;">
+          <img src="/manus-storage/flowers_hero_base_2051eb57.png" alt="" style="width:100%;max-width:600px;height:auto;display:inline-block;" />
         </div>
       </div>
 
