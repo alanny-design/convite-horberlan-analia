@@ -1572,7 +1572,7 @@ export default function Home() {
       if (guest) {
         var name = decodeURIComponent(guest).replace(/-/g, ' ');
         name = name.replace(/\b\w/g, function(c) { return c.toUpperCase(); });
-        function updateTitle() {
+        var updateTitle = function() {
           var el = document.getElementById('dear-title-el');
           if (el) { el.textContent = 'Para ' + name + ','; }
         }
