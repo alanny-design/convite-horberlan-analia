@@ -1575,6 +1575,8 @@ export default function Home() {
         var updateTitle = function() {
           var el = document.getElementById('dear-title-el');
           if (el) { el.textContent = 'Para ' + name + ','; }
+          var textEl = document.getElementById('dear-text-el');
+          if (textEl) { textEl.textContent = 'É com imensa alegria que convidamos ' + name + ' para compartilhar conosco este momento tão especial — o nosso casamento!'; }
         }
           var fillName = function() {
           var nameInput = document.getElementById('cf-name') as HTMLInputElement;
@@ -1671,7 +1673,7 @@ export default function Home() {
       <div class="dear-section">
         <img class="dear-flowers-right" src="/manus-storage/flowers_right_e4488cf3.png" alt="" />
         <h2 class="dear-title reveal" id="dear-title-el">Queridos Convidados!</h2>
-        <p class="dear-text reveal">Em breve acontecerá um momento muito especial e alegre para nós — o nosso casamento!</p>
+        <p class="dear-text reveal" id="dear-text-el">Em breve acontecerá um momento muito especial e alegre para nós — o nosso casamento!</p>
         <!-- Calendário de Janeiro 2027 -->
         <div class="dear-calendar reveal">
           <div class="cal-header">
