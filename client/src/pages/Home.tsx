@@ -655,8 +655,8 @@ export default function Home() {
     .location-flowers-bl {
       position: absolute;
       bottom: -10px; left: -14px;
-      width: 44vw;
-      max-width: 190px;
+      width: 55vw;
+      max-width: 260px;
       pointer-events: none;
       transform: scaleY(-1);
       z-index: 2;
@@ -664,8 +664,8 @@ export default function Home() {
     .location-flowers-tr {
       position: absolute;
       top: -10px; right: -14px;
-      width: 44vw;
-      max-width: 190px;
+      width: 55vw;
+      max-width: 260px;
       pointer-events: none;
       z-index: 2;
       transform: scaleX(-1);
@@ -1734,8 +1734,8 @@ export default function Home() {
           Ver no Mapa
         </a>
         <!-- Foto do restaurante sem background, largura total, no final -->
-        <div class="reveal" style="width:100%;margin-top:32px;line-height:0;">
-          <img src="/manus-storage/restaurante_mirante_c19d6c25.png" alt="Restaurante O Mirante" style="width:100%;height:auto;display:block;object-fit:contain;" />
+        <div class="reveal" style="width:calc(100% + 64px);margin-left:-32px;margin-right:-32px;margin-top:32px;line-height:0;">
+          <img src="/manus-storage/restaurante_mirante_c19d6c25.png" alt="Restaurante O Mirante" style="width:100%;height:auto;display:block;" />
         </div>
 
       </div>
