@@ -1576,12 +1576,19 @@ export default function Home() {
           var el = document.getElementById('dear-title-el');
           if (el) { el.textContent = 'Para ' + name + ','; }
         }
+          var fillName = function() {
+          var nameInput = document.getElementById('cf-name') as HTMLInputElement;
+          if (nameInput && !nameInput.value) { nameInput.value = name; }
+        }
         if (document.readyState === 'loading') {
-          document.addEventListener('DOMContentLoaded', updateTitle);
+          document.addEventListener('DOMContentLoaded', function() { updateTitle(); fillName(); });
         } else {
           updateTitle();
           setTimeout(updateTitle, 100);
           setTimeout(updateTitle, 500);
+          fillName();
+          setTimeout(fillName, 300);
+          setTimeout(fillName, 800);
         }
       }
     })();
