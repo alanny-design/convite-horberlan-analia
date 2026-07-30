@@ -865,20 +865,22 @@ export default function Home() {
     }
     .details-flowers-tr {
       position: absolute;
-      top: -10px; right: -14px;
-      width: 44vw;
-      max-width: 190px;
+      top: -20px; right: -20px;
+      width: 60vw;
+      max-width: 260px;
       pointer-events: none;
-      transform: scaleX(-1);
+      transform: scaleX(-1) rotate(-15deg);
+      transform-origin: top right;
       z-index: 2;
     }
     .details-flowers-bl {
       position: absolute;
-      bottom: -10px; left: -14px;
-      width: 44vw;
-      max-width: 190px;
+      bottom: -20px; left: -20px;
+      width: 60vw;
+      max-width: 260px;
       pointer-events: none;
-      transform: scaleY(-1);
+      transform: scaleY(-1) rotate(-15deg);
+      transform-origin: bottom left;
       z-index: 2;
     }
     .detail-item {
@@ -1768,8 +1770,8 @@ export default function Home() {
 
       <!-- ── DETALHES ── -->
       <div class="details-section">
-        <img class="details-flowers-tr" src="/manus-storage/flowers_hero_top_left_510999d2.png" alt="" />
-        <img class="details-flowers-bl" src="/manus-storage/flowers_hero_top_left_510999d2.png" alt="" />
+        <img class="details-flowers-tr" src="/manus-storage/flowers_hero_base_2051eb57.png" alt="" />
+        <img class="details-flowers-bl" src="/manus-storage/flowers_hero_base_2051eb57.png" alt="" />
         <h2 class="section-title reveal">Detalhes</h2>
         <p class="section-subtitle reveal">Informações importantes</p>
         <div class="detail-item reveal">
