@@ -476,11 +476,11 @@ export default function Home() {
       position: relative;
     }
     .dear-title {
-      font-family: 'Cinzel', serif;
-      font-size: 18px;
-      letter-spacing: 3px;
+      font-family: 'Imperial Script', cursive;
+      font-size: 36px;
+      letter-spacing: 1px;
       color: var(--olive);
-      text-transform: uppercase;
+      text-transform: none;
       margin-bottom: 16px;
     }
     .dear-text {
