@@ -1564,6 +1564,27 @@ export default function Home() {
       }
     }
     `;
+
+    /* ─── Personalização por convidado via query param ─── */
+    (function() {
+      var params = new URLSearchParams(window.location.search);
+      var guest = params.get('para');
+      if (guest) {
+        var name = decodeURIComponent(guest).replace(/-/g, ' ');
+        name = name.replace(/\b\w/g, function(c) { return c.toUpperCase(); });
+        function updateTitle() {
+          var el = document.getElementById('dear-title-el');
+          if (el) { el.textContent = 'Para ' + name + ','; }
+        }
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', updateTitle);
+        } else {
+          updateTitle();
+          setTimeout(updateTitle, 100);
+          setTimeout(updateTitle, 500);
+        }
+      }
+    })();
     document.body.appendChild(cdScript);
 
     return () => {
@@ -1642,7 +1663,7 @@ export default function Home() {
       <!-- ── QUERIDOS CONVIDADOS ── -->
       <div class="dear-section">
         <img class="dear-flowers-right" src="/manus-storage/flowers_right_e4488cf3.png" alt="" />
-        <h2 class="dear-title reveal">Queridos Convidados!</h2>
+        <h2 class="dear-title reveal" id="dear-title-el">Queridos Convidados!</h2>
         <p class="dear-text reveal">Em breve acontecerá um momento muito especial e alegre para nós — o nosso casamento!</p>
         <!-- Calendário de Janeiro 2027 -->
         <div class="dear-calendar reveal">
