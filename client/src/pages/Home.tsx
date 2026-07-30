@@ -1093,7 +1093,7 @@ export default function Home() {
     /* ─── COUNTDOWN ─── */
     .countdown-section {
       background: #ffffff;
-      padding: 44px 24px 48px;
+      padding: 72px 24px 48px;
       text-align: center;
       position: relative;
     }
