@@ -1821,8 +1821,6 @@ export default function Home() {
       </div>
       <!-- ── CONFIRMAR PRESENÇA (FORMULÁRIO) ── -->
       <div class="form-section" style="background:#f5f0e8;padding:52px 28px 52px;text-align:center;position:relative;overflow:hidden;">
-        <img class="form-flowers-tr" src="/manus-storage/flowers_hero_top_left_510999d2.png" alt="" style="position:absolute;top:-10px;right:-14px;width:44vw;max-width:190px;pointer-events:none;transform:scaleX(-1);z-index:2;" />
-        <img class="form-flowers-bl" src="/manus-storage/flowers_hero_top_left_510999d2.png" alt="" style="position:absolute;bottom:-10px;left:-14px;width:44vw;max-width:190px;pointer-events:none;transform:scaleY(-1);z-index:2;" />
         <h2 class="section-title reveal" style="font-family:'Cinzel',serif;font-size:22px;letter-spacing:4px;color:#4a5240;text-transform:uppercase;margin-bottom:6px;position:relative;z-index:3;text-align:center;">Confirmar Presença</h2>
         <p class="section-subtitle reveal" style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;color:#7a8a6a;letter-spacing:1px;margin-bottom:28px;position:relative;z-index:3;text-align:center;">Sua presença é a nossa maior alegria</p>
         <div class="form-card reveal" style="background:#fff;border:1px solid rgba(74,82,64,0.12);border-radius:16px;padding:32px 24px 28px;max-width:340px;margin:0 auto;box-shadow:0 6px 32px rgba(74,82,64,0.10);position:relative;z-index:3;">
