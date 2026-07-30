@@ -1772,7 +1772,7 @@ export default function Home() {
       <!-- ── DETALHES: wrapper sem background, flores ultrapassam ── -->
       <div style="position:relative;overflow:visible;">
         <!-- Flores no topo full-width (fora do background) -->
-        <div style="width:100%;line-height:0;position:relative;z-index:3;margin-bottom:-90px;">
+        <div style="width:100%;line-height:0;position:relative;z-index:3;margin-bottom:-120px;">
           <img src="/manus-storage/flowers_hero_base_2051eb57.png" alt="" style="width:100%;height:auto;display:block;transform:scaleY(-1);" />
         </div>
         <!-- Background verde oliva apenas no conteúdo -->
@@ -1793,7 +1793,7 @@ export default function Home() {
           </div>
         </div>
         <!-- Flores no final full-width (fora do background) -->
-        <div class="reveal" style="width:100%;line-height:0;position:relative;z-index:3;margin-top:-90px;">
+        <div class="reveal" style="width:100%;line-height:0;position:relative;z-index:3;margin-top:-120px;">
           <img src="/manus-storage/flowers_hero_base_2051eb57.png" alt="" style="width:100%;height:auto;display:block;" />
         </div>
       </div>
