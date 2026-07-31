@@ -237,7 +237,7 @@ export default function Home() {
     #invitation-card {
       width: 100%;
       max-width: 100%;
-      background: var(--white);
+      background: var(--cream);
       box-shadow:
         0 32px 80px rgba(74,82,64,0.18),
         0 8px 28px rgba(74,82,64,0.12);
@@ -470,8 +470,8 @@ export default function Home() {
 
     /* ─── DEAR GUESTS SECTION ─── */
     .dear-section {
-      background: var(--white);
-      padding: 48px 32px 40px;
+      background: var(--cream);
+      padding: 48px 32px 72px;
       text-align: center;
       position: relative;
     }
@@ -646,12 +646,14 @@ export default function Home() {
 
     /* ─── LOCATION SECTION ─── */
     .location-section {
-      background: linear-gradient(170deg, var(--olive) 0%, #3a4232 100%);
-      padding: 52px 32px 52px;
+      background: var(--cream);
+      padding: 52px 0px 52px;
       text-align: center;
       position: relative;
       overflow: visible;
     }
+    .location-section .section-title { color: var(--olive); }
+    .location-section .section-subtitle { color: var(--olive-light); }
     .location-flowers-bl {
       position: absolute;
       bottom: -10px; left: -14px;
@@ -691,10 +693,9 @@ export default function Home() {
     .location-name-big {
       font-family: 'Imperial Script', cursive;
       font-size: 38px;
-      color: #fff;
+      color: var(--olive);
       margin-bottom: 12px;
       position: relative; z-index: 2;
-      text-shadow: 0 2px 12px rgba(0,0,0,0.3);
     }
     .location-photo-wrap {
       width: 100%;
@@ -715,12 +716,12 @@ export default function Home() {
     .location-address {
       font-family: 'Cormorant Garamond', serif;
       font-size: 15px;
-      color: rgba(245,240,232,0.78);
+      color: #6b6558;
       line-height: 1.8;
       position: relative; z-index: 2;
     }
     .location-address strong {
-      color: #fff;
+      color: var(--olive);
       font-weight: 600;
     }
     .map-btn {
@@ -734,8 +735,8 @@ export default function Home() {
       padding: 12px 28px;
       border: none;
       border-radius: 8px;
-      background: #fff;
-      color: var(--olive);
+      background: var(--olive);
+      color: #fff;
       font-family: 'Cinzel', serif;
       font-size: 11px;
       letter-spacing: 2px;
@@ -747,7 +748,7 @@ export default function Home() {
       width: 100%;
       max-width: 300px;
     }
-    .map-btn:hover { background: rgba(255,255,255,0.88); }
+    .map-btn:hover { background: #3a4232; }
     .map-btn:active { transform: scale(0.97); }
 
     /* ─── DRESS CODE SECTION ─── */
@@ -1748,8 +1749,10 @@ export default function Home() {
 
       <!-- ── LOCAL ── -->
       <div class="location-section" style="padding-bottom:0;">
-        <img class="location-flowers-tr" src="/manus-storage/flowers_hero_top_left_510999d2.webp" alt="" loading="lazy" />
-        <img class="location-flowers-bl" src="/manus-storage/flowers_hero_top_left_510999d2.webp" alt="" loading="lazy" />
+         <!-- Flores no final full-width (fora do background) -->
+        <div class="reveal" style="width:calc(100% + 64px);margin-left:-32px;margin-right:-32px;line-height:0;position:relative;z-index:3;margin-top:-200px;">
+          <img src="/manus-storage/flowers_hero_base_2051eb57.webp" alt="" style="width:100%;height:auto;display:block;" />
+        </div>
         <h2 class="section-title reveal">Local</h2>
         <p class="section-subtitle reveal">Onde nos encontraremos</p>
         <p class="location-name-big reveal">Restaurante O Mirante</p>
@@ -1762,13 +1765,13 @@ export default function Home() {
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" style="display:inline-block;vertical-align:middle;flex-shrink:0"><path d="M13.6177 21.367C13.1841 21.773 12.6044 22 12.0011 22C11.3978 22 10.8182 21.773 10.3845 21.367C6.41302 17.626 1.09076 13.4469 3.68627 7.37966C5.08963 4.09916 8.45834 2 12.0011 2C15.5439 2 18.9126 4.09916 20.316 7.37966C22.9082 13.4393 17.599 17.6389 13.6177 21.367Z" stroke="currentColor" stroke-width="1.5"/><path d="M15.5 11C15.5 12.933 13.933 14.5 12 14.5C10.067 14.5 8.5 12.933 8.5 11C8.5 9.067 10.067 7.5 12 7.5C13.933 7.5 15.5 9.067 15.5 11Z" stroke="currentColor" stroke-width="1.5"/></svg>
           Ver no Mapa
         </a>
-        <!-- Foto do restaurante sem background, largura total, no final -->
+        <!-- Foto do restaurante, largura total da tela -->
         <div class="reveal" style="width:calc(100% + 64px);margin-left:-32px;margin-right:-32px;margin-top:32px;line-height:0;">
           <img src="/manus-storage/restaurante_mirante_c19d6c25.webp" alt="Restaurante O Mirante" style="width:100%;height:auto;display:block;" loading="lazy" />
         </div>
 
       </div>
-      <!-- ── DRESS CODE ── -->
+      <!-- ── DRESS CODE (oculto temporariamente) ──
       <div class="dresscode-section">
         <div class="dresscode-img-wrap reveal">
           <img src="/manus-storage/bowtie_dresscode_8f0dbf55.webp" alt="Dress Code" style="width:120px;height:auto;" loading="lazy" />
@@ -1796,29 +1799,36 @@ export default function Home() {
         </div>
         <img class="dresscode-outfits-img reveal" src="/manus-storage/pasted_file_vUHaJW_image_bed50782.webp" alt="Sugestao de trajes" loading="lazy" />
       </div>
+      -->
 
       <!-- ── DETALHES ── -->
       <!-- ── DETALHES: wrapper sem background, flores ultrapassam ── -->
       <div style="position:relative;overflow:visible;">
-        <!-- Flores no topo full-width (fora do background) -->
-        <div style="width:100%;line-height:0;position:relative;z-index:3;margin-bottom:-120px;">
-          <img src="/manus-storage/flowers_hero_base_2051eb57.webp" alt="" style="width:100%;height:auto;display:block;transform:scaleY(-1);" />
-        </div>
+        
         <!-- Background verde oliva apenas no conteúdo -->
+        
         <div class="details-section" style="padding-top:60px;padding-bottom:60px;">
+        <!-- Flores no inicio full-width, ultrapassando para cima para cobrir a transição de cores -->
+        <div class="reveal" style="width:calc(100% + 96px);margin-left:-48px;margin-right:-48px;line-height:0;position:relative;z-index:3;margin-top:-200px;">
+          <img src="/manus-storage/flowers_hero_base_2051eb57.webp" alt="" style="width:100%;height:auto;display:block;" />
+        </div>
           <h2 class="section-title reveal">Detalhes</h2>
           <p class="section-subtitle reveal">Informações importantes</p>
           <div class="detail-item reveal">
             <div class="detail-dot"></div>
-            <p class="detail-text">Se desejar nos presentear, ficaremos muito gratos por uma contribuição para o nosso novo lar e vida a dois.</p>
+            <p class="detail-text">Nossa celebração será realizada em ambiente cristão, em adoração e gratidão a Deus.</p>
           </div>
           <div class="detail-item reveal">
             <div class="detail-dot"></div>
-            <p class="detail-text">Se planejava trazer flores, uma garrafa de vinho com seus votos e desejos será uma lembrança muito especial para nós.</p>
+            <p class="detail-text">Não haverá consumo de bebidas alcoólicas durante a recepção.</p>
           </div>
           <div class="detail-item reveal">
             <div class="detail-dot"></div>
-            <p class="detail-text">Crianças são bem-vindas! Por favor, informe ao confirmar presença para que possamos preparar tudo com carinho.</p>
+            <p class="detail-text">Pedimos, por gentileza, que os celulares permaneçam no modo silencioso durante a cerimônia.</p>
+          </div>
+          <div class="detail-item reveal">
+            <div class="detail-dot"></div>
+            <p class="detail-text">Sua presença é o nosso maior presente, mas, se desejar nos presentear, nossa lista estará disponível abaixo.</p>
           </div>
         </div>
         <!-- Flores no final full-width (fora do background) -->
@@ -1828,7 +1838,7 @@ export default function Home() {
       </div>
 
       <!-- ── CONTADOR REGRESSIVO ── -->
-      <div class="countdown-section" style="background:#ffffff;padding-top:72px;padding-bottom:88px;">
+      <div class="countdown-section" style="background:#f5f0e8;padding-top:72px;padding-bottom:88px;">
 
         <div class="reveal" style="text-align:center;margin-bottom:12px;position:relative;z-index:2;">
           <img src="/manus-storage/monograma_ha_arco2_168a90a4.webp" alt="Monograma HA" style="width:80px;height:auto;object-fit:contain;display:inline-block;" loading="lazy" />
@@ -1855,6 +1865,8 @@ export default function Home() {
             <span class="countdown-label" style="font-family:'Cinzel',serif;font-size:6px;letter-spacing:1.5px;color:#7a8a6a;text-transform:uppercase;margin-top:6px;white-space:nowrap;">Segundos</span>
           </div>
         </div>
+        <p class="reveal" style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;color:#4a5240;line-height:1.7;max-width:280px;margin:32px auto 0;text-align:center;position:relative;z-index:2;">"E, sobre tudo isto, revesti-vos de amor, que é o vínculo da perfeição."</p>
+        <p class="reveal" style="font-family:'Cinzel',serif;font-size:11px;letter-spacing:2px;color:#7a8a6a;text-transform:uppercase;margin-top:10px;text-align:center;position:relative;z-index:2;">Colossenses 3:14</p>
       </div>
 
       <!-- ── SEPARADOR FLORAL ── -->
@@ -1865,17 +1877,17 @@ export default function Home() {
       <div class="form-section" style="background:#f5f0e8;padding:52px 28px 52px;text-align:center;position:relative;overflow:visible;">
         <h2 class="section-title reveal" style="font-family:'Cinzel',serif;font-size:22px;letter-spacing:4px;color:#4a5240;text-transform:uppercase;margin-bottom:6px;position:relative;z-index:3;text-align:center;">Confirmar Presença</h2>
         <p class="section-subtitle reveal" style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;color:#7a8a6a;letter-spacing:1px;margin-bottom:28px;position:relative;z-index:3;text-align:center;">Sua presença é a nossa maior alegria</p>
-        <div class="form-card reveal" style="background:#fff;border:1px solid rgba(74,82,64,0.12);border-radius:16px;padding:32px 24px 28px;max-width:340px;margin:0 auto;box-shadow:0 6px 32px rgba(74,82,64,0.10);position:relative;z-index:3;">
-          <p style="margin:0 0 18px;font-family:'Cormorant Garamond',serif;font-size:14px;color:#888;line-height:1.8;text-align:center;">Ficamos felizes em tê-lo entre os nossos convidados!<br/>Confirme sua presença até <strong style="color:#4a5240;">10 de janeiro de 2027</strong>.</p>
-          <div style="width:40px;height:1px;background:rgba(74,82,64,0.2);margin:0 auto 20px;"></div>
+        <div class="form-card reveal" style="background:#4a5240;border:1px solid rgba(255,255,255,0.12);border-radius:16px;padding:32px 24px 28px;max-width:340px;margin:0 auto;box-shadow:0 6px 32px rgba(74,82,64,0.25);position:relative;z-index:3;">
+          <p style="margin:0 0 18px;font-family:'Cormorant Garamond',serif;font-size:14px;color:rgba(245,240,232,0.8);line-height:1.8;text-align:center;">Ficamos felizes em tê-lo entre os nossos convidados!<br/>Confirme sua presença até <strong style="color:#fff;">10 de janeiro de 2027</strong>.</p>
+          <div style="width:40px;height:1px;background:rgba(255,255,255,0.25);margin:0 auto 20px;"></div>
           <form class="invite-form" id="confirm-form" onsubmit="submitConfirm(event)" style="display:flex;flex-direction:column;gap:14px;">
             <div style="display:flex;flex-direction:column;gap:6px;text-align:left;">
-              <label style="font-family:'Cinzel',serif;font-size:9px;letter-spacing:2.5px;color:#7a8a6a;text-transform:uppercase;" for="cf-name">Seu nome completo</label>
-              <input style="width:100%;padding:14px 16px;border:1.5px solid rgba(74,82,64,0.25);border-radius:10px;background:#fff;font-family:'Cormorant Garamond',serif;font-size:16px;color:#4a5240;outline:none;box-sizing:border-box;" id="cf-name" type="text" placeholder="Ex: Maria Silva" required />
+              <label style="font-family:'Cinzel',serif;font-size:9px;letter-spacing:2.5px;color:rgba(245,240,232,0.7);text-transform:uppercase;" for="cf-name">Seu nome completo</label>
+              <input style="width:100%;padding:14px 16px;border:1.5px solid rgba(245,240,232,0.4);border-radius:10px;background:#4a5240;font-family:'Cormorant Garamond',serif;font-size:16px;color:#f5f0e8;outline:none;box-sizing:border-box;" id="cf-name" type="text" placeholder="Ex: Maria Silva" required />
             </div>
             <div style="display:flex;flex-direction:column;gap:6px;text-align:left;">
-              <label style="font-family:'Cinzel',serif;font-size:9px;letter-spacing:2.5px;color:#7a8a6a;text-transform:uppercase;" for="cf-guests">Número de acompanhantes</label>
-              <select style="width:100%;padding:14px 16px;border:1.5px solid rgba(74,82,64,0.25);border-radius:10px;background:#fff;font-family:'Cormorant Garamond',serif;font-size:16px;color:#4a5240;outline:none;-webkit-appearance:none;box-sizing:border-box;" id="cf-guests">
+              <label style="font-family:'Cinzel',serif;font-size:9px;letter-spacing:2.5px;color:rgba(245,240,232,0.7);text-transform:uppercase;" for="cf-guests">Número de acompanhantes</label>
+              <select style="width:100%;padding:14px 16px;border:1.5px solid rgba(245,240,232,0.4);border-radius:10px;background:#4a5240;font-family:'Cormorant Garamond',serif;font-size:16px;color:#f5f0e8;outline:none;-webkit-appearance:none;box-sizing:border-box;" id="cf-guests">
                 <option value="0">Somente eu</option>
                 <option value="1">Eu + 1 acompanhante</option>
                 <option value="2">Eu + 2 acompanhantes</option>
@@ -1884,15 +1896,15 @@ export default function Home() {
               </select>
             </div>
             <div style="display:flex;flex-direction:column;gap:6px;text-align:left;">
-              <label style="font-family:'Cinzel',serif;font-size:9px;letter-spacing:2.5px;color:#7a8a6a;text-transform:uppercase;" for="cf-phone">WhatsApp (opcional)</label>
-              <input style="width:100%;padding:14px 16px;border:1.5px solid rgba(74,82,64,0.25);border-radius:10px;background:#fff;font-family:'Cormorant Garamond',serif;font-size:16px;color:#4a5240;outline:none;box-sizing:border-box;" id="cf-phone" type="tel" placeholder="(83) 99999-9999" />
+              <label style="font-family:'Cinzel',serif;font-size:9px;letter-spacing:2.5px;color:rgba(245,240,232,0.7);text-transform:uppercase;" for="cf-phone">WhatsApp (opcional)</label>
+              <input style="width:100%;padding:14px 16px;border:1.5px solid rgba(245,240,232,0.4);border-radius:10px;background:#4a5240;font-family:'Cormorant Garamond',serif;font-size:16px;color:#f5f0e8;outline:none;box-sizing:border-box;" id="cf-phone" type="tel" placeholder="(83) 99999-9999" />
             </div>
-            <button type="submit" style="display:flex;align-items:center;justify-content:center;width:100%;padding:16px 24px;border-radius:8px;background:#4a5240;color:#f5f0e8;border:none;font-family:'Cinzel',serif;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;cursor:pointer;box-shadow:0 4px 18px rgba(74,82,64,0.28);margin-top:6px;">Confirmar Minha Presença</button>
+            <button type="submit" style="display:flex;align-items:center;justify-content:center;width:100%;padding:16px 24px;border-radius:8px;background:#f5f0e8;color:#4a5240;border:none;font-family:'Cinzel',serif;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;cursor:pointer;box-shadow:0 4px 18px rgba(0,0,0,0.2);margin-top:6px;">Confirmar Minha Presença</button>
           </form>
           <div class="form-success" id="confirm-success" style="display:none;flex-direction:column;align-items:center;gap:12px;padding:28px 0;">
-            <div style="width:56px;height:56px;border-radius:50%;background:#4a5240;display:flex;align-items:center;justify-content:center;font-size:24px;color:#fff;">✓</div>
-            <div style="font-family:'Imperial Script',cursive;font-size:28px;color:#4a5240;">Presença confirmada!</div>
-            <p style="font-family:'Cormorant Garamond',serif;font-size:15px;color:#777;line-height:1.7;">Ficamos muito felizes! Te esperamos no dia 28 de janeiro de 2027 no Restaurante O Mirante, Sousa — PB.</p>
+            <div style="width:56px;height:56px;border-radius:50%;background:#f5f0e8;display:flex;align-items:center;justify-content:center;font-size:24px;color:#4a5240;">✓</div>
+            <div style="font-family:'Imperial Script',cursive;font-size:28px;color:#fff;">Presença confirmada!</div>
+            <p style="font-family:'Cormorant Garamond',serif;font-size:15px;color:rgba(245,240,232,0.8);line-height:1.7;">Ficamos muito felizes! Te esperamos no dia 28 de janeiro de 2027 no Restaurante O Mirante, Sousa — PB.</p>
           </div>
         </div>
         <div class="action-btns-wrap reveal" style="display:flex;flex-direction:column;gap:10px;max-width:340px;margin:20px auto 0;position:relative;z-index:3;">
