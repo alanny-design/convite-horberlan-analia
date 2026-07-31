@@ -1,81 +1,81 @@
 # Lista de URLs Personalizadas — Convite Horberlan & Analia
 
 Cada link abre o convite com o título **"Para [Nome],"** na seção de boas-vindas.
-Após publicar o site, substitua `convite-horberlan-analia.manus.space` pelo domínio final.
+Site publicado em: `https://horberlanalia.netlify.app/`
 
 ---
 
 **Maria e Gustavo**
-https://convite-horberlan-analia.manus.space/?para=Maria%20e%20Gustavo
+https://horberlanalia.netlify.app/?para=Maria%20e%20Gustavo
 
 **Nicolly e Matheus**
-https://convite-horberlan-analia.manus.space/?para=Nicolly%20e%20Matheus
+https://horberlanalia.netlify.app/?para=Nicolly%20e%20Matheus
 
 **Annanda**
-https://convite-horberlan-analia.manus.space/?para=Annanda
+https://horberlanalia.netlify.app/?para=Annanda
 
 **Mayonara**
-https://convite-horberlan-analia.manus.space/?para=Mayonara
+https://horberlanalia.netlify.app/?para=Mayonara
 
 **Mylena**
-https://convite-horberlan-analia.manus.space/?para=Mylena
+https://horberlanalia.netlify.app/?para=Mylena
 
 **Gabriela**
-https://convite-horberlan-analia.manus.space/?para=Gabriela
+https://horberlanalia.netlify.app/?para=Gabriela
 
 **Rafael**
-https://convite-horberlan-analia.manus.space/?para=Rafael
+https://horberlanalia.netlify.app/?para=Rafael
 
 **Aparecida e Vanildo**
-https://convite-horberlan-analia.manus.space/?para=Aparecida%20e%20Vanildo
+https://horberlanalia.netlify.app/?para=Aparecida%20e%20Vanildo
 
 **Miriam**
-https://convite-horberlan-analia.manus.space/?para=Miriam
+https://horberlanalia.netlify.app/?para=Miriam
 
 **Vaneide**
-https://convite-horberlan-analia.manus.space/?para=Vaneide
+https://horberlanalia.netlify.app/?para=Vaneide
 
 **Vanuza e Sebastião**
-https://convite-horberlan-analia.manus.space/?para=Vanuza%20e%20Sebasti%C3%A3o
+https://horberlanalia.netlify.app/?para=Vanuza%20e%20Sebasti%C3%A3o
 
 **Vanaldo e Rozielia**
-https://convite-horberlan-analia.manus.space/?para=Vanaldo%20e%20Rozielia
+https://horberlanalia.netlify.app/?para=Vanaldo%20e%20Rozielia
 
 **Vânia e Theo**
-https://convite-horberlan-analia.manus.space/?para=V%C3%A2nia%20e%20Theo
+https://horberlanalia.netlify.app/?para=V%C3%A2nia%20e%20Theo
 
 **Ivan e Francisca**
-https://convite-horberlan-analia.manus.space/?para=Ivan%20e%20Francisca
+https://horberlanalia.netlify.app/?para=Ivan%20e%20Francisca
 
 **Marcymianna e Francisco**
-https://convite-horberlan-analia.manus.space/?para=Marcymianna%20e%20Francisco
+https://horberlanalia.netlify.app/?para=Marcymianna%20e%20Francisco
 
 **Auxiliadora e Pedro**
-https://convite-horberlan-analia.manus.space/?para=Auxiliadora%20e%20Pedro
+https://horberlanalia.netlify.app/?para=Auxiliadora%20e%20Pedro
 
 **Lucas e Michele**
-https://convite-horberlan-analia.manus.space/?para=Lucas%20e%20Michele
+https://horberlanalia.netlify.app/?para=Lucas%20e%20Michele
 
 **Aline e Jackson**
-https://convite-horberlan-analia.manus.space/?para=Aline%20e%20Jackson
+https://horberlanalia.netlify.app/?para=Aline%20e%20Jackson
 
 **Alanne e Borja**
-https://convite-horberlan-analia.manus.space/?para=Alanne%20e%20Borja
+https://horberlanalia.netlify.app/?para=Alanne%20e%20Borja
 
 **Maria e Guilherme**
-https://convite-horberlan-analia.manus.space/?para=Maria%20e%20Guilherme
+https://horberlanalia.netlify.app/?para=Maria%20e%20Guilherme
 
 **Patrick e Lindairis**
-https://convite-horberlan-analia.manus.space/?para=Patrick%20e%20Lindairis
+https://horberlanalia.netlify.app/?para=Patrick%20e%20Lindairis
 
 **Cicera e Ronildo**
-https://convite-horberlan-analia.manus.space/?para=Cicera%20e%20Ronildo
+https://horberlanalia.netlify.app/?para=Cicera%20e%20Ronildo
 
 **Ivan e Ana Lucia**
-https://convite-horberlan-analia.manus.space/?para=Ivan%20e%20Ana%20Lucia
+https://horberlanalia.netlify.app/?para=Ivan%20e%20Ana%20Lucia
 
 **Pastor Eudes e Geisane**
-https://convite-horberlan-analia.manus.space/?para=Pastor%20Eudes%20e%20Geisane
+https://horberlanalia.netlify.app/?para=Pastor%20Eudes%20e%20Geisane
 
 **Severino e Antônia**
-https://convite-horberlan-analia.manus.space/?para=Severino%20e%20Ant%C3%B4nia
+https://horberlanalia.netlify.app/?para=Severino%20e%20Ant%C3%B4nia
