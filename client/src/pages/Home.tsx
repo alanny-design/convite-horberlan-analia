@@ -1038,7 +1038,7 @@ export default function Home() {
     }
 
     .footer-section {
-      background-image: url('/manus-storage/pasted_file_aKM7ts_image_d6f6323f.png');
+      background-image: url('/manus-storage/pasted_file_aKM7ts_image_d6f6323f.webp');
       background-size: cover;
       background-position: center top;
       padding: 72px 32px 72px;
@@ -1613,11 +1613,11 @@ export default function Home() {
   <div id="envelope-screen" onclick="openEnvelope()">
 
     <!-- CORPO: envelope sem aba, limpo para a transição -->
-    <img class="env-body-layer" src="/manus-storage/envelope_body_web_7870a1c4.jpg" alt="Envelope" draggable="false" />
+    <img class="env-body-layer" src="/manus-storage/envelope_body_web_7870a1c4.webp" alt="Envelope" draggable="false" />
 
     <!-- ABA: triângulo superior com o selo (dobra para cima ao clicar) -->
     <div class="env-flap-wrap" id="env-flap">
-      <img class="env-flap-img" src="/manus-storage/aba_7dcc1dac.png" alt="Aba do envelope" draggable="false" />
+      <img class="env-flap-img" src="/manus-storage/aba_7dcc1dac.webp" alt="Aba do envelope" draggable="false" />
     </div>
 
     <!-- Tap hint — fora da aba, diretamente no envelope-screen com z-index máximo -->
@@ -1644,12 +1644,12 @@ export default function Home() {
 
       <!-- ── HERO ── -->
       <div class="hero-section reveal">
-       <img class="hero-flowers-tl" src="/manus-storage/flowers_hero_top_left_510999d2.png" alt="" />
-       <img class="hero-flowers-mr" src="/manus-storage/flor2_57213108.png" alt="" />
+       <img class="hero-flowers-tl" src="/manus-storage/flowers_hero_top_left_510999d2.webp" alt="" loading="lazy" />
+       <img class="hero-flowers-mr" src="/manus-storage/flor2_57213108.webp" alt="" />
 
 
         <div class="hero-date-tag">
-          <div class="hero-monogram-center"><img src="/manus-storage/monograma_adaa041c.png" alt="Monograma HA" /></div>
+          <div class="hero-monogram-center"><img src="/manus-storage/monograma_adaa041c.webp" alt="Monograma HA" /></div>
           <span class="hero-date-label">Dia do Casamento</span>
           <span class="hero-date-value">28.01.2027</span>
         </div>
@@ -1666,12 +1666,11 @@ export default function Home() {
 
       <!-- Flores base hero extravasando entre seções -->
       <div class="hero-flowers-base-wrap">
-        <img class="hero-flowers-base" src="/manus-storage/flowers_hero_base_2051eb57.png" alt="" />
+        <img class="hero-flowers-base" src="/manus-storage/flowers_hero_base_2051eb57.webp" alt="" />
       </div>
 
       <!-- ── QUERIDOS CONVIDADOS ── -->
       <div class="dear-section">
-        <img class="dear-flowers-right" src="/manus-storage/flowers_right_e4488cf3.png" alt="" />
         <h2 class="dear-title reveal" id="dear-title-el">Queridos Convidados!</h2>
         <p class="dear-text reveal" id="dear-text-el">Em breve acontecerá um momento muito especial e alegre para nós — o nosso casamento!</p>
         <!-- Calendário de Janeiro 2027 -->
@@ -1749,8 +1748,8 @@ export default function Home() {
 
       <!-- ── LOCAL ── -->
       <div class="location-section" style="padding-bottom:0;">
-        <img class="location-flowers-tr" src="/manus-storage/flowers_hero_top_left_510999d2.png" alt="" />
-        <img class="location-flowers-bl" src="/manus-storage/flowers_hero_top_left_510999d2.png" alt="" />
+        <img class="location-flowers-tr" src="/manus-storage/flowers_hero_top_left_510999d2.webp" alt="" loading="lazy" />
+        <img class="location-flowers-bl" src="/manus-storage/flowers_hero_top_left_510999d2.webp" alt="" loading="lazy" />
         <h2 class="section-title reveal">Local</h2>
         <p class="section-subtitle reveal">Onde nos encontraremos</p>
         <p class="location-name-big reveal">Restaurante O Mirante</p>
@@ -1765,14 +1764,14 @@ export default function Home() {
         </a>
         <!-- Foto do restaurante sem background, largura total, no final -->
         <div class="reveal" style="width:calc(100% + 64px);margin-left:-32px;margin-right:-32px;margin-top:32px;line-height:0;">
-          <img src="/manus-storage/restaurante_mirante_c19d6c25.png" alt="Restaurante O Mirante" style="width:100%;height:auto;display:block;" />
+          <img src="/manus-storage/restaurante_mirante_c19d6c25.webp" alt="Restaurante O Mirante" style="width:100%;height:auto;display:block;" loading="lazy" />
         </div>
 
       </div>
       <!-- ── DRESS CODE ── -->
       <div class="dresscode-section">
         <div class="dresscode-img-wrap reveal">
-          <img src="/manus-storage/bowtie_dresscode_8f0dbf55.png" alt="Dress Code" style="width:120px;height:auto;" />
+          <img src="/manus-storage/bowtie_dresscode_8f0dbf55.webp" alt="Dress Code" style="width:120px;height:auto;" loading="lazy" />
         </div>
         <h2 class="section-title reveal">Dress<br/>Code</h2>
         <p class="section-subtitle reveal">Sugestão de traje</p>
@@ -1795,7 +1794,7 @@ export default function Home() {
             <span class="palette-name">Creme</span>
           </div>
         </div>
-        <img class="dresscode-outfits-img reveal" src="/manus-storage/pasted_file_vUHaJW_image_bed50782.png" alt="Sugestao de trajes" />
+        <img class="dresscode-outfits-img reveal" src="/manus-storage/pasted_file_vUHaJW_image_bed50782.webp" alt="Sugestao de trajes" loading="lazy" />
       </div>
 
       <!-- ── DETALHES ── -->
@@ -1803,7 +1802,7 @@ export default function Home() {
       <div style="position:relative;overflow:visible;">
         <!-- Flores no topo full-width (fora do background) -->
         <div style="width:100%;line-height:0;position:relative;z-index:3;margin-bottom:-120px;">
-          <img src="/manus-storage/flowers_hero_base_2051eb57.png" alt="" style="width:100%;height:auto;display:block;transform:scaleY(-1);" />
+          <img src="/manus-storage/flowers_hero_base_2051eb57.webp" alt="" style="width:100%;height:auto;display:block;transform:scaleY(-1);" />
         </div>
         <!-- Background verde oliva apenas no conteúdo -->
         <div class="details-section" style="padding-top:60px;padding-bottom:60px;">
@@ -1824,7 +1823,7 @@ export default function Home() {
         </div>
         <!-- Flores no final full-width (fora do background) -->
         <div class="reveal" style="width:100%;line-height:0;position:relative;z-index:3;margin-top:-120px;">
-          <img src="/manus-storage/flowers_hero_base_2051eb57.png" alt="" style="width:100%;height:auto;display:block;" />
+          <img src="/manus-storage/flowers_hero_base_2051eb57.webp" alt="" style="width:100%;height:auto;display:block;" />
         </div>
       </div>
 
@@ -1832,7 +1831,7 @@ export default function Home() {
       <div class="countdown-section" style="background:#ffffff;padding-top:72px;padding-bottom:88px;">
 
         <div class="reveal" style="text-align:center;margin-bottom:12px;position:relative;z-index:2;">
-          <img src="/manus-storage/monograma_ha_arco2_168a90a4.jpg" alt="Monograma HA" style="width:80px;height:auto;object-fit:contain;display:inline-block;" />
+          <img src="/manus-storage/monograma_ha_arco2_168a90a4.webp" alt="Monograma HA" style="width:80px;height:auto;object-fit:contain;display:inline-block;" loading="lazy" />
         </div>
         <h2 class="section-title reveal" style="color:var(--olive);text-align:center;width:100%;">Faltam:</h2>
         <div class="countdown-grid reveal" id="countdown-grid" style="display:flex;flex-direction:row;justify-content:center;align-items:center;flex-wrap:nowrap;">
@@ -1860,7 +1859,7 @@ export default function Home() {
 
       <!-- ── SEPARADOR FLORAL ── -->
       <div style="position:relative;height:0;overflow:visible;z-index:10;pointer-events:none;">
-        <img src="/manus-storage/flor2_57213108.png" alt="" style="width:140px;height:auto;display:block;position:absolute;right:-10px;top:-110px;opacity:1;z-index:10;pointer-events:none;" />
+        <img src="/manus-storage/flor2_57213108.webp" alt="" style="width:140px;height:auto;display:block;position:absolute;right:-10px;top:-110px;opacity:1;z-index:10;pointer-events:none;" />
       </div>
       <!-- ── CONFIRMAR PRESENÇA (FORMULÁRIO) ── -->
       <div class="form-section" style="background:#f5f0e8;padding:52px 28px 52px;text-align:center;position:relative;overflow:visible;">
@@ -1906,7 +1905,7 @@ export default function Home() {
       <!-- ── FOOTER ── -->
       <!-- ── FOOTER ── -->
       <div class="footer-section">
-        <div class="footer-monogram reveal"><img src="/manus-storage/monograma_adaa041c.png" alt="Monograma HA" /></div>
+        <div class="footer-monogram reveal"><img src="/manus-storage/monograma_adaa041c.webp" alt="Monograma HA" /></div>
         <div class="footer-sig reveal">Horberlan &amp; Analia</div>
         <div class="footer-date-small reveal">28 · JANEIRO · 2027</div>
       </div>
@@ -1920,11 +1919,11 @@ export default function Home() {
       <div class="cal-modal-title"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" style="display:inline-block;vertical-align:middle;margin-right:7px;flex-shrink:0"><path d="M15.5 2V6M7.5 2V6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M2.5 10H20.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M20.5 12C20.5 8.22876 20.5 6.34315 19.3284 5.17157C18.1569 4 16.2712 4 12.5 4H10.5C6.72876 4 4.84315 4 3.67157 5.17157C2.5 6.34315 2.5 8.22876 2.5 12V14C2.5 17.7712 2.5 19.6569 3.67157 20.8284C4.84315 22 6.72876 22 10.5 22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M14.515 15.3866C15.5876 14.7469 16.5238 15.0047 17.0863 15.4153C17.3169 15.5837 17.4322 15.6679 17.5 15.6679C17.5678 15.6679 17.6831 15.5837 17.9137 15.4153C18.4762 15.0047 19.4124 14.7469 20.485 15.3866C21.8928 16.2261 22.2113 18.9958 18.9642 21.3324C18.3457 21.7775 18.0365 22 17.5 22C16.9635 22 16.6543 21.7775 16.0358 21.3324C12.7887 18.9958 13.1072 16.2261 14.515 15.3866Z" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"/></svg> Salvar no Calendário</div>
       <p class="cal-modal-sub">Escolha sua agenda preferida</p>
       <a class="cal-option" id="cal-google" href="#" target="_blank" style="display:flex;align-items:center;gap:14px;padding:14px 18px;border:1.5px solid rgba(74,82,64,0.18);border-radius:10px;text-decoration:none;color:#4a5240;transition:all 0.2s ease;margin-bottom:10px;">
-        <img src="/manus-storage/google_calendar_icon_5a708a16.png" alt="Google Calendar" style="width:22px;height:22px;object-fit:contain;flex-shrink:0;" />
+        <img src="/manus-storage/google_calendar_icon_5a708a16.webp" alt="Google Calendar" style="width:22px;height:22px;object-fit:contain;flex-shrink:0;" loading="lazy" />
         <span class="cal-option-label" style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;">Google Calendar</span>
       </a>
       <a class="cal-option" id="cal-ical" href="#" download="casamento-horberlan-analia.ics" style="display:flex;align-items:center;gap:14px;padding:14px 18px;border:1.5px solid rgba(74,82,64,0.18);border-radius:10px;text-decoration:none;color:#4a5240;transition:all 0.2s ease;margin-bottom:10px;">
-        <img src="/manus-storage/apple_calendar_icon_69adac8e.png" alt="Apple Calendar" style="width:22px;height:22px;object-fit:contain;flex-shrink:0;" />
+        <img src="/manus-storage/apple_calendar_icon_69adac8e.webp" alt="Apple Calendar" style="width:22px;height:22px;object-fit:contain;flex-shrink:0;" loading="lazy" />
         <span class="cal-option-label" style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;">Apple Calendar / iCal</span>
       </a>
       <a class="cal-option" id="cal-outlook" href="#" target="_blank" style="display:flex;align-items:center;gap:14px;padding:14px 18px;border:1.5px solid rgba(74,82,64,0.18);border-radius:10px;text-decoration:none;color:#4a5240;transition:all 0.2s ease;margin-bottom:10px;">
