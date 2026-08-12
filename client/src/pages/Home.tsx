@@ -1497,15 +1497,12 @@ export default function Home() {
     function submitConfirm(e) {
       e.preventDefault();
       var name   = document.getElementById('cf-name').value.trim();
-      var guests = document.getElementById('cf-guests').value;
       var phone  = document.getElementById('cf-phone').value.trim();
       if (!name) return;
 
       // Envia via WhatsApp para os noivos
-      var guestText = guests === '0' ? 'somente eu' : 'eu + ' + guests + ' acompanhante(s)';
       var msg = 'Olá Horberlan e Analia! 💍 Confirmo minha presença no casamento de vocês!%0A%0A'
               + '👤 Nome: ' + encodeURIComponent(name) + '%0A'
-              + '👥 Acompanhantes: ' + encodeURIComponent(guestText) + '%0A'
               + (phone ? '📱 WhatsApp: ' + encodeURIComponent(phone) + '%0A' : '')
               + '%0A📅 28 de Janeiro de 2027 · Restaurante O Mirante, Sousa — PB';
 
@@ -1884,16 +1881,6 @@ export default function Home() {
             <div style="display:flex;flex-direction:column;gap:6px;text-align:left;">
               <label style="font-family:'Cinzel',serif;font-size:9px;letter-spacing:2.5px;color:rgba(245,240,232,0.7);text-transform:uppercase;" for="cf-name">Seu nome completo</label>
               <input style="width:100%;padding:14px 16px;border:1.5px solid rgba(245,240,232,0.4);border-radius:10px;background:#4a5240;font-family:'Cormorant Garamond',serif;font-size:16px;color:#f5f0e8;outline:none;box-sizing:border-box;" id="cf-name" type="text" placeholder="Ex: Maria Silva" required />
-            </div>
-            <div style="display:flex;flex-direction:column;gap:6px;text-align:left;">
-              <label style="font-family:'Cinzel',serif;font-size:9px;letter-spacing:2.5px;color:rgba(245,240,232,0.7);text-transform:uppercase;" for="cf-guests">Número de acompanhantes</label>
-              <select style="width:100%;padding:14px 16px;border:1.5px solid rgba(245,240,232,0.4);border-radius:10px;background:#4a5240;font-family:'Cormorant Garamond',serif;font-size:16px;color:#f5f0e8;outline:none;-webkit-appearance:none;box-sizing:border-box;" id="cf-guests">
-                <option value="0">Somente eu</option>
-                <option value="1">Eu + 1 acompanhante</option>
-                <option value="2">Eu + 2 acompanhantes</option>
-                <option value="3">Eu + 3 acompanhantes</option>
-                <option value="4">Eu + 4 ou mais</option>
-              </select>
             </div>
             <div style="display:flex;flex-direction:column;gap:6px;text-align:left;">
               <label style="font-family:'Cinzel',serif;font-size:9px;letter-spacing:2.5px;color:rgba(245,240,232,0.7);text-transform:uppercase;" for="cf-phone">WhatsApp (opcional)</label>
