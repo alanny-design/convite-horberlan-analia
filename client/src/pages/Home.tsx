@@ -1807,6 +1807,8 @@ export default function Home({ guestName }: HomeProps) {
 
     function submitConfirm(e) {
       e.preventDefault();
+      // Só convidados (rota /convite/:slug) podem confirmar
+      if (document.getElementById('confirm-form').dataset.enabled !== 'true') return;
       var name   = document.getElementById('cf-name').value.trim();
       var phone  = document.getElementById('cf-phone').value.trim();
       if (!name) return;
@@ -2195,7 +2197,7 @@ export default function Home({ guestName }: HomeProps) {
         <div class="form-card reveal" style="background:#4a5240;border:1px solid rgba(255,255,255,0.12);border-radius:16px;padding:32px 24px 28px;max-width:340px;margin:0 auto;box-shadow:0 6px 32px rgba(74,82,64,0.25);position:relative;z-index:3;">
           <p style="margin:0 0 18px;font-family:'Cormorant Garamond',serif;font-size:14px;color:rgba(245,240,232,0.8);line-height:1.8;text-align:center;">Ficamos felizes em tê-lo entre os nossos convidados!<br/>Confirme sua presença até <strong style="color:#fff;">31 de dezembro de 2026</strong>.</p>
           <div style="width:40px;height:1px;background:rgba(255,255,255,0.25);margin:0 auto 20px;"></div>
-          <form class="invite-form" id="confirm-form" onsubmit="submitConfirm(event)" style="display:flex;flex-direction:column;gap:14px;">
+          <form class="invite-form" id="confirm-form" data-enabled="${guest ? "true" : "false"}" onsubmit="submitConfirm(event)" style="display:${guest ? "flex" : "none"};flex-direction:column;gap:14px;">
             <div style="display:flex;flex-direction:column;gap:6px;text-align:left;">
               <label style="font-family:'Cinzel',serif;font-size:9px;letter-spacing:2.5px;color:rgba(245,240,232,0.7);text-transform:uppercase;" for="cf-name">Seu nome completo</label>
               <input style="width:100%;padding:14px 16px;border:1.5px solid rgba(245,240,232,0.4);border-radius:10px;background:#4a5240;font-family:'Cormorant Garamond',serif;font-size:16px;color:#f5f0e8;outline:none;box-sizing:border-box;" id="cf-name" type="text" placeholder="Ex: Maria Silva" value="${guest ?? ""}" required />
@@ -2206,6 +2208,12 @@ export default function Home({ guestName }: HomeProps) {
             </div>
             <button type="submit" style="display:flex;align-items:center;justify-content:center;width:100%;padding:16px 24px;border-radius:8px;background:#f5f0e8;color:#4a5240;border:none;font-family:'Cinzel',serif;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;cursor:pointer;box-shadow:0 4px 18px rgba(0,0,0,0.2);margin-top:6px;">Confirmar Minha Presença</button>
           </form>
+          <!-- Na raiz (sem link de convidado) a confirmação fica desabilitada -->
+          <div class="form-success" id="confirm-locked" role="note" style="display:${guest ? "none" : "flex"};flex-direction:column;align-items:center;gap:12px;padding:12px 0 4px;">
+            <div style="width:56px;height:56px;border-radius:50%;background:#f5f0e8;display:flex;align-items:center;justify-content:center;color:#4a5240;" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none"><rect x="4.5" y="10.5" width="15" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+            <div style="font-family:'Imperial Script',cursive;font-size:28px;color:#fff;">Use o seu link pessoal</div>
+            <p style="font-family:'Cormorant Garamond',serif;font-size:15px;color:rgba(245,240,232,0.8);line-height:1.7;">A confirmação de presença é feita pelo link do convite que você recebeu dos noivos. Abra-o para confirmar.</p>
+          </div>
           <div class="form-success" id="confirm-success" style="display:none;flex-direction:column;align-items:center;gap:12px;padding:28px 0;">
             <div style="width:56px;height:56px;border-radius:50%;background:#f5f0e8;display:flex;align-items:center;justify-content:center;font-size:24px;color:#4a5240;">✓</div>
             <div style="font-family:'Imperial Script',cursive;font-size:28px;color:#fff;">Presença confirmada!</div>
