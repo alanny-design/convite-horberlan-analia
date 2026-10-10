@@ -15,12 +15,7 @@ type HomeProps = {
   guestName?: string;
 };
 
-export default function Home({ guestName }: HomeProps) {
-  const guest = guestName ? escapeHtml(guestName) : undefined;
-  useEffect(() => {
-    // Inject styles
-    const style = document.createElement("style");
-    style.textContent = `:root {
+const INVITE_CSS = `:root {
       --olive:        #4a5240;
       --olive-mid:    #5c6650;
       --olive-light:  #7a8a6a;
@@ -1612,8 +1607,10 @@ export default function Home({ guestName }: HomeProps) {
         transition-delay: 0s !important;
       }
     }`;
-    document.head.appendChild(style);
 
+export default function Home({ guestName }: HomeProps) {
+  const guest = guestName ? escapeHtml(guestName) : undefined;
+  useEffect(() => {
     // Run envelope script
     const script = document.createElement("script");
     script.textContent = `
@@ -1899,7 +1896,6 @@ export default function Home({ guestName }: HomeProps) {
       (window as { __cancelEnvelope?: () => void }).__cancelEnvelope?.();
       window.removeEventListener("invite:visible", onInviteVisible);
       stopReveal?.();
-      document.head.removeChild(style);
       script.remove();
       cdScript.remove();
     };
@@ -1907,6 +1903,7 @@ export default function Home({ guestName }: HomeProps) {
 
   return (
     <>
+      <style dangerouslySetInnerHTML={{ __html: INVITE_CSS }} />
       <FallingPetals />
       <div
         dangerouslySetInnerHTML={{

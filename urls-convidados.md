@@ -2,86 +2,86 @@
 
 Cada link abre o convite com o título **"Para [Nome],"** na seção de boas-vindas e o nome já preenchido no formulário de confirmação.
 Links que não estão nesta lista (ex.: `/convite/qualquer-coisa`) mostram a página 404.
-Site publicado em: `https://horberlanalia.netlify.app/`
+Site publicado em: `https://horberlaneanalia.netlify.app/`
 
 Lista gerada a partir de `client/src/lib/guests.ts` (fonte: `.context/convidados.md`).
 
 ---
 
 **Ivan e Ana**
-https://horberlanalia.netlify.app/convite/ivan-e-ana
+https://horberlaneanalia.netlify.app/convite/ivan-e-ana
 
 **Cícera e Ronildo**
-https://horberlanalia.netlify.app/convite/cicera-e-ronildo
+https://horberlaneanalia.netlify.app/convite/cicera-e-ronildo
 
 **Maria do Socorro e Guilherme**
-https://horberlanalia.netlify.app/convite/maria-do-socorro-e-guilherme
+https://horberlaneanalia.netlify.app/convite/maria-do-socorro-e-guilherme
 
 **Alanne e Borja**
-https://horberlanalia.netlify.app/convite/alanne-e-borja
+https://horberlaneanalia.netlify.app/convite/alanne-e-borja
 
 **Patrick e Lindairis**
-https://horberlanalia.netlify.app/convite/patrick-e-lindairis
+https://horberlaneanalia.netlify.app/convite/patrick-e-lindairis
 
 **Aline e Jackson**
-https://horberlanalia.netlify.app/convite/aline-e-jackson
+https://horberlaneanalia.netlify.app/convite/aline-e-jackson
 
 **Maria Auxiliadora e Pedro**
-https://horberlanalia.netlify.app/convite/maria-auxiliadora-e-pedro
+https://horberlaneanalia.netlify.app/convite/maria-auxiliadora-e-pedro
 
 **Marcymmianna e Francisco**
-https://horberlanalia.netlify.app/convite/marcymmianna-e-francisco
+https://horberlaneanalia.netlify.app/convite/marcymmianna-e-francisco
 
 **Ivan e Francisca**
-https://horberlanalia.netlify.app/convite/ivan-e-francisca
+https://horberlaneanalia.netlify.app/convite/ivan-e-francisca
 
 **Vânia**
-https://horberlanalia.netlify.app/convite/vania
+https://horberlaneanalia.netlify.app/convite/vania
 
 **Vanaldo e Rosielia**
-https://horberlanalia.netlify.app/convite/vanaldo-e-rosielia
+https://horberlaneanalia.netlify.app/convite/vanaldo-e-rosielia
 
 **Vanuza e Sebastião**
-https://horberlanalia.netlify.app/convite/vanuza-e-sebastiao
+https://horberlaneanalia.netlify.app/convite/vanuza-e-sebastiao
 
 **Vaneide**
-https://horberlanalia.netlify.app/convite/vaneide
+https://horberlaneanalia.netlify.app/convite/vaneide
 
 **Miriam**
-https://horberlanalia.netlify.app/convite/miriam
+https://horberlaneanalia.netlify.app/convite/miriam
 
 **Rafael**
-https://horberlanalia.netlify.app/convite/rafael
+https://horberlaneanalia.netlify.app/convite/rafael
 
 **Gabriela**
-https://horberlanalia.netlify.app/convite/gabriela
+https://horberlaneanalia.netlify.app/convite/gabriela
 
 **Mayonaria**
-https://horberlanalia.netlify.app/convite/mayonaria
+https://horberlaneanalia.netlify.app/convite/mayonaria
 
 **Myllenny**
-https://horberlanalia.netlify.app/convite/myllenny
+https://horberlaneanalia.netlify.app/convite/myllenny
 
 **Annanda**
-https://horberlanalia.netlify.app/convite/annanda
+https://horberlaneanalia.netlify.app/convite/annanda
 
 **Nicoli e Matheus**
-https://horberlanalia.netlify.app/convite/nicoli-e-matheus
+https://horberlaneanalia.netlify.app/convite/nicoli-e-matheus
 
 **Maria e Gustavo**
-https://horberlanalia.netlify.app/convite/maria-e-gustavo
+https://horberlaneanalia.netlify.app/convite/maria-e-gustavo
 
 **Aparecida e Vanildo**
-https://horberlanalia.netlify.app/convite/aparecida-e-vanildo
+https://horberlaneanalia.netlify.app/convite/aparecida-e-vanildo
 
 **Pastor e Geisane**
-https://horberlanalia.netlify.app/convite/pastor-e-geisane
+https://horberlaneanalia.netlify.app/convite/pastor-e-geisane
 
 **Henrique**
-https://horberlanalia.netlify.app/convite/henrique
+https://horberlaneanalia.netlify.app/convite/henrique
 
 **Sonally**
-https://horberlanalia.netlify.app/convite/sonally
+https://horberlaneanalia.netlify.app/convite/sonally
 
 **Luiza**
-https://horberlanalia.netlify.app/convite/luiza
+https://horberlaneanalia.netlify.app/convite/luiza
