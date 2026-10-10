@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import FallingPetals from "@/components/FallingPetals";
+import { initScrollReveal } from "@/lib/reveal";
 
 function escapeHtml(value: string): string {
   return value
@@ -29,6 +30,8 @@ export default function Home({ guestName }: HomeProps) {
       --gold-light:   #d4b07a;
       --gold-pale:    #e8d4a8;
       --text-mid:     #4a5240;
+      /* easing padrão das animações (expo-out suave) */
+      --ease:         cubic-bezier(.22, .8, .24, 1);
     }
 
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -61,25 +64,34 @@ export default function Home({ guestName }: HomeProps) {
 
     /* ════════════════════════════════════
        ENVELOPE SCREEN — FULLSCREEN
+       Sequência (inspirada em iurie-anamaria.github.io):
+       selo racha → aba sobe → abas laterais/inferior saem → carta sobe → toque → convite
     ════════════════════════════════════ */
     #envelope-screen {
       position: fixed;
       inset: 0;
       z-index: 100;
       cursor: pointer;
-      background: var(--olive);
+      overflow: hidden;
+      background: #353b2d; /* interior do envelope, visível quando as abas saem */
       touch-action: manipulation;
       -webkit-tap-highlight-color: transparent;
       -webkit-touch-callout: none;
       -webkit-user-select: none;
       user-select: none;
-      /* transition para o slide-up via JS */
-      transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.8s ease;
+      /* saída: dissolve com leve zoom e blur (classe .leaving via JS) */
+      transition: opacity 1.1s ease, transform 1.1s ease, filter 1.1s ease;
       will-change: transform, opacity;
+      --paper-noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .08 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     }
 
-    /* ─── CORPO do envelope (parte de baixo, estática) ─── */
-    .env-body-layer {
+    /* ─── Corpo do envelope: a mesma imagem recortada (clip-path via JS) em 4 camadas ─── */
+    .env-layer {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+    .env-layer img {
       position: absolute;
       inset: 0;
       width: 100%;
@@ -88,26 +100,28 @@ export default function Home({ guestName }: HomeProps) {
       object-position: center top;
       display: block;
     }
+    .env-back { z-index: 1; }
+    /* sombra no pai: o clip-path no filho cortaria a própria sombra */
+    .env-side, .env-bottom {
+      filter: drop-shadow(0 1px 1.5px rgba(20,24,16,.35)) drop-shadow(0 8px 16px rgba(20,24,16,.18));
+      will-change: transform;
+    }
+    .env-side { z-index: 3; }
+    .env-bottom { z-index: 4; }
 
-    /* ─── ABA superior (triângulo com o selo) — dobra para cima ─── */
+    /* ─── Aba superior (triângulo com o selo) ─── */
     .env-flap-wrap {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
-      /* A aba ocupa 61% da altura da imagem original (1681/2752) */
-      /* Usamos height: auto via a imagem interna */
       height: auto;
       overflow: visible;
       transform-origin: top center;
-      transform-style: preserve-3d;
-      transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
       will-change: transform;
-      z-index: 2;
-      /* Garantir que a aba cubra a tela corretamente */
-      min-height: 61vh;
+      z-index: 5;
     }
-    .env-body-layer, .env-flap-img {
+    .env-flap-img, .seal-half img {
       pointer-events: none;
     }
     .env-flap-img {
@@ -117,10 +131,124 @@ export default function Home({ guestName }: HomeProps) {
       width: 100%;
       height: auto;
       display: block;
-      /* A imagem PNG já tem a forma triangular com transparência */
       max-height: 95vh;
       object-fit: contain;
       object-position: top center;
+    }
+
+    /* ─── Metades do selo (posições e recortes calculados via JS) ─── */
+    .seal-half {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: none;
+      z-index: 6;
+      pointer-events: none;
+      transform-origin: var(--seal-x) var(--seal-y);
+      -webkit-mask-image: radial-gradient(circle var(--seal-r) at var(--seal-x) var(--seal-y), #000 calc(var(--seal-r) - 0.5px), transparent var(--seal-r));
+              mask-image: radial-gradient(circle var(--seal-r) at var(--seal-x) var(--seal-y), #000 calc(var(--seal-r) - 0.5px), transparent var(--seal-r));
+    }
+    .seal-half img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: top center;
+      display: block;
+    }
+
+    /* ─── A carta que sai do envelope ─── */
+    .env-letter {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      pointer-events: none;
+    }
+    .env-letter-paper {
+      position: relative;
+      width: min(80vw, 340px);
+      padding: 38px 26px 32px;
+      text-align: center;
+      color: var(--olive);
+      background-color: #fbf8f1;
+      background-image: var(--paper-noise);
+      border-radius: 3px;
+      box-shadow: 0 2px 4px rgba(0,0,0,.18), 0 22px 48px rgba(0,0,0,.38);
+      opacity: 0;
+      transform: translateY(24vh) scale(.94);
+      transition: transform 1.4s var(--ease), opacity .5s ease;
+    }
+    .env-letter-paper::before {
+      content: '';
+      position: absolute;
+      inset: 10px;
+      border: 1px solid rgba(184,151,90,.55);
+      pointer-events: none;
+    }
+    .env-letter-paper > * {
+      opacity: 0;
+      transform: translateY(8px);
+      filter: blur(3px);
+    }
+    .env-letter-mono {
+      width: 40px;
+      height: 58px;
+      margin: 0 auto 14px;
+      background: var(--olive);
+      -webkit-mask: url('/manus-storage/monograma_ha_arco2_168a90a4.webp') center / contain no-repeat;
+              mask: url('/manus-storage/monograma_ha_arco2_168a90a4.webp') center / contain no-repeat;
+    }
+    .env-letter-for {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 19px;
+      line-height: 1.35;
+      color: #5c6650;
+      text-wrap: balance;
+    }
+    .env-letter-names {
+      font-family: 'Imperial Script', cursive;
+      font-size: 46px;
+      line-height: 0.95;
+      color: var(--olive);
+      margin: 12px 0 8px;
+    }
+    .env-letter-amp {
+      display: block;
+      font-size: 30px;
+      line-height: 1.1;
+      color: var(--gold);
+    }
+    .env-letter-line {
+      display: block;
+      width: 44px;
+      height: 1px;
+      margin: 4px auto 14px;
+      background: var(--gold);
+    }
+    .env-letter-date, .env-letter-place {
+      font-family: 'Cinzel', serif;
+      font-size: 10.5px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      line-height: 1.7;
+    }
+    .env-letter-place { color: #7a8a6a; margin-top: 2px; }
+    .env-letter-hint {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: max(6%, 28px);
+      text-align: center;
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      letter-spacing: 3.5px;
+      text-transform: uppercase;
+      color: rgba(245,240,232,.85);
+      opacity: 0;
+      transition: opacity 1s ease;
     }
 
     /* Overlay vignette */
@@ -131,48 +259,19 @@ export default function Home({ guestName }: HomeProps) {
         transparent 55%,
         rgba(0,0,0,0.15) 100%);
       pointer-events: none;
-      z-index: 3;
+      z-index: 7;
     }
 
-    /* ─── TAP HINT ─── */
-    .tap-hint {
-      position: absolute;
-      bottom: 9%;
-      left: 50%;
-      transform: translateX(-50%);
-      text-align: center;
-      color: rgba(245,240,232,0.8);
-      font-family: 'Cinzel', serif;
-      font-size: 11px;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      animation: pulse-hint 2.2s ease-in-out infinite;
-      white-space: nowrap;
-      pointer-events: none;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.4);
-      transition: opacity 0.4s ease;
-      z-index: 4;
-    }
-    @keyframes pulse-hint {
-      0%, 100% { opacity: 0.5; transform: translateX(-50%) translateY(0); }
-      50%       { opacity: 1;   transform: translateX(-50%) translateY(-3px); }
-    }
-    .tap-icon {
-      display: block;
-      font-size: 22px;
-      margin-bottom: 6px;
-    }
+    /* ─── "TOQUE NO SELO" (posicionado via JS sobre o selo) ─── */
     .tap-hint-svg {
       position: relative;
       pointer-events: none;
       animation: pulse-hint 2.2s ease-in-out infinite;
       transition: opacity 0.4s ease;
-      z-index: 4;
       width: 210px;
       height: 210px;
       display: block;
     }
-    /* Wrapper do hint — posicionado via JS sobre o centro do lacre */
     .tap-hint-wrap {
       position: fixed;
       left: 50%;
@@ -184,35 +283,57 @@ export default function Home({ guestName }: HomeProps) {
       z-index: 9999;
       transition: opacity 0.4s ease;
     }
-    /* ─── Posicionar hint sobre o selo ─── */
     @keyframes pulse-hint {
       0%, 100% { opacity: 0.55; scale: 1; }
       50%       { opacity: 1;   scale: 1.04; }
     }
 
-    /* ─── OPEN ANIMATION ─── */
-    /* Fase 1: aba dobra para cima */
-    #envelope-screen.opening .env-flap-wrap {
-      transform: perspective(1200px) rotateX(-180deg);
+    /* ─── SEQUÊNCIA DE ABERTURA ─── */
+    /* 0ms: o selo racha em duas metades */
+    #envelope-screen.opening .tap-hint-wrap { opacity: 0; }
+    #envelope-screen.opening .env-flap-img {
+      -webkit-mask-image: radial-gradient(circle var(--seal-r) at var(--seal-x) var(--seal-y), transparent calc(var(--seal-r) - 0.5px), #000 var(--seal-r));
+              mask-image: radial-gradient(circle var(--seal-r) at var(--seal-x) var(--seal-y), transparent calc(var(--seal-r) - 0.5px), #000 var(--seal-r));
     }
-    /* Corpo some DEPOIS que a aba termina de dobrar (delay de 1.0s) */
-    #envelope-screen.opening .env-body-layer {
-      opacity: 0;
-      transition: opacity 0.25s ease 0.4s;
+    #envelope-screen.opening .seal-half { display: block; }
+    #envelope-screen.opening .seal-half.l { animation: sealHalfL 1s cubic-bezier(.3, 0, .3, 1) forwards; }
+    #envelope-screen.opening .seal-half.r { animation: sealHalfR 1s cubic-bezier(.3, 0, .3, 1) forwards; }
+    /* 350ms: a aba superior gira para cima */
+    #envelope-screen.opening .env-flap-wrap { animation: flapUp 1.1s .35s cubic-bezier(.5, 0, .3, 1) forwards; }
+    /* 1400ms: abas laterais e inferior saem */
+    #envelope-screen.opening .env-side.l { animation: slideL 1.2s 1.4s cubic-bezier(.6, 0, .3, 1) forwards; }
+    #envelope-screen.opening .env-side.r { animation: slideR 1.2s 1.4s cubic-bezier(.6, 0, .3, 1) forwards; }
+    #envelope-screen.opening .env-bottom { animation: slideB 1.2s 1.5s cubic-bezier(.6, 0, .3, 1) forwards; }
+    /* 800ms (classe .letter-out): a carta sobe de dentro do envelope */
+    #envelope-screen.letter-out .env-letter-paper { opacity: 1; transform: none; }
+    #envelope-screen.letter-out .env-letter-paper > * {
+      animation: letterInk 1.1s var(--d, 0s) ease forwards;
     }
-    #envelope-screen.opening .tap-hint {
-      opacity: 0;
+    #envelope-screen.letter-out .env-letter-names {
+      clip-path: inset(-20% 100% -20% -5%);
+      animation: letterInk .01s var(--d) forwards, letterWrite 1.5s var(--d) cubic-bezier(.5, 0, .3, 1) forwards;
     }
-    #envelope-screen.opening .tap-hint-wrap,
-    #envelope-screen.slide-up .tap-hint-wrap {
+    #envelope-screen.letter-ready .env-letter-hint {
+      opacity: .85;
+      animation: breathe 2.4s ease-in-out infinite;
+    }
+    /* Saída: o envelope se dissolve enquanto o convite surge por baixo */
+    #envelope-screen.leaving {
       opacity: 0;
+      transform: scale(1.04);
+      filter: blur(4px);
       pointer-events: none;
     }
-    /* Fase 2: envelope inteiro sai da tela */
-    #envelope-screen.slide-up {
-      transform: translateY(-105%) !important;
-      opacity: 0 !important;
-    }
+
+    @keyframes sealHalfL { 30% { transform: translateX(-6px) rotate(-5deg); opacity: 1; } 100% { transform: translate(-60px, 30px) rotate(-24deg); opacity: 0; } }
+    @keyframes sealHalfR { 30% { transform: translateX(6px) rotate(5deg); opacity: 1; } 100% { transform: translate(60px, 30px) rotate(24deg); opacity: 0; } }
+    @keyframes flapUp { 0% { transform: perspective(1200px) rotateX(0); } 60% { opacity: 1; } 100% { transform: perspective(1200px) rotateX(-165deg); opacity: 0; } }
+    @keyframes slideL { to { transform: translateX(-105%); } }
+    @keyframes slideR { to { transform: translateX(105%); } }
+    @keyframes slideB { to { transform: translateY(105%); } }
+    @keyframes letterInk { to { opacity: 1; transform: none; filter: none; } }
+    @keyframes letterWrite { to { clip-path: inset(-20% -5% -20% -5%); } }
+    @keyframes breathe { 50% { opacity: .35; } }
 
     /* ════════════════════════════════════
        INVITATION CARD
@@ -231,13 +352,13 @@ export default function Home({ guestName }: HomeProps) {
       align-items: center;
       padding: 0;
       background: var(--cream);
-      /* Inicia completamente abaixo da tela e invisível */
+      /* Inicia invisível e levemente abaixo; surge sob o envelope que se dissolve */
       opacity: 0;
-      transform: translateY(100%);
+      transform: translateY(12px);
       pointer-events: none;
       transition:
-        opacity 0.8s ease,
-        transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+        opacity 0.9s var(--ease),
+        transform 1.1s var(--ease);
     }
     #invite-wrapper::before {
       content: '';
@@ -249,7 +370,7 @@ export default function Home({ guestName }: HomeProps) {
       pointer-events: none;
       z-index: 0;
     }
-    /* Quando visível: sobe para a posição final */
+    /* Quando visível: assenta na posição final */
     #invite-wrapper.visible {
       opacity: 1;
       transform: translateY(0);
@@ -274,26 +395,19 @@ export default function Home({ guestName }: HomeProps) {
        NEW INVITE PAGE — REFERENCE STYLE
     ════════════════════════════════════ */
 
-    /* Staggered reveal */
-    .reveal {
+    /* Scroll reveal (client/src/lib/reveal.ts adiciona .in ao entrar na tela).
+       O id aumenta a especificidade para não perder para transições próprias
+       de botões (.cal-save-btn, .map-btn); o JS remove .reveal ao terminar. */
+    #invitation-card .reveal {
       opacity: 0;
-      transform: translateY(18px);
-      transition: opacity 0.9s ease, transform 0.9s ease;
+      transform: translateY(24px);
+      transition:
+        opacity 1s var(--ease) var(--d, 0s),
+        transform 1s var(--ease) var(--d, 0s),
+        filter 1s var(--ease) var(--d, 0s);
     }
-    #invite-wrapper.visible .reveal { opacity: 1; transform: translateY(0); }
-    #invite-wrapper.visible .reveal:nth-child(1)  { transition-delay: 0.2s; }
-    #invite-wrapper.visible .reveal:nth-child(2)  { transition-delay: 0.35s; }
-    #invite-wrapper.visible .reveal:nth-child(3)  { transition-delay: 0.5s; }
-    #invite-wrapper.visible .reveal:nth-child(4)  { transition-delay: 0.65s; }
-    #invite-wrapper.visible .reveal:nth-child(5)  { transition-delay: 0.8s; }
-    #invite-wrapper.visible .reveal:nth-child(6)  { transition-delay: 0.95s; }
-    #invite-wrapper.visible .reveal:nth-child(7)  { transition-delay: 1.1s; }
-    #invite-wrapper.visible .reveal:nth-child(8)  { transition-delay: 1.25s; }
-    #invite-wrapper.visible .reveal:nth-child(9)  { transition-delay: 1.4s; }
-    #invite-wrapper.visible .reveal:nth-child(10) { transition-delay: 1.55s; }
-    #invite-wrapper.visible .reveal:nth-child(11) { transition-delay: 1.7s; }
-    #invite-wrapper.visible .reveal:nth-child(12) { transition-delay: 1.85s; }
-    #invite-wrapper.visible .reveal:nth-child(n+13) { transition-delay: 2s; }
+    #invitation-card .reveal[data-reveal="ink"] { filter: blur(3px); }
+    #invitation-card .reveal.in { opacity: 1; transform: none; filter: none; }
 
     /* ─── HERO SECTION ─── */
     .hero-section {
@@ -301,11 +415,7 @@ export default function Home({ guestName }: HomeProps) {
       z-index: 2; /* rosas da base passam por cima da seção seguinte */
       --torn-h: clamp(36px, 16vw, 90px);
       --flowers-w: min(100vw, 500px);
-      /* Foto do casal no fundo, com véu oliva para manter o texto legível */
-      background:
-        linear-gradient(175deg, rgba(74,82,64,0.55) 0%, rgba(58,66,50,0.45) 55%, rgba(46,54,40,0.75) 100%),
-        url('/manus-storage/hero.jpeg') 47% 30% / cover no-repeat,
-        var(--olive);
+      background: var(--olive); /* reserva enquanto a foto (.hero-bg) carrega */
       min-height: 520px;
       display: flex;
       flex-direction: column;
@@ -316,6 +426,63 @@ export default function Home({ guestName }: HomeProps) {
       padding: 5px 28px 90px;
      min-height: 580px;
     }
+    /* Foto do casal: camada própria para o zoom de entrada não vazar do hero */
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 47% 30%;
+      display: block;
+      transform: scale(1.12);
+      transition: transform 6s cubic-bezier(.2, .6, .2, 1);
+      will-change: transform;
+    }
+    /* Véu oliva para manter o texto legível */
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(175deg, rgba(74,82,64,0.55) 0%, rgba(58,66,50,0.45) 55%, rgba(46,54,40,0.75) 100%);
+    }
+
+    /* ─── Entrada do hero (coreografia após abrir o envelope) ─── */
+    .hero-flowers-tl, .hero-monogram-center, .hero-date-label, .hero-date-value {
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity 1.1s var(--ease), transform 1.1s var(--ease), filter 1.1s var(--ease);
+    }
+    .hero-flowers-tl { transform: translate(-14px, -14px); transition-delay: .1s; }
+    .hero-monogram-center { transition-delay: .2s; }
+    .hero-date-label { filter: blur(3px); transition-delay: .25s; }
+    .hero-date-value { transition-delay: .35s; }
+    /* Nomes "escritos à mão": wipe da esquerda para a direita */
+    .hero-name-1, .hero-name-2 {
+      clip-path: inset(-20% 100% -20% -5%);
+      transition: clip-path 1.4s cubic-bezier(.5, 0, .3, 1);
+    }
+    .hero-name-1 { transition-delay: .5s; }
+    .hero-name-2 { transition-delay: 1.1s; }
+    #invite-wrapper.visible .hero-bg img { transform: scale(1.02); }
+    #invite-wrapper.visible .hero-flowers-tl,
+    #invite-wrapper.visible .hero-monogram-center,
+    #invite-wrapper.visible .hero-date-label,
+    #invite-wrapper.visible .hero-date-value {
+      opacity: 1;
+      transform: none;
+      filter: none;
+    }
+    #invite-wrapper.visible .hero-name-1,
+    #invite-wrapper.visible .hero-name-2 {
+      clip-path: inset(-20% -5% -20% -5%);
+    }
+
     .hero-flowers-tl {
       position: absolute;
       top: -87px; left: -90px;
@@ -481,12 +648,18 @@ export default function Home({ guestName }: HomeProps) {
       position: absolute;
       left: 50%;
       bottom: calc(var(--torn-h) * 0.15 - 2px - var(--flowers-w) * 0.562 * 0.11);
-      transform: translateX(-50%);
+      transform: translateX(-50%) translateY(16px);
       width: var(--flowers-w);
       height: auto;
       z-index: 4;
       pointer-events: none;
       filter: drop-shadow(0 4px 12px rgba(0,0,0,0.15));
+      opacity: 0;
+      transition: opacity 1.2s var(--ease) .3s, transform 1.2s var(--ease) .3s;
+    }
+    #invite-wrapper.visible .hero-flowers-base {
+      opacity: 1;
+      transform: translateX(-50%);
     }
 
     /* ─── DEAR GUESTS SECTION ─── */
@@ -703,7 +876,8 @@ export default function Home({ guestName }: HomeProps) {
     /* ─── LOCATION SECTION ─── */
     .location-section {
       background: var(--cream);
-      padding: 52px 0px 52px;
+      /* espaço para a metade inferior das rosas que ficam sobre a emenda */
+      padding: calc(min(100vw, 500px) * 0.19 + 32px) 0px 52px;
       text-align: center;
       position: relative;
       overflow: visible;
@@ -912,14 +1086,52 @@ export default function Home({ guestName }: HomeProps) {
       text-transform: uppercase;
     }
 
+    /* ─── Rosas sobre a emenda entre seções ───
+       Mesma arte das rosas do hero: largura limitada e o centro do buquê
+       (~56% da altura; altura = 56,2% da largura) exatamente sobre a emenda. */
+    .flowers-seam {
+      --seam-w: min(100vw, 500px);
+      position: absolute;
+      left: 50%;
+      width: var(--seam-w);
+      transform: translate(-50%, -56%);
+      line-height: 0;
+      pointer-events: none;
+      z-index: 3;
+    }
+    .flowers-seam img {
+      width: 100%;
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.15));
+    }
+
+    /* Em telas mais largas que a arte, suaviza o corte reto nas laterais */
+    @media (min-width: 520px) {
+      .flowers-seam img {
+        -webkit-mask-image: linear-gradient(to right, transparent, #000 9%, #000 91%, transparent);
+                mask-image: linear-gradient(to right, transparent, #000 9%, #000 91%, transparent);
+      }
+    }
+
     /* ─── DETAILS SECTION ─── */
     .details-section {
-      background: linear-gradient(170deg, #3a4232 0%, var(--olive) 100%);
-      padding: 80px 48px 80px;
+      /* faixa de transição de cor no início e no fim */
+      --fade: clamp(96px, 18vw, 180px);
+      /* parte das rosas que invade a seção, abaixo/acima do centro do buquê */
+      --flower-clear: calc(min(100vw, 500px) * 0.19);
+      background:
+        linear-gradient(to bottom, rgba(244,239,229,1.000) 0%, rgba(244,239,229,0.976) 10%, rgba(244,239,229,0.905) 20%, rgba(244,239,229,0.794) 30%, rgba(244,239,229,0.655) 40%, rgba(244,239,229,0.500) 50%, rgba(244,239,229,0.345) 60%, rgba(244,239,229,0.206) 70%, rgba(244,239,229,0.095) 80%, rgba(244,239,229,0.024) 90%, rgba(244,239,229,0.000) 100%) top / 100% var(--fade) no-repeat,
+        linear-gradient(to bottom, rgba(245,240,232,0.000) 0%, rgba(245,240,232,0.024) 10%, rgba(245,240,232,0.095) 20%, rgba(245,240,232,0.206) 30%, rgba(245,240,232,0.345) 40%, rgba(245,240,232,0.500) 50%, rgba(245,240,232,0.655) 60%, rgba(245,240,232,0.794) 70%, rgba(245,240,232,0.905) 80%, rgba(245,240,232,0.976) 90%, rgba(245,240,232,1.000) 100%) bottom / 100% var(--fade) no-repeat,
+        linear-gradient(170deg, #3a4232 0%, var(--olive) 100%);
+      padding: calc(max(var(--fade), var(--fade) / 2 + var(--flower-clear)) + 28px) 48px;
       text-align: center;
       position: relative;
       overflow: visible;
     }
+    .details-section > .flowers-seam.top { top: calc(var(--fade) / 2); }
+    .details-section > .flowers-seam.bottom { top: calc(100% - var(--fade) / 2); }
+    .location-section > .flowers-seam.top { top: 0; }
     .details-flowers-tr {
       position: absolute;
       top: -20px; right: -20px;
@@ -1382,125 +1594,175 @@ export default function Home({ guestName }: HomeProps) {
       line-height: 1.7;
     }
 
-    /* ─── PARTICLES ─── */
-    .particle {
-      position: fixed;
-      pointer-events: none;
-      z-index: 200;
-      animation: particle-fly var(--dur, 1.2s) ease-out forwards;
-    }
-    @keyframes particle-fly {
-      0%   { transform: translate(0,0) scale(1) rotate(0deg); opacity: 1; }
-      100% { transform: translate(var(--tx), var(--ty)) scale(0) rotate(var(--rot)); opacity: 0; }
+    /* ─── Reduzir movimento: tudo aparece no estado final, sem animação ─── */
+    @media (prefers-reduced-motion: reduce) {
+      #invitation-card .reveal,
+      .hero-flowers-tl, .hero-monogram-center, .hero-date-label, .hero-date-value,
+      .hero-name-1, .hero-name-2, .hero-bg img {
+        opacity: 1 !important;
+        transform: none !important;
+        filter: none !important;
+        clip-path: none !important;
+      }
+      .hero-flowers-base { opacity: 1 !important; transform: translateX(-50%) !important; }
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+        transition-delay: 0s !important;
+      }
     }`;
     document.head.appendChild(style);
 
     // Run envelope script
     const script = document.createElement("script");
     script.textContent = `
-    /* ─── Open envelope ─── */
+    /* ─── Envelope ─── */
     window.__envelopeOpened = false;
 
-    /* ─── Posicionar hint dinamicamente sobre o lacre ─── */
-    function positionHint() {
+    // A carta usa Imperial Script, mas só aparece após o toque: carrega a fonte já
+    if (document.fonts && document.fonts.load) document.fonts.load('46px "Imperial Script"');
+
+    /* Geometria da arte (px da imagem original) — medida nas linhas das dobras */
+    var BODY_W = 828, BODY_H = 1480;
+    var BODY_POLYS = {
+      back:   [[0,0],[828,0],[828,280],[549,668],[279,668],[0,280]],
+      l:      [[-2,276],[281,668],[-2,1101]],
+      r:      [[830,276],[547,668],[830,1101]],
+      bottom: [[279,666],[549,666],[830,1097],[830,1480],[-2,1480],[-2,1097]]
+    };
+    var FLAP_W = 784, FLAP_H = 842;
+    var SEAL = { x: 0.4974, y: 0.8355, r: 0.168 }; // centro e raio relativos à aba
+
+    /* Recorta as camadas do corpo e posiciona selo/metades/hint conforme a tela */
+    function layoutEnvelope() {
+      var screen = document.getElementById('envelope-screen');
       var flap = document.querySelector('.env-flap-img');
+      if (!screen || !flap) return;
+      var W = screen.clientWidth, H = screen.clientHeight;
+
+      // object-fit: cover + object-position: center top
+      var s = Math.max(W / BODY_W, H / BODY_H);
+      var ox = (W - BODY_W * s) / 2;
+      var toPoly = function(pts) {
+        return 'polygon(' + pts.map(function(p) { return (ox + p[0] * s) + 'px ' + (p[1] * s) + 'px'; }).join(',') + ')';
+      };
+      [['back','.env-back img'],['l','.env-side.l img'],['r','.env-side.r img'],['bottom','.env-bottom img']].forEach(function(pair) {
+        var img = screen.querySelector(pair[1]);
+        if (img) img.style.clipPath = toPoly(BODY_POLYS[pair[0]]);
+      });
+
+      // aba: object-fit: contain + top center (dimensões sem transformação)
+      var fw = flap.offsetWidth, fh = flap.offsetHeight;
+      var fs = Math.min(fw / FLAP_W, fh / FLAP_H);
+      var cx = fw / 2 + (SEAL.x - 0.5) * FLAP_W * fs;
+      var cy = SEAL.y * FLAP_H * fs;
+      var r = SEAL.r * FLAP_W * fs;
+      screen.style.setProperty('--seal-x', cx + 'px');
+      screen.style.setProperty('--seal-y', cy + 'px');
+      screen.style.setProperty('--seal-r', r + 'px');
+
+      // metades do selo: mesma caixa da aba, recorte com borda irregular
+      var crackL = [[-1.3,-1.3],[0.06,-1.3],[-0.08,-0.45],[0.1,0.1],[-0.05,0.6],[0.04,1.3],[-1.3,1.3]];
+      var crackR = [[0.06,-1.3],[1.3,-1.3],[1.3,1.3],[0.04,1.3],[-0.05,0.6],[0.1,0.1],[-0.08,-0.45]];
+      var toCrack = function(pts) {
+        return 'polygon(' + pts.map(function(p) { return (cx + p[0] * r) + 'px ' + (cy + p[1] * r) + 'px'; }).join(',') + ')';
+      };
+      screen.querySelectorAll('.seal-half').forEach(function(half) {
+        half.style.width = fw + 'px';
+        half.style.height = fh + 'px';
+        half.querySelector('img').style.clipPath = toCrack(half.classList.contains('l') ? crackL : crackR);
+      });
+
+      // "TOQUE NO SELO" centralizado no selo
       var hint = document.querySelector('.tap-hint-wrap');
-      if (!flap || !hint) return;
-      var r = flap.getBoundingClientRect();
-      // Centro do lacre: 83.6% da altura da aba, 50% da largura
-      var sealY = r.top + r.height * 0.836;
-      var sealX = r.left + r.width * 0.5;
-      var hintSize = 210; // largura/altura do SVG em px
-      hint.style.position = 'fixed';
-      hint.style.left = (sealX - hintSize / 2) + 'px';
-      hint.style.top = (sealY - hintSize / 2) + 'px';
-      hint.style.transform = 'none';
-      hint.style.zIndex = '9999';
+      if (hint) {
+        hint.style.left = (cx - 105) + 'px';
+        hint.style.top = (cy - 105) + 'px';
+        hint.style.transform = 'none';
+      }
     }
-    window.addEventListener('load', positionHint);
-    window.addEventListener('resize', positionHint);
-    setTimeout(positionHint, 100);
-    setTimeout(positionHint, 600);
+    window.addEventListener('load', layoutEnvelope);
+    window.addEventListener('resize', layoutEnvelope);
+    setTimeout(layoutEnvelope, 100);
+    setTimeout(layoutEnvelope, 600);
     document.querySelectorAll('#envelope-screen img').forEach(function(img) {
-      img.addEventListener('load', positionHint);
+      img.addEventListener('load', layoutEnvelope);
     });
 
-    /* ─── Toque/clique/teclado abrem o envelope ─── */
+    /* ─── Toque/clique/teclado: 1º abre o envelope, depois (com a carta pronta) abre o convite ─── */
+    var letterReady = false;
+    function onEnvelopeActivate() {
+      if (!window.__envelopeOpened) openEnvelope();
+      else if (letterReady) leaveEnvelope();
+    }
     (function() {
       var env = document.getElementById('envelope-screen');
       if (!env) return;
-      env.addEventListener('pointerup', openEnvelope);
-      env.addEventListener('touchend', openEnvelope);
-      env.addEventListener('click', openEnvelope);
+      env.addEventListener('pointerup', onEnvelopeActivate);
+      env.addEventListener('touchend', onEnvelopeActivate);
+      env.addEventListener('click', onEnvelopeActivate);
       env.addEventListener('keydown', function(e) {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
-          openEnvelope();
+          onEnvelopeActivate();
         }
       });
     })();
+
+    var timers = [];
+    var reducedMotion = function() {
+      return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    };
+    window.__cancelEnvelope = function() {
+      timers.forEach(clearTimeout);
+      timers.length = 0;
+    };
 
     function openEnvelope() {
       if (window.__envelopeOpened) return;
       window.__envelopeOpened = true;
 
-      const envScreen = document.getElementById('envelope-screen');
-      const wrapper   = document.getElementById('invite-wrapper');
-      if (!envScreen || !wrapper) {
+      var envScreen = document.getElementById('envelope-screen');
+      if (!envScreen || !document.getElementById('invite-wrapper')) {
         window.__envelopeOpened = false;
         return;
       }
-
-      // Fase 1: dispara partículas + esconde hint
-      envScreen.classList.add('opening');
       window.dispatchEvent(new Event('invite:open'));
-      spawnParticles(window.innerWidth / 2, window.innerHeight * 0.72);
 
-      // Fase 2: aba dobra em 1.2s
-      // Corpo some: delay 1.0s + fade 0.5s = some completamente em ~1.5s
-      // Envelope sai após o corpo sumir
-      setTimeout(() => {
-        envScreen.classList.add('slide-up');
-      }, 1550);
+      // Sem animação: pula a carta e vai direto ao convite
+      if (reducedMotion()) { leaveEnvelope(); return; }
 
-      // Fase 3: convite sobe logo após o envelope sair da tela
-      setTimeout(() => {
-        wrapper.classList.add('visible');
-      }, 1800);
-
-      // Fase 4: remove o envelope do DOM
-      setTimeout(() => {
-        envScreen.style.display = 'none';
-      }, 2600);
+      layoutEnvelope();
+      // 0ms: selo racha; 350ms: aba sobe; 1400ms: abas saem (tempos no CSS)
+      envScreen.classList.add('opening');
+      // 800ms: a carta sobe de dentro do envelope
+      timers.push(setTimeout(function() { envScreen.classList.add('letter-out'); }, 800));
+      // 2600ms: carta pronta — toque para abrir o convite
+      timers.push(setTimeout(function() {
+        letterReady = true;
+        envScreen.classList.add('letter-ready');
+        envScreen.setAttribute('aria-label', 'Toque para abrir o convite');
+      }, 2600));
+      // 9000ms: abre sozinho se ninguém tocar
+      timers.push(setTimeout(leaveEnvelope, 9000));
     }
 
-    /* ─── Particle burst ─── */
-    function spawnParticles(cx, cy) {
-      const colors = ['#b8975a','#d4b07a','#7a8a6a','#f5f0e8','#4a5240','#c9a86c','#e8d4a8'];
-      for (let i = 0; i < 36; i++) {
-        const p     = document.createElement('div');
-        const angle = (Math.PI * 2 * i) / 36 + (Math.random() - 0.5) * 0.5;
-        const dist  = 70 + Math.random() * 130;
-        const tx    = Math.cos(angle) * dist;
-        const ty    = Math.sin(angle) * dist;
-        const size  = 4 + Math.random() * 9;
-        const dur   = 0.7 + Math.random() * 0.9;
-        const rot   = ((Math.random() - 0.5) * 480) + 'deg';
-        const color = colors[Math.floor(Math.random() * colors.length)];
-        const round = Math.random() > 0.5 ? '50%' : '2px';
-
-        p.className = 'particle';
-        p.style.cssText = \`
-          left: \${cx}px; top: \${cy}px;
-          width: \${size}px; height: \${size}px;
-          background: \${color};
-          border-radius: \${round};
-          --tx: \${tx}px; --ty: \${ty}px;
-          --rot: \${rot}; --dur: \${dur}s;
-        \`;
-        document.body.appendChild(p);
-        setTimeout(() => p.remove(), dur * 1000 + 200);
-      }
+    function leaveEnvelope() {
+      var envScreen = document.getElementById('envelope-screen');
+      var wrapper = document.getElementById('invite-wrapper');
+      if (!envScreen || !wrapper || envScreen.classList.contains('leaving')) return;
+      window.__cancelEnvelope();
+      var reduced = reducedMotion();
+      // o envelope se dissolve (1.1s) e o convite surge por baixo 350ms depois
+      envScreen.classList.add('leaving');
+      timers.push(setTimeout(function() {
+        wrapper.classList.add('visible');
+        window.dispatchEvent(new Event('invite:visible'));
+      }, reduced ? 0 : 350));
+      timers.push(setTimeout(function() {
+        envScreen.style.display = 'none';
+      }, reduced ? 0 : 1150));
     }`;
     document.body.appendChild(script);
 
@@ -1625,7 +1887,18 @@ export default function Home({ guestName }: HomeProps) {
 
     document.body.appendChild(cdScript);
 
+    // Scroll reveal começa quando o convite aparece (evento disparado em openEnvelope)
+    let stopReveal: (() => void) | undefined;
+    const onInviteVisible = () => {
+      const card = document.getElementById("invitation-card");
+      if (card) stopReveal = initScrollReveal(card);
+    };
+    window.addEventListener("invite:visible", onInviteVisible, { once: true });
+
     return () => {
+      (window as { __cancelEnvelope?: () => void }).__cancelEnvelope?.();
+      window.removeEventListener("invite:visible", onInviteVisible);
+      stopReveal?.();
       document.head.removeChild(style);
       script.remove();
       cdScript.remove();
@@ -1643,15 +1916,35 @@ export default function Home({ guestName }: HomeProps) {
   ════════════════════════════════ -->
   <div id="envelope-screen" role="button" tabindex="0" aria-label="Toque no selo para abrir o convite">
 
-    <!-- CORPO: envelope sem aba, limpo para a transição -->
-    <img class="env-body-layer" src="/manus-storage/envelope_body_web_7870a1c4.webp" alt="Envelope" draggable="false" />
+    <!-- CORPO: a mesma arte recortada em camadas (fundo, abas laterais e inferior) -->
+    <div class="env-layer env-back"><img src="/manus-storage/envelope_body_web_7870a1c4.webp" alt="" draggable="false" /></div>
 
-    <!-- ABA: triângulo superior com o selo (dobra para cima ao clicar) -->
-    <div class="env-flap-wrap" id="env-flap">
-      <img class="env-flap-img" src="/manus-storage/aba_7dcc1dac.webp" alt="Aba do envelope" draggable="false" />
+    <!-- CARTA: sobe de dentro do envelope -->
+    <div class="env-letter" aria-hidden="true">
+      <div class="env-letter-paper">
+        <div class="env-letter-mono" style="--d:.1s"></div>
+        <p class="env-letter-for" style="--d:.3s">${guest ? `Para ${guest}` : "Você está convidado!"}</p>
+        <p class="env-letter-names" style="--d:.7s">Horberlan<span class="env-letter-amp">&amp;</span>Analia</p>
+        <span class="env-letter-line" style="--d:1.6s"></span>
+        <p class="env-letter-date" style="--d:1.8s">28 de janeiro de 2027 · 15h30</p>
+        <p class="env-letter-place" style="--d:2s">Restaurante O Mirante · <span style="white-space:nowrap">Sousa — PB</span></p>
+      </div>
     </div>
 
-    <!-- Tap hint — fora da aba, diretamente no envelope-screen com z-index máximo -->
+    <div class="env-layer env-side l"><img src="/manus-storage/envelope_body_web_7870a1c4.webp" alt="" draggable="false" /></div>
+    <div class="env-layer env-side r"><img src="/manus-storage/envelope_body_web_7870a1c4.webp" alt="" draggable="false" /></div>
+    <div class="env-layer env-bottom"><img src="/manus-storage/envelope_body_web_7870a1c4.webp" alt="" draggable="false" /></div>
+
+    <!-- ABA: triângulo superior com o selo -->
+    <div class="env-flap-wrap" id="env-flap">
+      <img class="env-flap-img" src="/manus-storage/aba_7dcc1dac.webp" alt="Envelope lacrado com selo HA" draggable="false" />
+    </div>
+
+    <!-- SELO: duas metades que se separam ao abrir -->
+    <div class="seal-half l"><img src="/manus-storage/aba_7dcc1dac.webp" alt="" draggable="false" /></div>
+    <div class="seal-half r"><img src="/manus-storage/aba_7dcc1dac.webp" alt="" draggable="false" /></div>
+
+    <!-- "TOQUE NO SELO" — posicionado sobre o selo -->
     <div class="tap-hint-wrap">
       <svg class="tap-hint-svg" viewBox="0 0 210 210" width="210" height="210" xmlns="http://www.w3.org/2000/svg">
         <defs>
@@ -1662,6 +1955,8 @@ export default function Home({ guestName }: HomeProps) {
         </text>
       </svg>
     </div>
+
+    <p class="env-letter-hint">Toque para abrir o convite</p>
 
     <!-- Vignette -->
     <div class="env-overlay"></div>
@@ -1674,8 +1969,9 @@ export default function Home({ guestName }: HomeProps) {
     <div id="invitation-card">
 
       <!-- ── HERO ── -->
-      <div class="hero-section reveal">
-       <img class="hero-flowers-tl" src="/manus-storage/flowers_hero_top_left_510999d2.webp" alt="" loading="lazy" />
+      <div class="hero-section">
+        <div class="hero-bg"><img src="/manus-storage/hero.jpeg" alt="" fetchpriority="high" decoding="async" /></div>
+       <img class="hero-flowers-tl" src="/manus-storage/flowers_hero_top_left_510999d2.webp" alt="" />
        <img class="hero-flowers-mr" src="/manus-storage/flor2_57213108.webp" alt="" />
 
 
@@ -1700,7 +1996,7 @@ export default function Home({ guestName }: HomeProps) {
 
       <!-- ── QUERIDOS CONVIDADOS ── -->
       <div class="dear-section">
-        <h2 class="dear-title reveal" id="dear-title-el">${guest ? `Para ${guest},` : "Queridos Convidados!"}</h2>
+        <h2 class="dear-title reveal" data-reveal="ink" id="dear-title-el">${guest ? `Para ${guest},` : "Queridos Convidados!"}</h2>
         <time class="dear-when reveal" datetime="2027-01-28T15:30-03:00">
           <span class="dear-when-date">Quinta-feira, <span style="white-space:nowrap">28 de janeiro de 2027</span></span>
           <span class="dear-when-time">15h30</span>
@@ -1780,12 +2076,10 @@ export default function Home({ guestName }: HomeProps) {
       <div class="gold-divider"></div>
 
       <!-- ── LOCAL ── -->
-      <div class="location-section" style="padding-bottom:0;">
-         <!-- Flores no final full-width (fora do background) -->
-        <div class="reveal" style="width:calc(100% + 64px);margin-left:-32px;margin-right:-32px;line-height:0;position:relative;z-index:3;margin-top:-200px;">
-          <img src="/manus-storage/flowers_hero_base_2051eb57.webp" alt="" style="width:100%;height:auto;display:block;" />
-        </div>
-        <h2 class="section-title reveal">Local</h2>
+      <div class="location-section" style="padding-bottom:32px;">
+        <!-- Rosas sobre a emenda com a seção anterior -->
+        <div class="flowers-seam top"><img class="reveal" src="/manus-storage/flowers_hero_base_2051eb57.webp" alt="" loading="lazy" /></div>
+        <h2 class="section-title reveal" data-reveal="ink">Local</h2>
         <p class="section-subtitle reveal">Onde nos encontraremos</p>
         <p class="location-name-big reveal">Restaurante O Mirante</p>
         <p class="location-address reveal">
@@ -1808,7 +2102,7 @@ export default function Home({ guestName }: HomeProps) {
         <div class="dresscode-img-wrap reveal">
           <img src="/manus-storage/bowtie_dresscode_8f0dbf55.webp" alt="Dress Code" style="width:120px;height:auto;" loading="lazy" />
         </div>
-        <h2 class="section-title reveal">Dress<br/>Code</h2>
+        <h2 class="section-title reveal" data-reveal="ink">Dress<br/>Code</h2>
         <p class="section-subtitle reveal">Sugestão de traje</p>
         <p class="dresscode-text reveal">Ficaremos felizes em ver você com trajes que combinem com a paleta de cores do nosso casamento.</p>
         <div class="color-palette reveal">
@@ -1839,12 +2133,10 @@ export default function Home({ guestName }: HomeProps) {
         
         <!-- Background verde oliva apenas no conteúdo -->
         
-        <div class="details-section" style="padding-top:60px;padding-bottom:60px;">
-        <!-- Flores no inicio full-width, ultrapassando para cima para cobrir a transição de cores -->
-        <div class="reveal" style="width:calc(100% + 96px);margin-left:-48px;margin-right:-48px;line-height:0;position:relative;z-index:3;margin-top:-200px;">
-          <img src="/manus-storage/flowers_hero_base_2051eb57.webp" alt="" style="width:100%;height:auto;display:block;" />
-        </div>
-          <h2 class="section-title reveal">Detalhes</h2>
+        <div class="details-section">
+        <!-- Rosas sobre a faixa de transição de cor (início) -->
+        <div class="flowers-seam top"><img class="reveal" src="/manus-storage/flowers_hero_base_2051eb57.webp" alt="" loading="lazy" /></div>
+          <h2 class="section-title reveal" data-reveal="ink">Detalhes</h2>
           <p class="section-subtitle reveal">Informações importantes</p>
           <div class="detail-item reveal">
             <div class="detail-dot"></div>
@@ -1862,10 +2154,8 @@ export default function Home({ guestName }: HomeProps) {
             <div class="detail-dot"></div>
             <p class="detail-text">Sua presença é o nosso maior presente, mas, se desejar nos presentear, nossa lista estará disponível abaixo.</p>
           </div>
-        </div>
-        <!-- Flores no final full-width (fora do background) -->
-        <div class="reveal" style="width:100%;line-height:0;position:relative;z-index:3;margin-top:-120px;">
-          <img src="/manus-storage/flowers_hero_base_2051eb57.webp" alt="" style="width:100%;height:auto;display:block;" />
+        <!-- Rosas sobre a faixa de transição de cor (fim) -->
+        <div class="flowers-seam bottom"><img class="reveal" src="/manus-storage/flowers_hero_base_2051eb57.webp" alt="" loading="lazy" /></div>
         </div>
       </div>
 
@@ -1875,7 +2165,7 @@ export default function Home({ guestName }: HomeProps) {
         <div class="reveal" style="text-align:center;margin-bottom:12px;position:relative;z-index:2;">
           <img src="/manus-storage/monograma_ha_arco2_168a90a4.webp" alt="Monograma HA" style="width:80px;height:auto;object-fit:contain;display:inline-block;" loading="lazy" />
         </div>
-        <h2 class="section-title reveal" style="color:var(--olive);text-align:center;width:100%;">Faltam:</h2>
+        <h2 class="section-title reveal" data-reveal="ink" style="color:var(--olive);text-align:center;width:100%;">Faltam:</h2>
         <div class="countdown-grid reveal" id="countdown-grid" style="display:flex;flex-direction:row;justify-content:center;align-items:center;flex-wrap:nowrap;">
           <div class="countdown-unit" style="display:flex;flex-direction:column;align-items:center;width:68px;">
             <span class="countdown-num" id="cd-days" style="font-family:'Cinzel',serif;font-size:40px;font-weight:700;color:#4a5240;line-height:1;">--</span>
@@ -1907,7 +2197,7 @@ export default function Home({ guestName }: HomeProps) {
       </div>
       <!-- ── CONFIRMAR PRESENÇA (FORMULÁRIO) ── -->
       <div class="form-section" style="background:#f5f0e8;padding:72px 28px 52px;text-align:center;position:relative;overflow:visible;">
-        <h2 class="section-title reveal" style="font-family:'Cinzel',serif;font-size:22px;letter-spacing:4px;color:#4a5240;text-transform:uppercase;margin-bottom:6px;position:relative;z-index:3;text-align:center;">Confirmar Presença</h2>
+        <h2 class="section-title reveal" data-reveal="ink" style="font-family:'Cinzel',serif;font-size:22px;letter-spacing:4px;color:#4a5240;text-transform:uppercase;margin-bottom:6px;position:relative;z-index:3;text-align:center;">Confirmar Presença</h2>
         <p class="section-subtitle reveal" style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;color:#7a8a6a;letter-spacing:1px;margin-bottom:28px;position:relative;z-index:3;text-align:center;">Sua presença é a nossa maior alegria</p>
         <div class="form-card reveal" style="background:#4a5240;border:1px solid rgba(255,255,255,0.12);border-radius:16px;padding:32px 24px 28px;max-width:340px;margin:0 auto;box-shadow:0 6px 32px rgba(74,82,64,0.25);position:relative;z-index:3;">
           <p style="margin:0 0 18px;font-family:'Cormorant Garamond',serif;font-size:14px;color:rgba(245,240,232,0.8);line-height:1.8;text-align:center;">Ficamos felizes em tê-lo entre os nossos convidados!<br/>Confirme sua presença até <strong style="color:#fff;">31 de dezembro de 2026</strong>.</p>
