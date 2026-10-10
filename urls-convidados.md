@@ -20,8 +20,8 @@ https://horberlaneanalia.netlify.app/convite/maria-do-socorro-e-guilherme
 **Alanne e Borja**
 https://horberlaneanalia.netlify.app/convite/alanne-e-borja
 
-**Patrick e Lindairis**
-https://horberlaneanalia.netlify.app/convite/patrick-e-lindairis
+**Patriky e Lindairis**
+https://horberlaneanalia.netlify.app/convite/patriky-e-lindairis
 
 **Aline e Jackson**
 https://horberlaneanalia.netlify.app/convite/aline-e-jackson
@@ -85,3 +85,6 @@ https://horberlaneanalia.netlify.app/convite/sonally
 
 **Luiza**
 https://horberlaneanalia.netlify.app/convite/luiza
+
+**Lucas e Michele**
+https://horberlaneanalia.netlify.app/convite/lucas-e-michele

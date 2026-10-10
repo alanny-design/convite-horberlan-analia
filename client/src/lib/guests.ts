@@ -4,7 +4,7 @@ export const GUEST_NAMES = [
   "Cícera e Ronildo",
   "Maria do Socorro e Guilherme",
   "Alanne e Borja",
-  "Patrick e Lindairis",
+  "Patriky e Lindairis",
   "Aline e Jackson",
   "Maria Auxiliadora e Pedro",
   "Marcymmianna e Francisco",
@@ -26,6 +26,7 @@ export const GUEST_NAMES = [
   "Henrique",
   "Sonally",
   "Luiza",
+  "Lucas e Michele",
 ] as const;
 
 /** "Vanuza e Sebastião" → "vanuza-e-sebastiao" */
