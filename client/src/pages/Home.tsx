@@ -1,6 +1,20 @@
 import { useEffect } from "react";
 
-export default function Home() {
+function escapeHtml(value: string): string {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+type HomeProps = {
+  /** Nome do convidado quando acessado por /convite/:slug */
+  guestName?: string;
+};
+
+export default function Home({ guestName }: HomeProps) {
+  const guest = guestName ? escapeHtml(guestName) : undefined;
   useEffect(() => {
     // Inject styles
     const style = document.createElement("style");
@@ -54,6 +68,11 @@ export default function Home() {
       z-index: 100;
       cursor: pointer;
       background: var(--olive);
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      user-select: none;
       /* transition para o slide-up via JS */
       transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.8s ease;
       will-change: transform, opacity;
@@ -87,6 +106,9 @@ export default function Home() {
       z-index: 2;
       /* Garantir que a aba cubra a tela corretamente */
       min-height: 61vh;
+    }
+    .env-body-layer, .env-flap-img {
+      pointer-events: none;
     }
     .env-flap-img {
       position: relative;
@@ -276,7 +298,14 @@ export default function Home() {
     /* ─── HERO SECTION ─── */
     .hero-section {
       position: relative;
-      background: linear-gradient(175deg, var(--olive) 0%, #3a4232 55%, #2e3628 100%);
+      z-index: 2; /* rosas da base passam por cima da seção seguinte */
+      --torn-h: clamp(36px, 16vw, 90px);
+      --flowers-w: min(100vw, 500px);
+      /* Foto do casal no fundo, com véu oliva para manter o texto legível */
+      background:
+        linear-gradient(175deg, rgba(74,82,64,0.55) 0%, rgba(58,66,50,0.45) 55%, rgba(46,54,40,0.75) 100%),
+        url('/manus-storage/hero.jpeg') 47% 30% / cover no-repeat,
+        var(--olive);
       min-height: 520px;
       display: flex;
       flex-direction: column;
@@ -289,7 +318,7 @@ export default function Home() {
     }
     .hero-flowers-tl {
       position: absolute;
-      top: -30px; left: -30px;
+      top: -87px; left: -90px;
       width: 65vw;
       max-width: 320px;
       pointer-events: none;
@@ -315,7 +344,7 @@ export default function Home() {
     }
     .hero-flowers-mr {
       position: absolute;
-      top: 50%;
+      top: 67%;
       right: -20px;
       transform: translateY(-50%);
       width: 28vw;
@@ -340,6 +369,7 @@ export default function Home() {
       gap: 1px;
      width: 100%;
      text-align: center;
+     text-shadow: 0 1px 10px rgba(0,0,0,0.55);
    }
    .hero-date-label {
      font-family: 'Cinzel', serif;
@@ -436,36 +466,27 @@ export default function Home() {
     /* Torn paper edge at bottom of hero */
     .hero-torn {
       position: absolute;
-      bottom: -2px; left: 0; right: 0;
-      height: 60px;
+      bottom: -2px; left: 0;
+      display: block;
+      width: 100%;
+      /* mantém a proporção do viewBox (375x60) em qualquer largura */
+      height: var(--torn-h);
+      z-index: 1;
+      pointer-events: none;
     }
+    /* Rosas da base ancoradas nas ondas do rasgo.
+       A faixa densa da imagem termina a ~89% da altura (altura = 56,2% da largura),
+       e a linha média da onda fica a ~55% da altura do rasgo, medido de baixo. */
     .hero-flowers-base {
       position: absolute;
-      bottom: -10px; left: 50%;
+      left: 50%;
+      bottom: calc(var(--torn-h) * 0.15 - 2px - var(--flowers-w) * 0.562 * 0.11);
       transform: translateX(-50%);
-      width: 110%;
-      max-width: 500px;
-      z-index: 10;
-      pointer-events: none;
-      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.15));
-    }
-    .hero-flowers-base-wrap {
-      position: relative;
-      width: 100%;
-      z-index: 10;
-      margin-top: -20px;
-      pointer-events: none;
-      text-align: center;
-      overflow: visible;
-    }
-    .hero-flowers-base-wrap .hero-flowers-base {
-      display: block;
-      margin: 0 auto;
-      width: 100%;
-      max-width: 500px;
-      pointer-events: none;
-      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.15));
+      width: var(--flowers-w);
+      height: auto;
       z-index: 4;
+      pointer-events: none;
+      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.15));
     }
 
     /* ─── DEAR GUESTS SECTION ─── */
@@ -482,6 +503,41 @@ export default function Home() {
       color: var(--olive);
       text-transform: none;
       margin-bottom: 16px;
+    }
+    /* Data e horário logo abaixo do título */
+    .dear-when {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      margin: 0 auto 22px;
+    }
+    .dear-when-date {
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--olive);
+      line-height: 1.6;
+      text-wrap: balance;
+      max-width: 280px;
+    }
+    .dear-when-time {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px;
+      font-weight: 600;
+      color: var(--olive);
+      line-height: 1;
+    }
+    .dear-when-time::before,
+    .dear-when-time::after {
+      content: '';
+      width: 28px;
+      height: 1px;
+      background: var(--gold);
     }
     .dear-text {
       font-family: 'Cormorant Garamond', serif;
@@ -1039,7 +1095,7 @@ export default function Home() {
     }
 
     .footer-section {
-      background-image: url('/manus-storage/pasted_file_aKM7ts_image_d6f6323f.webp');
+      background-image: url('/manus-storage/nos.jpeg');
       background-size: cover;
       background-position: center top;
       padding: 72px 32px 72px;
@@ -1366,7 +1422,7 @@ export default function Home() {
     })();
 
     /* ─── Open envelope ─── */
-    if (typeof window.__envelopeOpened === 'undefined') window.__envelopeOpened = false;
+    window.__envelopeOpened = false;
 
     /* ─── Posicionar hint dinamicamente sobre o lacre ─── */
     function positionHint() {
@@ -1388,6 +1444,24 @@ export default function Home() {
     window.addEventListener('resize', positionHint);
     setTimeout(positionHint, 100);
     setTimeout(positionHint, 600);
+    document.querySelectorAll('#envelope-screen img').forEach(function(img) {
+      img.addEventListener('load', positionHint);
+    });
+
+    /* ─── Toque/clique/teclado abrem o envelope ─── */
+    (function() {
+      var env = document.getElementById('envelope-screen');
+      if (!env) return;
+      env.addEventListener('pointerup', openEnvelope);
+      env.addEventListener('touchend', openEnvelope);
+      env.addEventListener('click', openEnvelope);
+      env.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openEnvelope();
+        }
+      });
+    })();
 
     function openEnvelope() {
       if (window.__envelopeOpened) return;
@@ -1395,6 +1469,10 @@ export default function Home() {
 
       const envScreen = document.getElementById('envelope-screen');
       const wrapper   = document.getElementById('invite-wrapper');
+      if (!envScreen || !wrapper) {
+        window.__envelopeOpened = false;
+        return;
+      }
 
       // Fase 1: dispara partículas + esconde hint
       envScreen.classList.add('opening');
@@ -1452,7 +1530,7 @@ export default function Home() {
     const cdScript = document.createElement("script");
     cdScript.textContent = `
     (function() {
-      var target = new Date('2027-01-28T16:00:00-03:00').getTime();
+      var target = new Date('2027-01-28T15:30:00-03:00').getTime();
       function pad(n) { return String(n).padStart(2,'0'); }
       function tick() {
         var now = Date.now();
@@ -1500,32 +1578,36 @@ export default function Home() {
       var phone  = document.getElementById('cf-phone').value.trim();
       if (!name) return;
 
+      // Prazo de confirmação: até 31/12/2026 (inclusive)
+      if (new Date() >= new Date(2027, 0, 1)) {
+        document.getElementById('confirm-form').style.display = 'none';
+        document.getElementById('confirm-expired').style.display = 'flex';
+        return;
+      }
+
       // Envia via WhatsApp para os noivos
       var msg = 'Olá Horberlan e Analia! 💍 Confirmo minha presença no casamento de vocês!%0A%0A'
               + '👤 Nome: ' + encodeURIComponent(name) + '%0A'
               + (phone ? '📱 WhatsApp: ' + encodeURIComponent(phone) + '%0A' : '')
               + '%0A📅 28 de Janeiro de 2027 · Restaurante O Mirante, Sousa — PB';
 
-      // Envia para os dois números dos noivos
-      window.open('https://wa.me/5583881556540?text=' + msg, '_blank');
-      setTimeout(function() {
-        window.open('https://wa.me/5583881856267?text=' + msg, '_blank');
-      }, 800);
+      window.open('https://wa.me/558398414629?text=' + msg, '_blank');
 
       // Mostra mensagem de sucesso
       document.getElementById('confirm-form').style.display = 'none';
       var success = document.getElementById('confirm-success');
       success.classList.add('show');
+      success.style.display = 'flex';
     }
 
     function openCalModal() {
       var title = encodeURIComponent('Casamento de Horberlan & Analia');
       var details = encodeURIComponent('Cerimônia e Recepção no Restaurante O Mirante, Sousa — PB');
       var location = encodeURIComponent('Restaurante O Mirante, R. José Damião da Silva Dellamari S/N, Distrito São Gonçalo, Sousa, PB, 58814-000');
-      var startDate = '20270128T160000';
+      var startDate = '20270128T153000';
       var endDate   = '20270128T230000';
-      var startDateZ = '20270128T190000Z';
-      var endDateZ   = '20270128T020000Z';
+      var startDateZ = '20270128T183000Z';
+      var endDateZ   = '20270129T020000Z';
 
       // Google Calendar
       var googleUrl = 'https://calendar.google.com/calendar/render?action=TEMPLATE'
@@ -1549,7 +1631,7 @@ export default function Home() {
 
       // Outlook
       var outlookUrl = 'https://outlook.live.com/calendar/0/deeplink/compose?subject=' + title
-        + '&startdt=2027-01-28T16:00:00&enddt=2027-01-28T23:00:00'
+        + '&startdt=2027-01-28T15:30:00-03:00&enddt=2027-01-28T23:00:00-03:00'
         + '&body=' + details + '&location=' + location;
       document.getElementById('cal-outlook').href = outlookUrl;
 
@@ -1563,39 +1645,12 @@ export default function Home() {
     }
     `;
 
-    /* ─── Personalização por convidado via query param ─── */
-    (function() {
-      var params = new URLSearchParams(window.location.search);
-      var guest = params.get('para');
-      if (guest) {
-        var name = decodeURIComponent(guest).replace(/-/g, ' ');
-        name = name.replace(/\b\w/g, function(c) { return c.toUpperCase(); });
-        var updateTitle = function() {
-          var el = document.getElementById('dear-title-el');
-          if (el) { el.textContent = 'Para ' + name + ','; }
-          var textEl = document.getElementById('dear-text-el');
-          if (textEl) { textEl.textContent = 'É com imensa alegria que convidamos ' + name + ' para compartilhar conosco este momento tão especial — o nosso casamento!'; }
-        }
-          var fillName = function() {
-          var nameInput = document.getElementById('cf-name') as HTMLInputElement;
-          if (nameInput && !nameInput.value) { nameInput.value = name; }
-        }
-        if (document.readyState === 'loading') {
-          document.addEventListener('DOMContentLoaded', function() { updateTitle(); fillName(); });
-        } else {
-          updateTitle();
-          setTimeout(updateTitle, 100);
-          setTimeout(updateTitle, 500);
-          fillName();
-          setTimeout(fillName, 300);
-          setTimeout(fillName, 800);
-        }
-      }
-    })();
     document.body.appendChild(cdScript);
 
     return () => {
       document.head.removeChild(style);
+      script.remove();
+      cdScript.remove();
     };
   }, []);
 
@@ -1608,7 +1663,7 @@ export default function Home() {
   <!-- ════════════════════════════════
        FULLSCREEN ENVELOPE
   ════════════════════════════════ -->
-  <div id="envelope-screen" onclick="openEnvelope()">
+  <div id="envelope-screen" role="button" tabindex="0" aria-label="Toque no selo para abrir o convite">
 
     <!-- CORPO: envelope sem aba, limpo para a transição -->
     <img class="env-body-layer" src="/manus-storage/envelope_body_web_7870a1c4.webp" alt="Envelope" draggable="false" />
@@ -1658,19 +1713,21 @@ export default function Home() {
 
         <!-- Torn paper SVG -->
         <svg class="hero-torn" viewBox="0 0 375 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M0,60 L0,28 C20,22 35,38 55,30 C75,22 90,10 115,18 C140,26 155,40 180,32 C205,24 220,8 245,16 C270,24 285,38 310,28 C335,18 355,30 375,22 L375,60 Z" fill="#fdfcf9"/>
+          <path d="M0,60 L0,28 C20,22 35,38 55,30 C75,22 90,10 115,18 C140,26 155,40 180,32 C205,24 220,8 245,16 C270,24 285,38 310,28 C335,18 355,30 375,22 L375,60 Z" fill="#f4efe5"/>
         </svg>
-      </div>
 
-      <!-- Flores base hero extravasando entre seções -->
-      <div class="hero-flowers-base-wrap">
+        <!-- Flores base: sempre sobre as ondas do rasgo -->
         <img class="hero-flowers-base" src="/manus-storage/flowers_hero_base_2051eb57.webp" alt="" />
       </div>
 
       <!-- ── QUERIDOS CONVIDADOS ── -->
       <div class="dear-section">
-        <h2 class="dear-title reveal" id="dear-title-el">Queridos Convidados!</h2>
-        <p class="dear-text reveal" id="dear-text-el">Em breve acontecerá um momento muito especial e alegre para nós — o nosso casamento!</p>
+        <h2 class="dear-title reveal" id="dear-title-el">${guest ? `Para ${guest},` : "Queridos Convidados!"}</h2>
+        <time class="dear-when reveal" datetime="2027-01-28T15:30-03:00">
+          <span class="dear-when-date">Quinta-feira, <span style="white-space:nowrap">28 de janeiro de 2027</span></span>
+          <span class="dear-when-time">15h30</span>
+        </time>
+        <p class="dear-text reveal" id="dear-text-el">${guest ? `É com imensa alegria que convidamos ${guest} para compartilhar conosco este momento tão especial — o nosso casamento!` : "Em breve acontecerá um momento muito especial e alegre para nós — o nosso casamento!"}</p>
         <!-- Calendário de Janeiro 2027 -->
         <div class="dear-calendar reveal">
           <div class="cal-header">
@@ -1731,7 +1788,7 @@ export default function Home() {
             <!-- Semana 6 -->
             <div class="cal-day">31</div>
           </div>
-          <p class="cal-sub">Quinta-feira · 16 horas</p>
+          <p class="cal-sub">Quinta-feira · 15h30</p>
         </div>
         <button class="cal-save-btn reveal" onclick="openCalModal()"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" style="display:inline-block;vertical-align:middle;margin-right:7px;flex-shrink:0">
   <path d="M15.5 2V6M7.5 2V6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
@@ -1755,7 +1812,7 @@ export default function Home() {
         <p class="location-name-big reveal">Restaurante O Mirante</p>
         <p class="location-address reveal">
           Aguardamos você no endereço:<br/>
-          <strong>R. José Damião da Silva Dellamari, S/N</strong><br/>
+          <strong>R. José Damião da Silva Dellamari</strong><br/>
           Distrito São Gonçalo, Sousa — PB, 58814-000
         </p>
         <a href="https://maps.google.com/?q=R.+Jos%C3%A9+Dami%C3%A3o+da+Silva+Dellamari,+S%2FN,+Distrito+S%C3%A3o+Gon%C3%A7alo,+Sousa,+PB,+58814-000,+Brazil" target="_blank" class="map-btn reveal">
@@ -1868,19 +1925,19 @@ export default function Home() {
 
       <!-- ── SEPARADOR FLORAL ── -->
       <div style="position:relative;height:0;overflow:visible;z-index:10;pointer-events:none;">
-        <img src="/manus-storage/flor2_57213108.webp" alt="" style="width:140px;height:auto;display:block;position:absolute;right:-10px;top:-110px;opacity:1;z-index:10;pointer-events:none;" />
+        <img src="/manus-storage/flor2_57213108.webp" alt="" style="width:140px;height:auto;display:block;position:absolute;right:-10px;top:-160px;opacity:1;z-index:10;pointer-events:none;" />
       </div>
       <!-- ── CONFIRMAR PRESENÇA (FORMULÁRIO) ── -->
-      <div class="form-section" style="background:#f5f0e8;padding:52px 28px 52px;text-align:center;position:relative;overflow:visible;">
+      <div class="form-section" style="background:#f5f0e8;padding:72px 28px 52px;text-align:center;position:relative;overflow:visible;">
         <h2 class="section-title reveal" style="font-family:'Cinzel',serif;font-size:22px;letter-spacing:4px;color:#4a5240;text-transform:uppercase;margin-bottom:6px;position:relative;z-index:3;text-align:center;">Confirmar Presença</h2>
         <p class="section-subtitle reveal" style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;color:#7a8a6a;letter-spacing:1px;margin-bottom:28px;position:relative;z-index:3;text-align:center;">Sua presença é a nossa maior alegria</p>
         <div class="form-card reveal" style="background:#4a5240;border:1px solid rgba(255,255,255,0.12);border-radius:16px;padding:32px 24px 28px;max-width:340px;margin:0 auto;box-shadow:0 6px 32px rgba(74,82,64,0.25);position:relative;z-index:3;">
-          <p style="margin:0 0 18px;font-family:'Cormorant Garamond',serif;font-size:14px;color:rgba(245,240,232,0.8);line-height:1.8;text-align:center;">Ficamos felizes em tê-lo entre os nossos convidados!<br/>Confirme sua presença até <strong style="color:#fff;">10 de janeiro de 2027</strong>.</p>
+          <p style="margin:0 0 18px;font-family:'Cormorant Garamond',serif;font-size:14px;color:rgba(245,240,232,0.8);line-height:1.8;text-align:center;">Ficamos felizes em tê-lo entre os nossos convidados!<br/>Confirme sua presença até <strong style="color:#fff;">31 de dezembro de 2026</strong>.</p>
           <div style="width:40px;height:1px;background:rgba(255,255,255,0.25);margin:0 auto 20px;"></div>
           <form class="invite-form" id="confirm-form" onsubmit="submitConfirm(event)" style="display:flex;flex-direction:column;gap:14px;">
             <div style="display:flex;flex-direction:column;gap:6px;text-align:left;">
               <label style="font-family:'Cinzel',serif;font-size:9px;letter-spacing:2.5px;color:rgba(245,240,232,0.7);text-transform:uppercase;" for="cf-name">Seu nome completo</label>
-              <input style="width:100%;padding:14px 16px;border:1.5px solid rgba(245,240,232,0.4);border-radius:10px;background:#4a5240;font-family:'Cormorant Garamond',serif;font-size:16px;color:#f5f0e8;outline:none;box-sizing:border-box;" id="cf-name" type="text" placeholder="Ex: Maria Silva" required />
+              <input style="width:100%;padding:14px 16px;border:1.5px solid rgba(245,240,232,0.4);border-radius:10px;background:#4a5240;font-family:'Cormorant Garamond',serif;font-size:16px;color:#f5f0e8;outline:none;box-sizing:border-box;" id="cf-name" type="text" placeholder="Ex: Maria Silva" value="${guest ?? ""}" required />
             </div>
             <div style="display:flex;flex-direction:column;gap:6px;text-align:left;">
               <label style="font-family:'Cinzel',serif;font-size:9px;letter-spacing:2.5px;color:rgba(245,240,232,0.7);text-transform:uppercase;" for="cf-phone">WhatsApp (opcional)</label>
@@ -1893,12 +1950,16 @@ export default function Home() {
             <div style="font-family:'Imperial Script',cursive;font-size:28px;color:#fff;">Presença confirmada!</div>
             <p style="font-family:'Cormorant Garamond',serif;font-size:15px;color:rgba(245,240,232,0.8);line-height:1.7;">Ficamos muito felizes! Te esperamos no dia 28 de janeiro de 2027 no Restaurante O Mirante, Sousa — PB.</p>
           </div>
+          <div class="form-success" id="confirm-expired" style="display:none;flex-direction:column;align-items:center;gap:12px;padding:28px 0;">
+            <div style="width:56px;height:56px;border-radius:50%;background:#f5f0e8;display:flex;align-items:center;justify-content:center;font-size:24px;color:#4a5240;">!</div>
+            <div style="font-family:'Imperial Script',cursive;font-size:28px;color:#fff;">Prazo encerrado</div>
+            <p style="font-family:'Cormorant Garamond',serif;font-size:15px;color:rgba(245,240,232,0.8);line-height:1.7;">O prazo para confirmar presença terminou em 31 de dezembro de 2026. Para falar com os noivos, entre em contato diretamente.</p>
+          </div>
         </div>
         <div class="action-btns-wrap reveal" style="display:flex;flex-direction:column;gap:10px;max-width:340px;margin:20px auto 0;position:relative;z-index:3;">
           <p style="font-family:'Cinzel',serif;font-size:8px;letter-spacing:3px;color:#7a8a6a;text-transform:uppercase;margin-bottom:4px;">Mais opções</p>
           <button type="button" onclick="openCalModal()" style="display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:16px 24px;border-radius:8px;background:#4a5240;color:#f5f0e8;border:none;font-family:'Cinzel',serif;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;cursor:pointer;box-shadow:0 4px 18px rgba(74,82,64,0.28);"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" style="display:inline-block;vertical-align:middle;margin-right:6px;"><path d="M15.5 2V6M7.5 2V6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M2.5 10H20.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M20.5 12C20.5 8.22876 20.5 6.34315 19.3284 5.17157C18.1569 4 16.2712 4 12.5 4H10.5C6.72876 4 4.84315 4 3.67157 5.17157C2.5 6.34315 2.5 8.22876 2.5 12V14C2.5 17.7712 2.5 19.6569 3.67157 20.8284C4.84315 22 6.72876 22 10.5 22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M14.515 15.3866C15.5876 14.7469 16.5238 15.0047 17.0863 15.4153C17.3169 15.5837 17.4322 15.6679 17.5 15.6679C17.5678 15.6679 17.6831 15.5837 17.9137 15.4153C18.4762 15.0047 19.4124 14.7469 20.485 15.3866C21.8928 16.2261 22.2113 18.9958 18.9642 21.3324C18.3457 21.7775 18.0365 22 17.5 22C16.9635 22 16.6543 21.7775 16.0358 21.3324C12.7887 18.9958 13.1072 16.2261 14.515 15.3866Z" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"/></svg> Salvar no Calendário</button>
-          <a href="#" onclick="return false;" style="display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:16px 24px;border-radius:8px;background:transparent;color:#4a5240;border:1.5px solid rgba(74,82,64,0.35);font-family:'Cinzel',serif;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;cursor:pointer;text-decoration:none;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" style="display:inline-block;vertical-align:middle;margin-right:6px;"><path d="M5.92089 5.92089C8.15836 3.68342 9.2771 2.56468 10.5857 2.19562C11.5105 1.93479 12.4895 1.93479 13.4143 2.19562C14.7229 2.56468 15.8416 3.68342 18.0791 5.92089C20.3166 8.15836 21.4353 9.2771 21.8044 10.5857C22.0652 11.5105 22.0652 12.4895 21.8044 13.4143C21.4353 14.7229 20.3166 15.8416 18.0791 18.0791C15.8416 20.3166 14.7229 21.4353 13.4143 21.8044C12.4895 22.0652 11.5105 22.0652 10.5857 21.8044C9.2771 21.4353 8.15836 20.3166 5.92089 18.0791C3.68342 15.8416 2.56468 14.7229 2.19562 13.4143C1.93479 12.4895 1.93479 11.5105 2.19562 10.5857C2.56468 9.2771 3.68342 8.15836 5.92089 5.92089Z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.5"/></svg> Site do Casal</a>
-          <a href="https://listas.casasbahia.com.br/analiaehorberlan" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:16px 24px;border-radius:8px;background:transparent;color:#4a5240;border:1.5px solid rgba(74,82,64,0.35);font-family:'Cinzel',serif;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;cursor:pointer;text-decoration:none;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" style="display:inline-block;vertical-align:middle;margin-right:6px;"><path d="M4 11V15C4 18.2998 4 19.9497 5.02513 20.9749C6.05025 22 7.70017 22 11 22H13C16.2998 22 17.9497 22 18.9749 20.9749C20 19.9497 20 18.2998 20 15V11" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M3 9C3 8.25231 3 7.87846 3.20096 7.6C3.33261 7.41758 3.52197 7.26609 3.75 7.16077C4.09808 7 4.56538 7 5.5 7H18.5C19.4346 7 19.9019 7 20.25 7.16077C20.478 7.26609 20.6674 7.41758 20.799 7.6C21 7.87846 21 8.25231 21 9C21 9.74769 21 10.1215 20.799 10.4C20.6674 10.5824 20.478 10.7339 20.25 10.8392C19.9019 11 19.4346 11 18.5 11H5.5C4.56538 11 4.09808 11 3.75 10.8392C3.52197 10.7339 3.33261 10.5824 3.20096 10.4C3 10.1215 3 9.74769 3 9Z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.5"/><path d="M6 3.78571C6 2.79949 6.79949 2 7.78571 2H8.14286C10.2731 2 12 3.7269 12 5.85714V7H9.21429C7.43908 7 6 5.56091 6 3.78571Z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.5"/><path d="M18 3.78571C18 2.79949 17.2005 2 16.2143 2H15.8571C13.7269 2 12 3.7269 12 5.85714V7H14.7857C16.5609 7 18 5.56091 18 3.78571Z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.5"/><path d="M12 11L12 22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></svg> Lista de Presentes</a>
+          <a href="https://www.finalfeliz.de/analia-horberlan" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:16px 24px;border-radius:8px;background:transparent;color:#4a5240;border:1.5px solid rgba(74,82,64,0.35);font-family:'Cinzel',serif;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;cursor:pointer;text-decoration:none;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" style="display:inline-block;vertical-align:middle;margin-right:6px;"><path d="M4 11V15C4 18.2998 4 19.9497 5.02513 20.9749C6.05025 22 7.70017 22 11 22H13C16.2998 22 17.9497 22 18.9749 20.9749C20 19.9497 20 18.2998 20 15V11" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M3 9C3 8.25231 3 7.87846 3.20096 7.6C3.33261 7.41758 3.52197 7.26609 3.75 7.16077C4.09808 7 4.56538 7 5.5 7H18.5C19.4346 7 19.9019 7 20.25 7.16077C20.478 7.26609 20.6674 7.41758 20.799 7.6C21 7.87846 21 8.25231 21 9C21 9.74769 21 10.1215 20.799 10.4C20.6674 10.5824 20.478 10.7339 20.25 10.8392C19.9019 11 19.4346 11 18.5 11H5.5C4.56538 11 4.09808 11 3.75 10.8392C3.52197 10.7339 3.33261 10.5824 3.20096 10.4C3 10.1215 3 9.74769 3 9Z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.5"/><path d="M6 3.78571C6 2.79949 6.79949 2 7.78571 2H8.14286C10.2731 2 12 3.7269 12 5.85714V7H9.21429C7.43908 7 6 5.56091 6 3.78571Z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.5"/><path d="M18 3.78571C18 2.79949 17.2005 2 16.2143 2H15.8571C13.7269 2 12 3.7269 12 5.85714V7H14.7857C16.5609 7 18 5.56091 18 3.78571Z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.5"/><path d="M12 11L12 22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></svg> Lista de Presentes</a>
         </div>
       </div>
       <!-- ── FOOTER ── -->
@@ -1931,7 +1992,7 @@ export default function Home() {
       </a>
       <button class="cal-close" onclick="closeCalModal()">Fechar</button>
     </div>
-  </div>`
+  </div>`,
       }}
     />
   );

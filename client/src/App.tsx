@@ -4,13 +4,23 @@ import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
+import { findGuestBySlug } from "./lib/guests";
 import Home from "./pages/Home";
 
+
+function GuestInvite({ params }: { params: { slug: string } }) {
+  const guestName = findGuestBySlug(params.slug);
+  if (!guestName) return <NotFound />;
+  return <Home guestName={guestName} />;
+}
 
 function Router() {
   return (
     <Switch>
-      <Route path={"/"} component={Home} />
+      <Route path={"/"}>
+        <Home />
+      </Route>
+      <Route path={"/convite/:slug"} component={GuestInvite} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
