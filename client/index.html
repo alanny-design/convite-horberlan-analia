@@ -9,6 +9,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Great+Vibes&family=Cinzel:wght@400;500;600&family=Lato:wght@300;400&display=swap" rel="stylesheet" />
    <link href="https://fonts.googleapis.com/css2?family=Imperial+Script&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=MonteCarlo&display=swap" rel="stylesheet" />
+    <!-- Envelope é a primeira tela: carrega as imagens já, em paralelo ao JS -->
+    <link rel="preload" as="image" href="/manus-storage/envelope_body_web_7870a1c4.webp" fetchpriority="high" />
+    <link rel="preload" as="image" href="/manus-storage/aba_7dcc1dac.webp" fetchpriority="high" />
+    <!-- Cor do envelope enquanto o JS carrega (evita tela branca antes de montar) -->
+    <style>html, body { margin: 0; background: #4a5240; }</style>
   </head>
   <body>
     <div id="root"></div>
