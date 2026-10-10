@@ -267,10 +267,13 @@ const INVITE_CSS = `:root {
       height: 210px;
       display: block;
     }
+    /* Centro do selo calculado só com CSS (sem esperar JS/imagens):
+       a aba ocupa 100vw de largura, limitada a 95vh de altura (arte 784x842),
+       e o selo fica a 83,55% da altura dela → min(100vw·703,5/784, 95vh·703,5/842) */
     .tap-hint-wrap {
       position: fixed;
       left: 50%;
-      top: 86vh;
+      top: min(89.73vw, 79.37vh);
       transform: translate(-50%, -50%);
       width: 210px;
       height: 210px;
@@ -1671,13 +1674,6 @@ export default function Home({ guestName }: HomeProps) {
         half.querySelector('img').style.clipPath = toCrack(half.classList.contains('l') ? crackL : crackR);
       });
 
-      // "TOQUE NO SELO" centralizado no selo
-      var hint = document.querySelector('.tap-hint-wrap');
-      if (hint) {
-        hint.style.left = (cx - 105) + 'px';
-        hint.style.top = (cy - 105) + 'px';
-        hint.style.transform = 'none';
-      }
     }
     window.addEventListener('load', layoutEnvelope);
     window.addEventListener('resize', layoutEnvelope);
