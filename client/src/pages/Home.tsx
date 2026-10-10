@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import FallingPetals from "@/components/FallingPetals";
 
 function escapeHtml(value: string): string {
   return value
@@ -42,21 +43,20 @@ export default function Home({ guestName }: HomeProps) {
       background: var(--cream);
     }
 
-    /* ─── Floating petals ─── */
-    .petal {
+    /* ─── Pétalas caindo (canvas — FallingPetals.tsx) ─── */
+    .falling-petals {
       position: fixed;
-      border-radius: 50% 0 50% 0;
-      opacity: 0;
+      inset: 0;
+      width: 100%;
+      height: 100%;
       pointer-events: none;
-      z-index: 1;
-      animation: fall linear infinite;
+      z-index: 60; /* acima do convite (50), abaixo do envelope (100) e do modal */
+      opacity: 0;
+      transition: opacity 1.8s ease;
     }
-    @keyframes fall {
-      0%   { transform: translateY(-30px) rotate(0deg) translateX(0); opacity: 0; }
-      5%   { opacity: 0.28; }
-      50%  { transform: translateY(50vh) rotate(180deg) translateX(20px); }
-      95%  { opacity: 0.1; }
-      100% { transform: translateY(110vh) rotate(360deg) translateX(-10px); opacity: 0; }
+    .falling-petals.is-visible { opacity: 0.9; }
+    @media (max-width: 600px) {
+      .falling-petals.is-visible { opacity: 0.8; }
     }
 
     /* ════════════════════════════════════
@@ -1147,8 +1147,6 @@ export default function Home({ guestName }: HomeProps) {
       position: relative; z-index: 2;
     }
 
-    /* ─── PARTICLES ─── */
-    .particle {
     /* ─── COUNTDOWN ─── */
     .countdown-section {
       background: #ffffff;
@@ -1399,28 +1397,7 @@ export default function Home({ guestName }: HomeProps) {
 
     // Run envelope script
     const script = document.createElement("script");
-    script.textContent = `/* ─── Floating petals ─── */
-    (function() {
-      const container = document.getElementById('petals-container');
-      const colors = ['#7a8a6a','#b8975a','#c9a86c','#4a5240','#d4b07a','#a8b898'];
-      for (let i = 0; i < 22; i++) {
-        const p = document.createElement('div');
-        p.className = 'petal';
-        const size = 5 + Math.random() * 8;
-        p.style.cssText = \`
-          left: \${Math.random() * 100}vw;
-          top: -20px;
-          width: \${size}px;
-          height: \${size * 1.4}px;
-          background: \${colors[Math.floor(Math.random() * colors.length)]};
-          opacity: 0;
-          animation-duration: \${10 + Math.random() * 15}s;
-          animation-delay: \${Math.random() * 14}s;
-        \`;
-        container.appendChild(p);
-      }
-    })();
-
+    script.textContent = `
     /* ─── Open envelope ─── */
     window.__envelopeOpened = false;
 
@@ -1476,6 +1453,7 @@ export default function Home({ guestName }: HomeProps) {
 
       // Fase 1: dispara partículas + esconde hint
       envScreen.classList.add('opening');
+      window.dispatchEvent(new Event('invite:open'));
       spawnParticles(window.innerWidth / 2, window.innerHeight * 0.72);
 
       // Fase 2: aba dobra em 1.2s
@@ -1655,11 +1633,11 @@ export default function Home({ guestName }: HomeProps) {
   }, []);
 
   return (
-    <div
-      dangerouslySetInnerHTML={{
-        __html: `<!-- Floating petals -->
-  <div id="petals-container" style="position:fixed;inset:0;pointer-events:none;z-index:1;overflow:hidden;"></div>
-
+    <>
+      <FallingPetals />
+      <div
+        dangerouslySetInnerHTML={{
+          __html: `
   <!-- ════════════════════════════════
        FULLSCREEN ENVELOPE
   ════════════════════════════════ -->
@@ -1993,7 +1971,8 @@ export default function Home({ guestName }: HomeProps) {
       <button class="cal-close" onclick="closeCalModal()">Fechar</button>
     </div>
   </div>`,
-      }}
-    />
+        }}
+      />
+    </>
   );
 }
