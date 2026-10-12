@@ -6,6 +6,7 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { findGuestBySlug } from "./lib/guests";
 import Home from "./pages/Home";
+import Photos from "./pages/Photos";
 
 
 function GuestInvite({ params }: { params: { slug: string } }) {
@@ -21,17 +22,13 @@ function Router() {
         <Home />
       </Route>
       <Route path={"/convite/:slug"} component={GuestInvite} />
+      <Route path={"/fotos"} component={Photos} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
     </Switch>
   );
 }
-
-// NOTE: About Theme
-// - First choose a default theme according to your design style (dark or light bg), than change color palette in index.css
-//   to keep consistent foreground/background color across components
-// - If you want to make theme switchable, pass `switchable` ThemeProvider and use `useTheme` hook
 
 function App() {
   return (
